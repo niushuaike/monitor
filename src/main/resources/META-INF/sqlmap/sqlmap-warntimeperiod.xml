@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="warntimeperiod">
+
+	<!--
+      - ===============================================
+      - 返回 Warntimeperiod Entity
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<resultMap  type="com.micropower.manager.model.po.Warntimeperiod"	   id="RM_Warntimeperiod">
+		<id     property="id"              column="id"              jdbcType="INTEGER"  javaType="java.lang.Integer"  />
+		<result property="timeperiodname"  column="timeperiodname"  jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="sunday"          column="Sunday"          jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="monday"          column="Monday"          jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="tuesday"         column="Tuesday"         jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="wednesday"       column="Wednesday"       jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="thursday"        column="Thursday"        jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="friday"          column="Friday"          jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="saturday"        column="Saturday"        jdbcType="VARCHAR"  javaType="java.lang.String"   />
+	</resultMap>
+
+	<!--
+      - ===============================================
+      - 新增 Warntimeperiod
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<insert id="create" parameterType="com.micropower.manager.model.po.Warntimeperiod" useGeneratedKeys="true" keyProperty="id">
+		insert into warntimeperiod (
+			id, 
+			timeperiodname, 
+			Sunday, 
+			Monday, 
+			Tuesday, 
+			Wednesday, 
+			Thursday, 
+			Friday, 
+			Saturday
+		) values (
+		    #{id}, 
+		    #{timeperiodname}, 
+		    #{sunday}, 
+		    #{monday}, 
+		    #{tuesday}, 
+		    #{wednesday}, 
+		    #{thursday}, 
+		    #{friday}, 
+		    #{saturday}
+		)
+	</insert>
+
+	<!--
+      - ===============================================
+      - 修改 Warntimeperiod
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<update id="update" parameterType="com.micropower.manager.model.po.Warntimeperiod">
+	      update warntimeperiod
+	      <set >
+	         			      <if test="id != null" >
+			        id = #{id},
+			      </if>
+		      			      <if test="timeperiodname != null" >
+			        timeperiodname = #{timeperiodname},
+			      </if>
+		      			      <if test="Sunday != null" >
+			        Sunday = #{Sunday},
+			      </if>
+		      			      <if test="Monday != null" >
+			        Monday = #{Monday},
+			      </if>
+		      			      <if test="Tuesday != null" >
+			        Tuesday = #{Tuesday},
+			      </if>
+		      			      <if test="Wednesday != null" >
+			        Wednesday = #{Wednesday},
+			      </if>
+		      			      <if test="Thursday != null" >
+			        Thursday = #{Thursday},
+			      </if>
+		      			      <if test="Friday != null" >
+			        Friday = #{Friday},
+			      </if>
+		      			      <if test="Saturday != null" >
+			        Saturday = #{Saturday},
+			      </if>
+		      		    </set>
+	</update>
+
+	<!--
+      - ===============================================
+      - 查询 Warntimeperiod 总数
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.micropower.manager.model.po.Warntimeperiod">
+		select count(*)
+		from warntimeperiod
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Warntimeperiod 信息
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<select id="query" resultMap="RM_Warntimeperiod" parameterType="integer">
+		select 
+		    id, 
+		    timeperiodname, 
+		    Sunday, 
+		    Monday, 
+		    Tuesday, 
+		    Wednesday, 
+		    Thursday, 
+		    Friday, 
+		    Saturday
+		from warntimeperiod
+		WHERE id=#{id}
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Warntimeperiod 分页信息
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<select id="page" resultMap="RM_Warntimeperiod" parameterType="java.util.HashMap">
+		select 
+		    id, 
+		    timeperiodname, 
+		    Sunday, 
+		    Monday, 
+		    Tuesday, 
+		    Wednesday, 
+		    Thursday, 
+		    Friday, 
+		    Saturday
+		from warntimeperiod
+	</select>
+	<select id="list" resultMap="RM_Warntimeperiod" >
+		select
+		id,
+		timeperiodname,
+		Sunday,
+		Monday,
+		Tuesday,
+		Wednesday,
+		Thursday,
+		Friday,
+		Saturday
+		from warntimeperiod
+	</select>
+</mapper>

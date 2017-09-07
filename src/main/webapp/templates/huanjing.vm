@@ -1,0 +1,88 @@
+<div class="page page-jibenSet clearfix">
+	<div class="row title">
+		<div class="col-lg-6 col-xs-12">
+			单设备后台/设备管理 /环境参数设置
+		</div>
+
+		<div class="col-lg-6 col-xs-12 text-right">
+			<span>当前时间：</span>
+            <span id="now-time"></span>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<div class="table-tit">
+			<div class="row">
+				<div class="col-lg-6 col-xs-12">
+					<p class="tit-name">基本参数设置</p>
+				</div>
+				
+				<div class="col-lg-6 col-xs-12">
+					<div class="report-btn">
+						<button type="button" class="btn btn-warning">恢复默认</button>
+						<button type="button" class="btn btn-info jichu-edit">编辑</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<table class="table table-striped jibne-table">
+			<thead>
+				<tr class="text-center">
+					<th><input class="allChk" type="checkbox" name="" id="" value="" /></th>
+					<th>序号</th>
+					<th>阈值类型</th>
+					<th>最小值</th>
+					<th>最大值</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody class="chk-body">
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>01</td>
+					<td>温度阈值</td>
+					<td><input type="text" name="" id="" value="30℃" readonly/></td>
+					<td>
+						<input type="text" name="" id="" value="20℃" readonly/>
+						<p class="ipt-p" style="display: none;">
+							<span class="not-save">取消</span>
+							<span class="save">保存</span>
+						</p>
+					</td>
+					<td></td>
+					
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>01</td>
+					<td>温度阈值</td>
+					<td><input type="text" name="" id="" value="80℃" readonly/></td>
+					<td>
+						<input type="text" name="" id="" value="200℃" readonly/>
+						<p class="ipt-p" style="display: none;">
+							<span class="not-save">取消</span>
+							<span class="save">保存</span>
+						</p>
+					</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>01</td>
+					<td>温度阈值</td>
+					<td><input type="text" name="" id="" value="100℃" readonly/></td>
+					<td>
+						<input type="text" name="" id="" value="100℃" readonly/>
+						<p class="ipt-p" style="display: none;">
+							<span class="not-save">取消</span>
+							<span class="save">保存</span>
+						</p>
+					</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+<div>
+<script src="/monitor/source/js/my.js"></script>
+<script src="/monitor/source/js/huanjing.js"></script>
+

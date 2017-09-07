@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<toolbox>
+	<xhtml>true</xhtml>
+
+	<tool>
+		<key>env</key>
+		<scope>request</scope>
+		<class>com.lycheeframework.core.common.helper.GlobEnv</class>
+	</tool>
+	<tool>
+		<key>esc</key>
+		<scope>request</scope>
+		<class>com.lycheeframework.core.common.util.EscapeUtil</class>
+	</tool>
+
+	<tool>
+		<key>date</key>
+		<scope>request</scope>
+		<class>com.lycheeframework.core.common.util.DateUtil</class>
+	</tool>
+	
+	<tool>
+		<key>money</key>
+		<scope>request</scope>
+		<class>com.lycheeframework.core.common.util.MoneyUtil</class>
+	</tool>
+</toolbox>

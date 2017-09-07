@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="warnlog">
+
+	<!--
+      - ===============================================
+      - 返回 Warnlog Entity
+      - @author oliver
+      - @date 2017-09-05
+      - ===============================================
+    -->
+	<resultMap  type="com.micropower.manager.model.po.Warnlog"	   id="RM_Warnlog">
+		<id     property="id"               column="id"                jdbcType="INTEGER"    javaType="java.lang.Integer"  />
+		<result property="warnType"         column="warn_type"         jdbcType="INTEGER"    javaType="java.lang.Integer"  />
+		<result property="warnDescription"  column="warn_description"  jdbcType="VARCHAR"    javaType="java.lang.String"   />
+		<result property="pictureUrl"       column="picture_url"       jdbcType="VARCHAR"    javaType="java.lang.String"   />
+		<result property="warnTime"         column="warn_time"         jdbcType="TIMESTAMP"  javaType="java.util.Date"     />
+		<result property="warnState"        column="warn_state"        jdbcType="TINYINT"    javaType="java.lang.Integer"  />
+		<result property="operationDetail"  column="operation_detail"  jdbcType="VARCHAR"    javaType="java.lang.String"   />
+	</resultMap>
+
+	<!--
+      - ===============================================
+      - 新增 Warnlog
+      - @author oliver
+      - @date 2017-09-05
+      - ===============================================
+    -->
+	<insert id="create" parameterType="com.micropower.manager.model.po.Warnlog" useGeneratedKeys="true" keyProperty="id">
+		insert into warnlog (
+			id, 
+			warn_type, 
+			warn_description, 
+			picture_url, 
+			warn_time, 
+			warn_state, 
+			operation_detail
+		) values (
+		    #{id}, 
+		    #{warnType}, 
+		    #{warnDescription}, 
+		    #{pictureUrl}, 
+		    #{warnTime}, 
+		    #{warnState}, 
+		    #{operationDetail}
+		)
+	</insert>
+
+	<!--
+      - ===============================================
+      - 修改 Warnlog
+      - @author oliver
+      - @date 2017-09-05
+      - ===============================================
+    -->
+	<update id="update" parameterType="com.micropower.manager.model.po.Warnlog">
+	      update warnlog
+	      <set >
+	         			      <if test="id != null" >
+			        id = #{id},
+			      </if>
+		      			      <if test="warn_type != null" >
+			        warn_type = #{warn_type},
+			      </if>
+		      			      <if test="warn_description != null" >
+			        warn_description = #{warn_description},
+			      </if>
+		      			      <if test="picture_url != null" >
+			        picture_url = #{picture_url},
+			      </if>
+		      			      <if test="warn_time != null" >
+			        warn_time = #{warn_time},
+			      </if>
+		      			      <if test="warn_state != null" >
+			        warn_state = #{warn_state},
+			      </if>
+		      			      <if test="operation_detail != null" >
+			        operation_detail = #{operation_detail},
+			      </if>
+		      		    </set>
+	</update>
+
+	<!--
+      - ===============================================
+      - 查询 Warnlog 总数
+      - @author oliver
+      - @date 2017-09-05
+      - ===============================================
+    -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.micropower.manager.model.po.Warnlog">
+		select count(*)
+		from warnlog
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Warnlog 信息
+      - @author oliver
+      - @date 2017-09-05
+      - ===============================================
+    -->
+	<select id="query" resultMap="RM_Warnlog" parameterType="com.micropower.manager.model.po.Warnlog">
+		select 
+		    id, 
+		    warn_type, 
+		    warn_description, 
+		    picture_url, 
+		    warn_time, 
+		    warn_state, 
+		    operation_detail
+		from warnlog
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Warnlog 分页信息
+      - @author oliver
+      - @date 2017-09-05
+      - ===============================================
+    -->
+	<select id="page" resultMap="RM_Warnlog" parameterType="java.util.HashMap">
+		select 
+		    id, 
+		    warn_type, 
+		    warn_description, 
+		    picture_url, 
+		    warn_time, 
+		    warn_state, 
+		    operation_detail
+		from warnlog
+	</select>
+
+	<delete id="delete" parameterType="integer">
+		DELETE FROM warnlog where id=#{id}
+	</delete>
+
+</mapper>

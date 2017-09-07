@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="css/jquery.datetimepicker.css">
+<div class="page page-yonghuSet clearfix">
+	<div class="row title">
+		<div class="col-lg-6 col-xs-12">
+			单设备后台/设备管理 /告警时段设置
+		</div>
+
+		<div class="col-lg-6 col-xs-12 text-right">
+			<span>当前时间：</span>
+            <span id="now-time"></span>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<div class="table-tit">
+			<div class="row">
+				<div class="col-lg-6 col-xs-12">
+					<p class="tit-name">告警时段设置</p>
+				</div>
+				
+				<div class="col-lg-6 col-xs-12">
+					<div class="report-btn">
+						<button type="button" class="btn btn-success">添加</button>
+						<button type="button" class="btn btn-info">编辑</button>
+						<button type="button" class="btn btn-danger">删除</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<table class="table table-striped police-table">
+			<thead>
+				<tr class="text-center">
+					<th><input class="allChk" type="checkbox" name="" id="" value="" /></th>
+					<th>序号</th>
+					<th>名称</th>
+					<th>周一</th>
+					<th>周二</th>
+					<th>周三</th>
+					<th>周四</th>
+					<th>周五</th>
+					<th>周六</th>
+					<th>周日</th>
+				</tr>
+			</thead>
+			<tbody class="chk-body">
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>0102</td>
+					<td>全时段</td>
+					<td>
+						<input type="text" class="datetimepicker"/>
+						<span>~</span>
+						<input type="text" class="datetimepicker"/>
+					</td>
+					<td>
+						<input type="text" class="datetimepicker"/>
+						<span>~</span>
+						<input type="text" class="datetimepicker"/>
+					</td>
+					<td>
+						<input type="text" class="datetimepicker"/>
+						<span>~</span>
+						<input type="text" class="datetimepicker"/>
+					</td>
+					<td>
+						<input type="text" class="datetimepicker"/>
+						<span>~</span>
+						<input type="text" class="datetimepicker"/>
+					</td>
+					<td>
+						<input type="text" class="datetimepicker"/>
+						<span>~</span>
+						<input type="text" class="datetimepicker"/>
+					</td>
+					<td>
+						<input type="text" class="datetimepicker"/>
+						<span>~</span>
+						<input type="text" class="datetimepicker"/></td>
+					<td>
+						<input type="text" class="datetimepicker"/>
+						<span>~</span>
+						<input type="text" class="datetimepicker"/>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+<div>
+<script src="/monitor/source/js/jquery.datetimepicker.full.js" ></script>
+<script src="/monitor/source/js/policeSet.js"></script>
+<script src="/monitor/source/js/my.js"></script>
+

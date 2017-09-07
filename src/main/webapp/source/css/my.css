@@ -1,0 +1,462 @@
+/*header*/
+.nav-head h4{
+	color: #fff;
+	line-height: 40px;
+}
+
+.page{
+	width: 100%;
+	background:#ededed;
+	padding: 20px 2%;
+}
+.row{
+	margin:0
+}
+.page .page-wrap>.row {
+    padding: 0 ;
+}
+.title{
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	background: #fff;
+	font-size: 14px;
+	margin-bottom: 20px;
+	
+}
+
+.row .icon {
+    border-radius: 100%;
+    width: 42px;
+    height: 42px;
+    margin-top: -2px;
+    font-size: 17px;
+    display: table;
+    color: #fff;
+    text-align: center
+}
+.row .icon:before {
+    position: relative;
+    top: 10px;
+}
+.row .info{
+	width: 50%;
+	text-align: center;
+}
+.row .panel-body{
+	padding:15px 15px 5px 15px
+}
+.red{
+	color:red;
+}
+.chart{
+	width: 100%;
+	height: auto;
+	background: #fff;
+	
+	padding:10px;
+}
+.chart p{
+	color: blue;
+}
+/*机组环境*/
+.row-ico{
+	width: 100%;
+	height: auto;
+}
+.row ul li{
+	list-style: none;
+	width: 170px;
+	height: 100px;
+	float: left;
+	padding:10px 10px;
+	border-radius: 5px;
+	margin-right: 10px;
+	margin-bottom: 20px;
+}
+.row-ico{
+	float: left;
+	width: 60px;
+	height: 80px;
+	color: #fff;
+	line-height: 80px;
+}
+.row-ico i{
+	line-height: 80px;
+}
+.row-font{
+	width: 90px;
+	float: left;
+	color: #fff;
+	font-size: 13px;
+}
+
+.row-font p{
+	width:100%;
+	text-align: center;
+	margin: 0;
+	line-height: 20px;
+}
+/*机组动力状态*/
+.page-email .row .info{
+	width: 60%;
+}
+/*劳工这杯*/
+.page-buttons .row .info{
+	width: 60%;
+}
+/*关键设备*/
+html,body{
+	height: 100%;
+}
+.page-typography{
+	height: 100%;
+}
+.table-responsive{
+	background: #fff;
+}
+.table-responsive table tr td{
+	padding:15px;
+}
+.table-responsive table tr th{
+	padding:15px;
+}
+.table-tit{
+	width: 100%;
+	padding:20px 0 15px 0;
+} 
+.tit-name{
+	font-size: 16px;
+	line-height: 30px;
+	height: 30px;
+	padding:5px 0;
+}
+.tit-btn{
+	padding:2px 0;
+	position: relative;
+}
+.block{
+	padding-top: 5px;
+	width: 330px;
+	height: 130px;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px #999;
+	-webkit-box-shadow: 0px 0px 10px #999;
+	position: absolute;
+	top:48px;
+	right: 10px;
+	z-index: 2;
+}
+.block .fadin{
+	
+	text-align: right;
+	padding-right: 8px;
+	cursor: pointer;
+}
+.block-tit{
+	text-align: left;
+	padding-left: 20px;
+}
+.block_con{
+	width: 90%;
+	padding:0 5%;
+}
+.block-left{
+	float: left;
+	width: 33px;
+	height: 100px;
+}
+.block-right{
+	width: 230px;
+	float:left;
+}
+.block-right input{
+
+}
+.block-right .btn-default{
+	background:#bcbcbc;
+	color: #fff;
+}
+.block-right button{
+	border-radius: 5px;
+	margin-right: 10px;
+}
+.table tr th,td{
+	text-align: center;
+}
+/*模态窗 样式修改*/
+.modal-header{
+	background:#5974d9;
+}
+.modal-header h4{
+	text-align: center;
+	color: #fff;
+}
+.modal-header .close{
+	font-size: 35px;
+	margin-top: -10px;
+}
+.modal-body{
+	padding: 50px 50px 20px 50px;
+}
+.modal-body label{
+	padding:0;
+}
+.modal-footer{
+	text-align: center;
+}
+.radio-lable label{
+	padding-left: 20px;
+}
+.ip-number input{
+	width: 20%;
+	margin-right: 3%;
+	display: inline-block;
+}
+.give-person input{
+	width: 80%;
+	display: inline-block;
+}
+.give-person button{
+	border-radius: 4px;
+}
+.warn-time input{
+	width: 80%;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.modal-body2{
+	padding:15px;
+}
+.modal-dialog2{
+	margin:10% auto
+}
+#selectModal{
+	z-index: 9999;
+}
+
+/*事件日志*/
+.even-sel{
+	display: inline-block;
+	width: 90px;
+	padding:5px 0;
+	height: 30px;
+	font-size: 13px;
+}
+.even-btn{
+	text-align:left;
+}
+.even-btn input{
+	
+	width: 90px;
+	border-radius: 5px;
+	border: solid #999 1px;
+	padding:2px;
+}
+.even-btn .btn-info{
+	border-radius: 5px;
+}
+/*事件处理*/
+.even-sel2{
+	width: 100px;
+	border:solid #ccc 1px;
+	color: #555;
+	background-color: #fff;
+	font-size: 14px;
+	height: 30px;
+	border-radius: 4px;
+	padding:2px 10px;
+}
+.enev-deal input{
+	width: 90px;
+	border-radius: 5px;
+	border: solid #999 1px;
+	padding:2px;
+}
+.enev-deal button{
+	border-radius: 5px;
+}
+/*报表中心*/
+.report-btn{
+	text-align: right;
+}
+.report-btn button{
+	margin-right: 5px;
+	position: relative;
+	
+}
+.report-table tbody tr td:nth-of-type(4){
+	color: #5bc0de;
+	cursor: pointer;
+}
+.report-table tbody tr td:nth-of-type(5){
+	color: #5bc0de;
+	cursor: pointer;
+}
+/*基础参数设置*/
+.jibne-table input[type=text]{
+	text-align: center;
+	width: 100px;
+	border-radius: 4px;
+	border:none;
+	background: none;
+	
+}
+.chk-body tr td{
+	position: relative;
+}
+
+.chk-body .ipt-p{
+	position: absolute;
+	text-align: center;
+	right: -35px;
+	top:17px;
+	z-index: 1;
+}
+
+.chk-body .ipt-p span{
+	color:#5bc0de;
+	width: 45px;
+	display: inline-block;
+	cursor: pointer;
+}
+/*劳工设置*/
+.table-laogongSet{
+	background: #fff;
+}
+.form-table{
+	width: 100%;
+	padding:5%
+}
+.form-table input[type=text]{
+	border: none;
+	background: none;
+	
+}
+.form-table input[type=text]:focus{
+	box-shadow: none;
+}
+.form-table .form-control{
+	width: 70%;
+}
+.form-table .ip-ipt input{
+	width: 15%;
+	display: inline-block;
+	
+}
+.form-btn{
+	text-align: center;
+}
+.form-btn button{
+	margin-right: 30px;
+}
+/*告警时段设置*/
+.police-table tbody td{
+	padding: 15px 5px !important;
+}
+.police-table input[type=text]{
+	width:42px;
+	border-radius: 4px;
+	border:solid #ccc 1px;
+	padding: 0 2px;
+	
+}
+.police-table span{
+	
+	margin: 0 2px;
+}
+.police-table tr td{
+	position: relative;
+}
+.police-table .pox{
+	width: 100%;
+	height: 30px;
+	background: #ccc;
+	position: absolute;
+	left: 0;
+	top:10px;
+	opacity: 0;
+}
+.police-table tr td p{
+	position: absolute;
+	right: 0;
+	top:42px;
+	font-size: 12px;
+}
+.police-table tr td p button{
+	background:none;
+	border: none;
+	padding: 1px 3px;
+	color: #5bc0de;
+}
+/*定时保存设置*/
+.time-table tbody select{
+	border-radius: 4px;
+	padding:1px 5px;
+	background: transparent;
+	 -webkit-appearance: none;
+	 border: none;	
+}
+.time-table span{
+	text-align: left;
+	color: #31b0d5;
+	cursor: pointer;
+}
+.time-table input{
+	border:none;
+	width: 50px;
+	border-radius: 4px;
+	
+	text-align: center;
+	background: none;
+}
+/*用户权限设置*/
+.yonghu-table input[type=text]{
+	text-align: center;
+	width: 115px;
+	border-radius: 4px;
+	border:none;
+	background: none;	
+}
+.yonghu-table select{
+	border-radius: 4px;
+	padding:2px;
+}
+.yonghu-table td{
+	padding:15px 5px !important;
+}
+.yonghu-table tr td span{
+	margin-right: 10px;
+	height: 25px;
+	line-height: 30px;
+	color:#5bc0de;
+	display: inline-block;
+	cursor: pointer;
+}
+/*动力参数设置*/
+.power-table input{
+	width: 100px;
+	border-radius: 4px;
+	border:none;
+	background: none;
+	
+}
+.power-btn{
+	width: 100%;
+	height: 50px;
+	text-align: center;
+	line-height: 35px;
+	padding-bottom: 10px;
+}
+.power-btn button{
+	margin-right: 20px;
+}
+/*关键设备*/
+.police-modal{
+	position: fixed;
+	top:10%;
+	left: 30%;
+	display: none;
+}

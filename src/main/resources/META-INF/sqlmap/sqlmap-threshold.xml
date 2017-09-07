@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="threshold">
+
+	<!--
+      - ===============================================
+      - 返回 Threshold Entity
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<resultMap  type="com.micropower.manager.model.po.Threshold"	   id="RM_Threshold">
+		<id     property="id"             column="id"             jdbcType="INTEGER"  javaType="java.lang.Integer"  />
+		<result property="code"           column="code"           jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="thresholdname"  column="thresholdname"  jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="min"            column="min"            jdbcType="INTEGER"  javaType="java.lang.Integer"  />
+		<result property="max"            column="max"            jdbcType="INTEGER"  javaType="java.lang.Integer"  />
+	</resultMap>
+
+	<!--
+      - ===============================================
+      - 新增 Threshold
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<insert id="create" parameterType="com.micropower.manager.model.po.Threshold" useGeneratedKeys="true" keyProperty="id">
+		insert into threshold (
+			id, 
+			code, 
+			thresholdname, 
+			min, 
+			max
+		) values (
+		    #{id}, 
+		    #{code}, 
+		    #{thresholdname}, 
+		    #{min}, 
+		    #{max}
+		)
+	</insert>
+
+	<!--
+      - ===============================================
+      - 修改 Threshold
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<update id="update" parameterType="com.micropower.manager.model.po.Threshold">
+	      update threshold
+	      <set >
+	         			      <if test="id != null" >
+			        id = #{id},
+			      </if>
+		      			      <if test="code != null" >
+			        code = #{code},
+			      </if>
+		      			      <if test="thresholdname != null" >
+			        thresholdname = #{thresholdname},
+			      </if>
+		      			      <if test="min != null" >
+			        min = #{min},
+			      </if>
+		      			      <if test="max != null" >
+			        max = #{max},
+			      </if>
+		      		    </set>
+	</update>
+
+	<!--
+      - ===============================================
+      - 查询 Threshold 总数
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.micropower.manager.model.po.Threshold">
+		select count(*)
+		from threshold
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Threshold 信息
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<select id="query" resultMap="RM_Threshold" parameterType="com.micropower.manager.model.po.Threshold">
+		select 
+		    id, 
+		    code, 
+		    thresholdname, 
+		    min, 
+		    max
+		from threshold
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Threshold 分页信息
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<select id="page" resultMap="RM_Threshold" parameterType="java.util.HashMap">
+		select 
+		    id, 
+		    code, 
+		    thresholdname, 
+		    min, 
+		    max
+		from threshold
+	</select>
+</mapper>

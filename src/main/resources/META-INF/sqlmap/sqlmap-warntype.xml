@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="warntype">
+
+	<!--
+      - ===============================================
+      - 返回 Warntype Entity
+      - @author oliver
+      - @date 2017-09-05
+      - ===============================================
+    -->
+	<resultMap  type="com.micropower.manager.model.po.Warntype"	   id="RM_Warntype">
+		<id     property="id"            column="id"            jdbcType="INTEGER"  javaType="java.lang.Integer"  />
+		<result property="warntypename"  column="warntypename"  jdbcType="VARCHAR"  javaType="java.lang.String"   />
+	</resultMap>
+
+	<!--
+      - ===============================================
+      - 新增 Warntype
+      - @author oliver
+      - @date 2017-09-05
+      - ===============================================
+    -->
+	<insert id="create" parameterType="com.micropower.manager.model.po.Warntype" useGeneratedKeys="true" keyProperty="id">
+		insert into warntype (
+			id, 
+			warntypename
+		) values (
+		    #{id}, 
+		    #{warntypename}
+		)
+	</insert>
+
+	<!--
+      - ===============================================
+      - 修改 Warntype
+      - @author oliver
+      - @date 2017-09-05
+      - ===============================================
+    -->
+	<update id="update" parameterType="com.micropower.manager.model.po.Warntype">
+	      update warntype
+	      <set >
+	         			      <if test="id != null" >
+			        id = #{id},
+			      </if>
+		      			      <if test="warntypename != null" >
+			        warntypename = #{warntypename},
+			      </if>
+		      		    </set>
+	</update>
+
+	<!--
+      - ===============================================
+      - 查询 Warntype 总数
+      - @author oliver
+      - @date 2017-09-05
+      - ===============================================
+    -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.micropower.manager.model.po.Warntype">
+		select count(*)
+		from warntype
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Warntype 信息
+      - @author oliver
+      - @date 2017-09-05
+      - ===============================================
+    -->
+	<select id="query" resultMap="RM_Warntype" parameterType="com.micropower.manager.model.po.Warntype">
+		select 
+		    id, 
+		    warntypename
+		from warntype
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Warntype 分页信息
+      - @author oliver
+      - @date 2017-09-05
+      - ===============================================
+    -->
+	<select id="page" resultMap="RM_Warntype" parameterType="java.util.HashMap">
+		select 
+		    id, 
+		    warntypename
+		from warntype
+	</select>
+</mapper>

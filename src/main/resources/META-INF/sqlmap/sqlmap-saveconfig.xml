@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="saveconfig">
+
+	<!--
+      - ===============================================
+      - 返回 Saveconfig Entity
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<resultMap  type="com.micropower.manager.model.po.Saveconfig"	   id="RM_Saveconfig">
+		<id     property="id"               column="id"                 jdbcType="INTEGER"  javaType="java.lang.Integer"  />
+		<result property="saveConfigTitle"  column="save_config_title"  jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="starttime"        column="startTime"          jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="endtime"          column="endTime"            jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="deltatime"        column="deltaTime"          jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="lasttime"         column="lastTime"           jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="lastdata"         column="lastData"           jdbcType="VARCHAR"  javaType="java.lang.String"   />
+	</resultMap>
+
+	<!--
+      - ===============================================
+      - 新增 Saveconfig
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<insert id="create" parameterType="com.micropower.manager.model.po.Saveconfig" useGeneratedKeys="true" keyProperty="id">
+		insert into saveConfig (
+			id, 
+			save_config_title, 
+			startTime, 
+			endTime, 
+			deltaTime, 
+			lastTime, 
+			lastData
+		) values (
+		    #{id}, 
+		    #{saveConfigTitle}, 
+		    #{starttime}, 
+		    #{endtime}, 
+		    #{deltatime}, 
+		    #{lasttime}, 
+		    #{lastdata}
+		)
+	</insert>
+
+	<!--
+      - ===============================================
+      - 修改 Saveconfig
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<update id="update" parameterType="com.micropower.manager.model.po.Saveconfig">
+	      update saveConfig
+	      <set >
+	         			      <if test="id != null" >
+			        id = #{id},
+			      </if>
+		      			      <if test="save_config_title != null" >
+			        save_config_title = #{save_config_title},
+			      </if>
+		      			      <if test="startTime != null" >
+			        startTime = #{startTime},
+			      </if>
+		      			      <if test="endTime != null" >
+			        endTime = #{endTime},
+			      </if>
+		      			      <if test="deltaTime != null" >
+			        deltaTime = #{deltaTime},
+			      </if>
+		      			      <if test="lastTime != null" >
+			        lastTime = #{lastTime},
+			      </if>
+		      			      <if test="lastData != null" >
+			        lastData = #{lastData},
+			      </if>
+		      		    </set>
+	</update>
+
+	<!--
+      - ===============================================
+      - 查询 Saveconfig 总数
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.micropower.manager.model.po.Saveconfig">
+		select count(*)
+		from saveConfig
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Saveconfig 信息
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<select id="query" resultMap="RM_Saveconfig" parameterType="com.micropower.manager.model.po.Saveconfig">
+		select 
+		    id, 
+		    save_config_title, 
+		    startTime, 
+		    endTime, 
+		    deltaTime, 
+		    lastTime, 
+		    lastData
+		from saveConfig
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Saveconfig 分页信息
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<select id="page" resultMap="RM_Saveconfig" parameterType="java.util.HashMap">
+		select 
+		    id, 
+		    save_config_title, 
+		    startTime, 
+		    endTime, 
+		    deltaTime, 
+		    lastTime, 
+		    lastData
+		from saveConfig
+	</select>
+</mapper>

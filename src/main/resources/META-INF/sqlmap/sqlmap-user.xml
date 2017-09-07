@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+	<!--
+      - ===============================================
+      - 返回 User Entity
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<resultMap  type="com.micropower.manager.model.po.User"	   id="RM_User">
+		<id     property="id"        column="id"        jdbcType="INTEGER"  javaType="java.lang.Integer"  />
+		<result property="role"      column="role"      jdbcType="INTEGER"  javaType="java.lang.Integer"  />
+		<result property="username"  column="username"  jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="password"  column="password"  jdbcType="CHAR"     javaType="java.lang.String"   />
+		<result property="realname"  column="realname"  jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="email"     column="email"     jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="phone"     column="phone"     jdbcType="VARCHAR"  javaType="java.lang.String"   />
+	</resultMap>
+
+	<!--
+      - ===============================================
+      - 新增 User
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<insert id="create" parameterType="com.micropower.manager.model.po.User" useGeneratedKeys="true" keyProperty="id">
+		insert into user (
+			id, 
+			role, 
+			username, 
+			password, 
+			realname, 
+			email, 
+			phone
+		) values (
+		    #{id}, 
+		    #{role}, 
+		    #{username}, 
+		    #{password}, 
+		    #{realname}, 
+		    #{email}, 
+		    #{phone}
+		)
+	</insert>
+
+	<!--
+      - ===============================================
+      - 修改 User
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<update id="update" parameterType="com.micropower.manager.model.po.User">
+	      update user
+	      <set >
+	         			      <if test="id != null" >
+			        id = #{id},
+			      </if>
+		      			      <if test="role != null" >
+			        role = #{role},
+			      </if>
+		      			      <if test="username != null" >
+			        username = #{username},
+			      </if>
+		      			      <if test="password != null" >
+			        password = #{password},
+			      </if>
+		      			      <if test="realname != null" >
+			        realname = #{realname},
+			      </if>
+		      			      <if test="email != null" >
+			        email = #{email},
+			      </if>
+		      			      <if test="phone != null" >
+			        phone = #{phone},
+			      </if>
+		      		    </set>
+	</update>
+
+	<!--
+      - ===============================================
+      - 查询 User 总数
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.micropower.manager.model.po.User">
+		select count(*)
+		from user
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 User 信息
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<select id="query" resultMap="RM_User" parameterType="com.micropower.manager.model.po.User">
+		select 
+		    id, 
+		    role, 
+		    username, 
+		    password, 
+		    realname, 
+		    email, 
+		    phone
+		from user
+		where id = #{id}
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 User 分页信息
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<select id="page" resultMap="RM_User" parameterType="java.util.HashMap">
+		select 
+		    id, 
+		    role, 
+		    username, 
+		    password, 
+		    realname, 
+		    email, 
+		    phone
+		from user
+	</select>
+
+	<delete id="delete"  parameterType="integer">
+		DELETE FROM  user WHERE id=#{id}
+	</delete>
+
+</mapper>

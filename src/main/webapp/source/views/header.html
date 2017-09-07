@@ -1,0 +1,37 @@
+<div class="nav-head">
+	<!-- Site logo -->
+	<h4>荣励单设备智能监控系统</h4>
+	<span class="nav-trigger fa" 
+		ng-class="{'fa-navicon': isMobile, 'fa-outdent': !isMobile}" 
+		toggle-nav-min toggle-off-canvas>
+	</span>
+</div>
+
+
+<div class="head-wrap clearfix">
+	<!-- navbar right -->
+	<ul class="list-unstyled navbar-right">
+		<!-- fullscreen -->
+		<li ng-click="fullScreen()">
+			<a href><i class="fa fa-expand"></i></a>
+		</li>
+		<!-- #end fullscreen -->
+
+		<!-- profile drop -->
+		<li class="dropdown" dropdown>
+			<a href class="user-profile dropdown-toggle" dropdown-toggle>
+				<img src="#/source/images/admin.jpg" alt="admin-pic">
+			</a>
+			<!-- Profile drop -->
+			<div class="panel panel-default dropdown-menu">
+				<div class="panel-footer clearfix">
+					<a href="j:;" class="btn btn-default btn-sm left">Account</a>
+					<a href="#/pages/lock-screen" class="btn btn-info btn-sm right">退出</a>
+				</div>
+			</div>
+		</li>
+		<!-- #end profile-drop -->
+	</ul>
+</div>
+
+

@@ -1,0 +1,161 @@
+<div class="page page-yonghuSet clearfix">
+	<div class="row title">
+		<div class="col-lg-6 col-xs-12">
+			单设备后台/设备管理 /动力参数设置
+		</div>
+
+		<div class="col-lg-6 col-xs-12">
+			<span>当前时间：</span>
+            <span id="now-time"></span>
+		</div>
+	</div>
+	<div class="table-laogongSet">
+		<div class="table-tit">
+			<div class="row">
+				<div class="col-lg-6 col-xs-12">
+					<p class="tit-name">机柜告警设置</p>
+				</div>
+				
+				<div class="col-lg-6 col-xs-12">
+					<div class="report-btn">
+						<button type="button" class="btn btn-warning">恢复默认</button>
+						<button type="button" class="btn btn-info worker-edit">编辑</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table class="table table-striped power-table">
+				<tr>
+					<td>
+						<label for="">温度设定值：</label>
+						<input type="" name="" id="" value="" readonly />
+					</td>
+					<td>
+						<label for="">温度回差：</label>
+						<input type="" name="" id="" value="" readonly />
+					</td>
+					<td>
+						<label for="">库温探头校正：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="">环境控制温度：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td>
+						<label for="">环境控制回差：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td>
+						<label for="">环境探头校正：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="">压缩机连续开机时间：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td>
+						<label for="">压缩机保护时间：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td>
+						<label for="">内外循环切换延时时间：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="">温度传感器故障开机时间：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td>
+						<label for="">温度传感器故障停机时间：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td>
+						<label for="">开门温度：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="">开门回差：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td>
+						<label for="">本机地址：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td>
+						<label for="">压缩机1电流上限：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="">压缩机2电流上限：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td>
+						<label for="">离心风机1电流上限：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td>
+						<label for="">离心风机2电流上限：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="">散热风机电流上限：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td>
+						<label for="">循环风机电流上限：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td>
+						<label for="">压缩机1电流下限：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="">压缩机2电流下限：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td>
+						<label for="">离心风机1电流下限：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td>
+						<label for="">离心风机2电流下限：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="">散热风机电流下限：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td>
+						<label for="">循环风机电流下限：</label>
+						<input type="" name="" id="" value="" readonly/>
+					</td>
+					<td></td>
+					
+				</tr>
+			</table>
+		</div>
+		<div class="power-btn">
+			<button type="button" class="btn btn-default worker-notSave">取消</button>
+			<button type="button" class="btn btn-info worker-notSave">保存</button>
+		</div>
+	</div>
+<div>
+<script src="/monitor/source//monitor/source/js/powerSet.js"></script>

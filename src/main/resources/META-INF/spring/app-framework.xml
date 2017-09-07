@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/beans"
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xmlns:tx ="http://www.springframework.org/schema/tx"
+			 xmlns:p="http://www.springframework.org/schema/p"
+			 xmlns:mvc="http://www.springframework.org/schema/mvc"
+			 xmlns:aop="http://www.springframework.org/schema/aop"
+			 xmlns:beans="http://www.springframework.org/schema/beans"
+			 xmlns:context="http://www.springframework.org/schema/context"
+			 xsi:schemaLocation="http://www.springframework.org/schema/mvc
+			 				       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+			 				       http://www.springframework.org/schema/tx 
+								   http://www.springframework.org/schema/tx/spring-tx.xsd 
+								   http://www.springframework.org/schema/beans 
+								   http://www.springframework.org/schema/beans/spring-beans.xsd
+								   http://www.springframework.org/schema/aop 
+								   http://www.springframework.org/schema/aop/spring-aop.xsd 
+								   http://www.springframework.org/schema/context 
+								   http://www.springframework.org/schema/context/spring-context.xsd"> 
+    
+    <!--
+       - ===============================================
+       - 创建sqlManager实例 
+       - @author li.hui
+       - @date 2016-12-02
+       - ===============================================
+    -->
+    <beans:bean id="sqlManager" class="com.lycheeframework.core.support.sql.SQLManager" />
+    <beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+    	<beans:constructor-arg index="0">
+    		<beans:bean class="org.mybatis.spring.SqlSessionFactoryBean">
+	    		<beans:property name="dataSource" ref="dynamicDataSource" />
+	    		<beans:property name="configLocation" value="classpath:META-INF/sqlmap/sqlmap-config.xml" />
+    		</beans:bean>
+    	</beans:constructor-arg>
+    </beans:bean>
+    
+    <!--
+       - ===============================================
+       - Spring 编程式事务模板配置
+       - @author li.hui
+       - @date 2016-12-02
+       - ===============================================
+    -->
+    <beans:bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+    	<beans:property name="transactionManager" ref="transactionManager" />
+    </beans:bean>
+    
+    <!--
+       - ===============================================
+       - 创建JDBC事务管理器
+       - @author li.hui
+       - @date 2016-12-02
+       - ===============================================
+    -->
+    <beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    	<beans:property name="dataSource" ref="dynamicDataSource" />
+    </beans:bean>
+    
+    <!--
+       - ===============================================
+       - Spring 注释处理器
+       - AutowiredAnnotationBeanPostProcessor
+       - CommonAnnotationBeanPostProcessor
+       - PersistenceAnnotationBeanPostProcessor
+       - RequiredAnnotationBeanPostProcessor
+       - @author li.hui
+       - @date 2016-12-02
+       - ===============================================
+    -->
+    <context:annotation-config />
+    
+    <!--
+       - ===============================================
+       - 采用注释方式配置事务
+       - @author li.hui
+       - @date 2016-12-02
+       - ===============================================
+    -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+    
+    <!--
+       - ===============================================
+       - 通过配置中心，获取占位符
+       - @author li.hui
+       - @date 2016-12-02
+       - ===============================================
+     -->
+     <beans:bean class="com.lycheeframework.core.common.placeholder.CustomPlaceholder" />
+     
+     <!--
+       - ===============================================
+       - 配置ehcache
+       - @author li.hui
+       - @date 2016-12-02
+       - ===============================================
+    -->
+    <beans:bean id="ehCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+    	<beans:property name="configLocation" value="classpath:ehcache.xml" />
+    	<beans:property name="shared" value="true" />
+    </beans:bean>
+    
+    
+    <!--
+       - ===============================================
+       - HttpClient
+       - @author li.hui
+       - @date 2016-12-02
+       - ===============================================
+    -->
+	<beans:bean class="com.lycheeframework.core.common.http.orm.DataSessionBuilder" />
+	
+	<!--
+       - ===============================================
+       - 动态数据Aop
+       - @author li.hui
+       - @date 2016-12-02
+       - ===============================================
+    -->
+	<beans:bean id="dynamicDataSourceAspect" class="com.lycheeframework.core.common.datasource.advice.DynamicDataSourceAspect" />
+	<aop:config>
+		<aop:aspect ref="dynamicDataSourceAspect">
+			<aop:pointcut id="pointCut" expression="execution(public * com.micropower.manager.service.impl.*.*(..))" />
+			<aop:before method="doBefore"  pointcut-ref="pointCut" />
+			<aop:after method="doAfter"  pointcut-ref="pointCut" />
+		</aop:aspect>
+	</aop:config>
+
+	<!--
+       - ===============================================
+       - 配置ehcache
+       - @author li.hui
+       - @date 2015-05-19
+       - ===============================================
+    -->
+    <beans:bean class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+    	<beans:property name="eternal" value="true" />
+    	<beans:property name="timeToLive" value="0" />
+    	<beans:property name="timeToIdle" value="0" />
+    </beans:bean>
+    
+    <beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    	<beans:property name="basename" value="classpath:i18n/messages" />
+    	<beans:property name="useCodeAsDefaultMessage" value="true" />
+    	<beans:property name="cacheSeconds" value="5" />
+    </beans:bean>
+</beans:beans>

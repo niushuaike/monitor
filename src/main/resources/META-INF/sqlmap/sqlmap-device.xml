@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="device">
+
+	<!--
+      - ===============================================
+      - 返回 Device Entity
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<resultMap  type="com.micropower.manager.model.po.Device"	   id="RM_Device">
+		<id     property="id"            column="id"            jdbcType="INTEGER"    javaType="java.lang.Integer"  />
+		<result property="deviceName"    column="device_name"   jdbcType="VARCHAR"    javaType="java.lang.String"   />
+		<result property="deviceIp"      column="device_ip"     jdbcType="VARCHAR"    javaType="java.lang.String"   />
+		<result property="devicePort"    column="device_port"   jdbcType="VARCHAR"    javaType="java.lang.String"   />
+		<result property="timeperiod"    column="timeperiod"    jdbcType="INTEGER"    javaType="java.lang.Integer"  />
+		<result property="warnstyleid"   column="warnstyleid"   jdbcType="VARCHAR"    javaType="java.lang.String"   />
+		<result property="users"         column="users"         jdbcType="VARCHAR"    javaType="java.lang.String"   />
+		<result property="intervaltime"  column="intervaltime"  jdbcType="VARCHAR"    javaType="java.lang.String"   />
+		<result property="ispause"       column="isPause"       jdbcType="TINYINT"    javaType="java.lang.Integer"  />
+		<result property="endpausetime"  column="endPausetime"  jdbcType="TIMESTAMP"  javaType="java.util.Date"     />
+		<result property="deviceType"    column="device_type"   jdbcType="TINYINT"    javaType="java.lang.Integer"  />
+		<result property="loginName"     column="login_name"    jdbcType="VARCHAR"    javaType="java.lang.String"   />
+		<result property="loginPasswd"   column="login_passwd"  jdbcType="VARCHAR"    javaType="java.lang.String"   />
+		<result property="lastStyle"     column="last_style"    jdbcType="VARCHAR"    javaType="java.lang.String"   />
+	</resultMap>
+
+	<!--
+      - ===============================================
+      - 新增 Device
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<insert id="create" parameterType="com.micropower.manager.model.po.Device" useGeneratedKeys="true" keyProperty="id">
+		insert into device (
+			id, 
+			device_name, 
+			device_ip, 
+			device_port, 
+			timeperiod, 
+			warnstyleid, 
+			users, 
+			intervaltime, 
+			isPause, 
+			endPausetime, 
+			device_type, 
+			login_name, 
+			login_passwd, 
+			last_style
+		) values (
+		    #{id}, 
+		    #{deviceName}, 
+		    #{deviceIp}, 
+		    #{devicePort}, 
+		    #{timeperiod}, 
+		    #{warnstyleid}, 
+		    #{users}, 
+		    #{intervaltime}, 
+		    #{ispause}, 
+		    #{endpausetime}, 
+		    #{deviceType}, 
+		    #{loginName}, 
+		    #{loginPasswd}, 
+		    #{lastStyle}
+		)
+	</insert>
+
+	<!--
+      - ===============================================
+      - 修改 Device
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<update id="update" parameterType="com.micropower.manager.model.po.Device">
+	      update device
+	      <set >
+	         			      <if test="id != null" >
+			        id = #{id},
+			      </if>
+		      			      <if test="device_name != null" >
+			        device_name = #{device_name},
+			      </if>
+		      			      <if test="device_ip != null" >
+			        device_ip = #{device_ip},
+			      </if>
+		      			      <if test="device_port != null" >
+			        device_port = #{device_port},
+			      </if>
+		      			      <if test="timeperiod != null" >
+			        timeperiod = #{timeperiod},
+			      </if>
+		      			      <if test="warnstyleid != null" >
+			        warnstyleid = #{warnstyleid},
+			      </if>
+		      			      <if test="users != null" >
+			        users = #{users},
+			      </if>
+		      			      <if test="intervaltime != null" >
+			        intervaltime = #{intervaltime},
+			      </if>
+		      			      <if test="isPause != null" >
+			        isPause = #{isPause},
+			      </if>
+		      			      <if test="endPausetime != null" >
+			        endPausetime = #{endPausetime},
+			      </if>
+		      			      <if test="device_type != null" >
+			        device_type = #{device_type},
+			      </if>
+		      			      <if test="login_name != null" >
+			        login_name = #{login_name},
+			      </if>
+		      			      <if test="login_passwd != null" >
+			        login_passwd = #{login_passwd},
+			      </if>
+		      			      <if test="last_style != null" >
+			        last_style = #{last_style},
+			      </if>
+		      		    </set>
+	</update>
+
+	<!--
+      - ===============================================
+      - 查询 Device 总数
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.micropower.manager.model.po.Device">
+		select count(*)
+		from device
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Device 信息
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<select id="query" resultMap="RM_Device" parameterType="com.micropower.manager.model.po.Device">
+		select 
+		    id, 
+		    device_name, 
+		    device_ip, 
+		    device_port, 
+		    timeperiod, 
+		    warnstyleid, 
+		    users, 
+		    intervaltime, 
+		    isPause, 
+		    endPausetime, 
+		    device_type, 
+		    login_name, 
+		    login_passwd, 
+		    last_style
+		from device
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Device 分页信息
+      - @author oliver
+      - @date 2017-09-04
+      - ===============================================
+    -->
+	<select id="page" resultMap="RM_Device" parameterType="java.util.HashMap">
+		select 
+		    id, 
+		    device_name, 
+		    device_ip, 
+		    device_port, 
+		    timeperiod, 
+		    warnstyleid, 
+		    users, 
+		    intervaltime, 
+		    isPause, 
+		    endPausetime, 
+		    device_type, 
+		    login_name, 
+		    login_passwd, 
+		    last_style
+		from device
+	</select>
+
+	<select id="list" resultMap="RM_Device" parameterType="java.util.HashMap">
+		select
+		id,
+		device_name,
+		device_ip,
+		device_port,
+		timeperiod,
+		warnstyleid,
+		users,
+		intervaltime,
+		isPause,
+		endPausetime,
+		device_type,
+		login_name,
+		login_passwd,
+		last_style
+		from device
+		WHERE device_type!=1
+	</select>
+
+	<delete id="delete" parameterType="integer">
+		delete from device WHERE id=#{id}
+	</delete>
+
+</mapper>

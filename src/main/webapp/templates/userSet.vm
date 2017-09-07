@@ -1,0 +1,59 @@
+<div class="page page-yonghuSet clearfix">
+	<div class="row title">
+		<div class="col-lg-6 col-xs-12">
+			单设备后台/设备管理 /用户权限设置
+		</div>
+
+		<div class="col-lg-6 col-xs-12">
+			<span>当前时间：</span>
+            <span id="now-time"></span>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<div class="table-tit">
+			<div class="row">
+				<div class="col-lg-6 col-xs-12">
+					<p class="tit-name">定时保存设置</p>
+				</div>
+				
+				<div class="col-lg-6 col-xs-12">
+					<div class="report-btn">
+						<button type="button" class="btn btn-success person-add">添加</button>
+						<button type="button" class="btn btn-info person-edit">编辑</button>
+						<button type="button" class="btn btn-danger">删除</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<table class="table table-striped yonghu-table">
+			<thead>
+				<tr class="text-center">
+					<th><input class="allChk" type="checkbox" name="" id="" value="" /></th>
+					<th>序号</th>
+					<th>账号</th>
+					<th>密码</th>
+					<th>真是姓名</th>
+					<th>邮箱</th>
+					<th>电话</th>
+					<th>角色</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody class="chk-body">
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>1</td>
+					<td><input type="text" value="0102"/></td>
+					<td><input type="text" value="123456" /></td>
+					<td><input type="text" value="张三" /></td>
+					<td><input type="text" value="132456@qq.com" /></td>
+					<td><input type="text" value="110" /></td>
+					<td><input type="text" value="管理员" /></td>
+					<td><span style="display: none;" class='time-notSave'>取消</span><span style="display: none;" class='time-save'>保存</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+<div>
+<script src="/monitor/source/js/my.js"></script>
+<script src="/monitor/source/js/userSet.js"></script>

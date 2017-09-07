@@ -1,0 +1,70 @@
+<div class="page page-tabs clearfix">
+	<div class="row title">
+		<div class="col-lg-6 col-xs-12">
+			单设备后台/报表中心
+		</div>
+
+		<div class="col-lg-6 col-xs-12 text-right">
+			<span>当前时间：</span>
+            <span id="now-time"></span>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<div class="table-tit">
+			<div class="row">
+				<div class="col-lg-6 col-xs-12">
+					<p class="tit-name">报表列表</p>
+				</div>
+				
+				<div class="col-lg-6 col-xs-12">
+					<div class="report-btn">
+						<button type="button" class="btn btn-danger">删除</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr class="text-center">
+					<th><input class="allChk" type="checkbox" name="" id="" value="" /></th>
+					<th>序号</th>
+					<th>编号</th>
+					<th>状态表</th>
+					<th>异常表</th>
+				</tr>
+			</thead>
+			<tbody class="chk-body">
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>01</td>
+					<td>PC-100</td>
+					<td>状态表</td>
+					<td>异常表</td>
+
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>011</td>
+					<td>PC-200</td>
+					<td>状态表</td>
+					<td>异常表</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>033</td>
+					<td>PC-500</td>
+					<td>状态表</td>
+					<td>异常表</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>017</td>
+					<td>PC-2530</td>
+					<td>状态表</td>
+					<td>异常表</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+<div>
+<script src="/monitor/source/js/my.js"></script>

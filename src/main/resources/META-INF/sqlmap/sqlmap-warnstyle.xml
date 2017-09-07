@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="warnstyle">
+
+	<!--
+      - ===============================================
+      - 返回 Warnstyle Entity
+      - @author niushuaike
+      - @date 2017-09-07
+      - ===============================================
+    -->
+	<resultMap  type="com.micropower.manager.model.po.Warnstyle"	   id="RM_Warnstyle">
+		<id     property="id"             column="id"             jdbcType="INTEGER"  javaType="java.lang.Integer"  />
+		<result property="warnstylename"  column="warnstylename"  jdbcType="VARCHAR"  javaType="java.lang.String"   />
+	</resultMap>
+
+	<!--
+      - ===============================================
+      - 新增 Warnstyle
+      - @author niushuaike
+      - @date 2017-09-07
+      - ===============================================
+    -->
+	<insert id="create" parameterType="com.micropower.manager.model.po.Warnstyle" useGeneratedKeys="true" keyProperty="id">
+		insert into warnstyle (
+			id, 
+			warnstylename
+		) values (
+		    #{id}, 
+		    #{warnstylename}
+		)
+	</insert>
+
+	<!--
+      - ===============================================
+      - 修改 Warnstyle
+      - @author niushuaike
+      - @date 2017-09-07
+      - ===============================================
+    -->
+	<update id="update" parameterType="com.micropower.manager.model.po.Warnstyle">
+	      update warnstyle
+	      <set >
+	         			      <if test="id != null" >
+			        id = #{id},
+			      </if>
+		      			      <if test="warnstylename != null" >
+			        warnstylename = #{warnstylename},
+			      </if>
+		      		    </set>
+	</update>
+
+	<!--
+      - ===============================================
+      - 查询 Warnstyle 总数
+      - @author niushuaike
+      - @date 2017-09-07
+      - ===============================================
+    -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.micropower.manager.model.po.Warnstyle">
+		select count(*)
+		from warnstyle
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Warnstyle 信息
+      - @author niushuaike
+      - @date 2017-09-07
+      - ===============================================
+    -->
+	<select id="query" resultMap="RM_Warnstyle" parameterType="com.micropower.manager.model.po.Warnstyle">
+		select 
+		    id, 
+		    warnstylename
+		from warnstyle
+		where id=#{id}
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Warnstyle 分页信息
+      - @author niushuaike
+      - @date 2017-09-07
+      - ===============================================
+    -->
+	<select id="page" resultMap="RM_Warnstyle" parameterType="java.util.HashMap">
+		select 
+		    id, 
+		    warnstylename
+		from warnstyle
+	</select>
+</mapper>

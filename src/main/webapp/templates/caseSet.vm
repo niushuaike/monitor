@@ -1,0 +1,213 @@
+<div class="page page-yonghuSet clearfix">
+	<div class="row title">
+		<div class="col-lg-6 col-xs-12">
+			单设备后台/设备管理 /机柜告警设置
+		</div>
+
+		<div class="col-lg-6 col-xs-12">
+			<span>当前时间：</span>
+            <span id="now-time"></span>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<div class="table-tit">
+			<div class="row">
+				<div class="col-lg-6 col-xs-12">
+					<p class="tit-name">机柜告警设置</p>
+				</div>
+				
+				<div class="col-lg-6 col-xs-12">
+					<div class="report-btn">
+						<button type="button" class="btn btn-info jigui-btn" data-toggle="modal" data-target="#jigui-edit">编辑</button>
+						<button type="button" class="btn btn-warning">冻结</button>
+						<div class="block" style="display: none;">
+							<span class="fadin">X</span>
+							<div class="block_con">
+								<div class="block-left">
+									<img src="images/block.png"/>
+								</div>
+								<div class="block-right">
+									<p class="block-tit">请输入冻结警告时间</p>
+									<p>
+										<input type="text" name="" id="" value="" />
+										<span>分钟</span>
+									</p>
+									<p>
+										<button type="button" class="btn btn-default btn-sm">取消</button>
+										<button type="button" class="btn btn-info btn-sm">保存</button>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr class="text-center">
+					<th><input class="allChk" type="checkbox" name="" id="" value="" /></th>
+					<th>序号</th>
+					<th>机柜名称</th>
+					<th>时间段方案</th>
+					<th>通知方式</th>
+					<th>通知用户</th>
+					<th>告警状态</th>
+				</tr>
+			</thead>
+			<tbody class="chk-body">
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>0102</td>
+					<td>全时段</td>
+					<td>全时段</td>
+					<td>禁止通知</td>
+					<td>略</td>
+					<td>无</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!--编辑模态框-->
+	<div class="modal fade" id="jigui-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h4 class="modal-title" id="myModalLabel">编辑机柜告警配置</h4>
+	            </div>
+	            <div class="modal-body">
+	            	<form class="form-horizontal" role="form">
+						<div class="form-group">
+							<label class="col-lg-3 col-sm-2 control-label">机柜名称：</label>
+							<div class="col-lg-9 col-sm-10">
+								<input type="text" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-3 col-sm-2 control-label">时间段方案：</label>
+							<div class="col-lg-9 col-sm-10">
+								<select class="form-control">
+							      	<option>全时段</option>
+							      	<option>工作时段</option>
+							    </select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-3 col-sm-2 control-label">告警方式：</label>
+							<div class="col-lg-9 col-sm-10 radio-lable">
+								<label class="radio-inline">
+									<input type="radio" id="sex-1" name="mail" value="option1"> 邮件警告 
+								</label>
+								<label class="radio-inline">
+									<input type="radio" id="sex-2" name="mail" value="option2">禁止警告
+								</label>
+							</div>
+						</div>
+						<div class="form-group mail" style="display: none;">
+							<label class="col-lg-3 col-sm-2 control-label">通知用户：</label>
+							<div class="col-lg-9 col-sm-10 give-person">
+								<input type="text" class="form-control">
+								<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#jigui-sel">选择</button>
+							</div>
+						</div>
+						<div class="form-group mail" style="display: none;">
+							<label class="col-lg-3 control-label">重复告警时间：</label>
+							<div class="col-lg-9 col-sm-10 warn-time">
+								<input type="text" class="form-control">
+								<span>分钟</span>
+							</div>
+						</div>
+					</form>
+
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	                <button type="button" class="btn btn-primary">保存</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- 模态框（Modal） 选择-->
+	<div class="modal fade" id="jigui-sel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog modal-dialog2">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h4 class="modal-title" id="myModalLabel">添加通知用户</h4>
+	            </div>
+	            <div class="modal-body modal-body2">
+	     			<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr class="text-center">
+									<th><input type="checkbox" name="" id="" value="" /></th>
+									<th>真实姓名</th>
+									<th>邮箱</th>
+									<th>电话</th>
+									<th>角色</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="checkbox" name="" id="" value="" /></td>
+									<td>张三</td>
+									<td>1245646@163.com</td>
+									<td>12345645</td>
+									<td>管理员</td>
+									
+								</tr>
+								<tr>
+									<td><input type="checkbox" name="" id="" value="" /></td>
+									<td>李四</td>
+									<td>17894646@163.com</td>
+									<td>7894</td>
+									<td>超级管理员</td>
+									
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	                <button type="button" class="btn btn-primary">保存</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+<div>
+<script>
+		/*全选反选*/
+		$('.allChk').click(function(){
+			if(this.checked){   
+				
+        		$(".chk-body :checkbox").prop("checked", true);  
+    			
+			}
+			else{
+				$(".chk-body :checkbox").prop("checked", false);
+				   
+			}
+		})
+
+		/*单选按钮状态*/
+		$('#jigui-edit input[type=radio]').change(function(){
+			if($("#sex-1").is(':checked')){
+				$('.mail').show();
+			}
+			else{
+				$('.mail').hide();
+			}
+		})
+		/*冻结弹窗出现*/
+		$('.report-btn .btn-warning').click(function(){
+			$('.report-btn .block').fadeToggle(500)
+		})
+		/*冻结弹窗关闭*/
+		$('.fadin').click(function(){
+			$('.block').fadeOut(500)
+		})
+</script>

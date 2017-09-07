@@ -1,0 +1,106 @@
+<div class="page page-icons">
+
+	<div class="row title">
+		<div class="col-lg-6 col-xs-12">
+			单设备后台/事件日志
+		</div>
+
+		<div class="col-lg-6 col-xs-12 text-right">
+			<span>当前时间：</span>
+            <span id="now-time"></span>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<div class="table-tit">
+			<div class="row">
+				<div class="col-lg-3 col-xs-12">
+					<p class="tit-name">事件日志列表</p>
+				</div>
+				<div class="col-lg-4 col-xs-12 text-left">
+					<div class="tit-btn">
+						<span>告警类型：</span>
+						<select class="form-control even-sel">
+							<option>温度告警</option>
+							<option>湿度告警</option>
+							<option>门碰告警</option>
+							<option>服务器告警</option>
+							<option>冻结告警</option>
+							<option>水浸告警</option>
+							<option>红外告警</option>
+							<option>烟感告警</option>
+							<option>机组告警</option>
+							<option>短信告警</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-lg-5 col-xs-12 even-btn">
+					<span>告警时间：</span>
+						<span><input class="warn-time" type="text" readonly></span>
+						<span>~</span>
+						<span><input class="warn-time" type="text" readonly></span>
+						<button type="button" class="btn btn-info btn-sm">查询</button>
+				</div>
+			</div>
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr class="text-center">
+					<th><input class="allChk" type="checkbox" name="" id="" value="" /></th>
+					<th>序号</th>
+					<th>告警类型</th>
+					<th>告警信息</th>
+					<th>图片</th>
+					<th>链接状态</th>
+					<th>告警时间</th>
+					<th>状态说明</th>
+				</tr>
+			</thead>
+			<tbody class="chk-body">
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>01</td>
+					<td>类型1</td>
+					<td>温度太高</td>
+					<td>无</td>
+					<td>ping:offfline</td>
+					<td>2017</td>
+					<td>略</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>012</td>
+					<td>类型12</td>
+					<td>温度太高</td>
+					<td>无</td>
+					<td>ping:offfline</td>
+					<td>207</td>
+					<td>略</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>013</td>
+					<td>类型16</td>
+					<td>温度太高</td>
+					<td>无</td>
+					<td>ping:offfline</td>
+					<td>2087</td>
+					<td>略</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>45</td>
+					<td>类型45</td>
+					<td>温度太高</td>
+					<td>无</td>
+					<td>ping:offfline</td>
+					<td>007</td>
+					<td>略</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>
+<script src="/monitor/source/js/jquery.cxcalendar.min.js" ></script>
+<script src="/monitor/source/js/evenC.js"></script>
+<script src="/monitor/source/js/my.js"></script>

@@ -1,0 +1,30 @@
+#Html("begin")
+#Head("begin")
+#LoadMUI("default")
+#Title("荣励智能监控")
+#Head("end")
+
+<body ng-app="app" id="app" class="app {{themeActive}}" custom-page ng-controller="AppCtrl">
+    <header class="site-head clearfix" id="site-head" ng-controller="HeadCtrl" ng-include=" '$!{env.getStaticURL("views/header.html")}' ">
+        <!-- linked header (static) view -->
+    </header>
+
+
+    <div class="main-container clearfix">
+        <aside class="nav-wrap" id="site-nav" ng-controller="NavCtrl" ng-include=" '$!{env.getStaticURL("views/nav.html")}' " custom-scrollbar>
+
+        </aside>
+
+        <div class="content-container" id="content" ng-view>
+            <!-- content using routing -->
+        </div>
+    </div>
+
+	
+    #LoadMUI("xiabian")
+
+    <!-- !End -->
+</body>
+<script>
+</script>
+#Html("end")

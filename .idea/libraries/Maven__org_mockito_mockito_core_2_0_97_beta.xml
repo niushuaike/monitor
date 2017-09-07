@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.mockito:mockito-core:2.0.97-beta">
+    <CLASSES>
+      <root url="jar://D:/Adevelop/mavenrepository/repository/org/mockito/mockito-core/2.0.97-beta/mockito-core-2.0.97-beta.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/Adevelop/mavenrepository/repository/org/mockito/mockito-core/2.0.97-beta/mockito-core-2.0.97-beta-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/Adevelop/mavenrepository/repository/org/mockito/mockito-core/2.0.97-beta/mockito-core-2.0.97-beta-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

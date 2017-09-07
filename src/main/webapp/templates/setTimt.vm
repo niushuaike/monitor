@@ -1,0 +1,115 @@
+<link rel="stylesheet" href="../../styles/jquery.datetimepicker.css" />
+<div class="page page-dingshiSave clearfix">
+	<div class="row title">
+		<div class="col-lg-6 col-xs-12">
+			单设备后台/设备管理 /定时保存设置
+		</div>
+
+		<div class="col-lg-6 col-xs-12">
+			<span>当前时间：</span>
+            <span id="now-time"></span>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<div class="table-tit">
+			<div class="row">
+				<div class="col-lg-6 col-xs-12">
+					<p class="tit-name">定时保存设置</p>
+				</div>
+				
+				<div class="col-lg-6 col-xs-12">
+					<div class="report-btn">
+						<button type="button" class="btn btn-info time-edit">编辑</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<table class="table table-striped time-table">
+			<thead>
+				<tr class="text-center">
+					<th><input class="allChk" type="checkbox" name="" id="" value="" /></th>
+					<th>序号</th>
+					<th>名称</th>
+					<th>开始</th>
+					<th>结束</th>
+					<th>间隔（小时）</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody class="chk-body">
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>01</td>
+					<td>定时保存设置</td>
+					<td>	
+						<select class="time-sel" name="" disabled="disabled">
+							<option value="">01:00</option>
+							<option value="">02:00</option>
+							<option value="">03:00</option>
+							<option value="">04:00</option>
+							<option value="">05:00</option>
+							<option value="">06:00</option>
+							<option value="">07:00</option>
+							<option value="">08:00</option>
+							<option value="">09:00</option>
+							<option value="">10:00</option>
+							<option value="">11:00</option>
+							<option value="">12:00</option>
+							<option value="">13:00</option>
+							<option value="">14:00</option>
+							<option value="">15:00</option>
+							<option value="">16:00</option>
+							<option value="">17:00</option>
+							<option value="">18:00</option>
+							<option value="">19:00</option>
+							<option value="">20:00</option>
+							<option value="">21:00</option>
+							<option value="">22:00</option>
+							<option value="">23:00</option>
+							<option value="">24:00</option>
+						</select>
+					</td>
+					<td>
+						<select class="time-sel" name="" disabled="disabled">
+							<option value="">01:00</option>
+							<option value="">02:00</option>
+							<option value="">03:00</option>
+							<option value="">04:00</option>
+							<option value="">05:00</option>
+							<option value="">06:00</option>
+							<option value="">07:00</option>
+							<option value="">08:00</option>
+							<option value="">09:00</option>
+							<option value="">10:00</option>
+							<option value="">11:00</option>
+							<option value="">12:00</option>
+							<option value="">13:00</option>
+							<option value="">14:00</option>
+							<option value="">15:00</option>
+							<option value="">16:00</option>
+							<option value="">17:00</option>
+							<option value="">18:00</option>
+							<option value="">19:00</option>
+							<option value="">20:00</option>
+							<option value="">21:00</option>
+							<option value="">22:00</option>
+							<option value="">23:00</option>
+							<option value="">24:00</option>
+						</select>
+					</td>
+					
+					<td>
+						<input class="time-ipt" type="" name="" id="" value="2" readonly/>
+					</td>
+					<td class="text-left">
+						<span style="display: none;" class="time-notSave">取消</span>
+						<span style="display: none;" class="time-save">保存</span>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+<div>
+<script src="/monitor/source/js/my.js"></script>
+<script src="/monitor/source/js/setTime.js"></script>

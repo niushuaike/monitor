@@ -1,0 +1,319 @@
+#** ------------------------------- 
+* Function: <Html></Html>。
+* 
+* @author FlounyCaesar
+* @date   2016-11-02
+*  
+* @param  (String) path  文件全路径
+* ------------------------------- **#
+#macro(Html $flag)
+	#if("$!{flag}" == "begin")
+		<!DOCTYPE html>
+		<html lang="zh-CN">
+	#elseif("$!{flag}" == "end")
+		</html>
+	#end
+#end
+
+#** ------------------------------- 
+* Function: <Head></Head>。
+* 
+* @author FlounyCaesar
+* @date   2016-11-02
+*  
+* @param  (String) path  文件全路径
+* ------------------------------- **#
+#macro(Head $flag)
+	#if("$!{flag}" == "begin")
+		<head>
+        <meta charset="utf-8">	
+        <meta name="renderer" content="webkit|ie-comp|ie-stand">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+         <!--[if lt IE 9]>
+		    <script type="text/javascript" src="$!env.getStaticURL('ui/lib/html5shiv.js')"></script>    
+		    <script type="text/javascript" src="$!env.getStaticURL('ui/lib/respond.min.js')"></script>
+		    <![endif]-->
+	#elseif("$!{flag}" == "end")
+        </head>
+	#end
+#end
+
+#** ------------------------------- 
+* Function: <title></title>。
+* 
+* @author FlounyCaesar
+* @date   2016-11-02
+*  
+* @param  (String) path  文件全路径
+* ------------------------------- **#
+#macro(Title $title)
+	<title>$!esc.htmlEscape($!{title})</title>
+#end
+
+#** -------------------------------
+* Function: 载入静态资源服务器上的JS文件。
+*
+* @author FlounyCaesar
+* @date 2016-11-02
+*
+* @param (String) path 文件全路径
+* ------------------------------- **#
+#macro(LoadJS $path)
+	#set($suffix=".js?v=1.0.0")
+	<script type="text/javascript" src="$!env.getStaticURL('')$path$!suffix" charset="UTF-8"></script>
+#end
+
+#** ------------------------------- 
+* Function: 载入静态资源服务器上的CSS文件。
+* 
+* @author FlounyCaesar
+* @date   2016-11-02
+*  
+* @param  (String) path  文件全路径
+* ------------------------------- **#
+#macro(LoadCSS $path $media)
+	#set($suffix=".css?v=1.0.0")
+	<link rel="stylesheet" type="text/css" href="$!env.getStaticURL('')$path$!suffix" charset="UTF-8" #if("$!media" != "") media=$!media #end></link>
+#end
+
+#** ------------------------------- 
+* Function: 载入静态资源服务器上的CSS文件。
+* 
+* @author FlounyCaesar
+* @date   2016-11-02
+*  
+* @param  (String) path  文件全路径
+* ------------------------------- **#
+#macro(LeftMenu $pid $cid)
+	${httpInclude.include("$!env.getWebURL('')left?p=$!{pid}&c=$!{cid}")}
+#end
+
+
+#** ------------------------------- 
+* Function: Hidden
+* 
+* @author FlounyCaesar
+* @date   2016-11-02
+*  
+* @param  (String) name  组件名
+* ------------------------------- **#
+#macro(Hidden $name $value)
+    <input id="$!esc.htmlEscape($!{name})" type="hidden" name="$!esc.htmlEscape($!{name})" value="$!esc.htmlEscape($!{value})"/>
+#end
+
+#** ------------------------------- 
+* Function: 载入MUI组件。
+* 
+* @author FlounyCaesar
+* @date   2016-11-02
+*  
+* @param  (String) name  组件名
+* ------------------------------- **#
+#macro(LoadMUI $name)
+	#if("$!{name}" == "default")
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" type="text/css" href="$!env.getStaticURL('css/bootstrap.min.css')">
+    <link rel="stylesheet" href="$!env.getStaticURL('css/main.min.css')">
+    <!--时间插件-->
+    <link rel="stylesheet" href="$!env.getStaticURL('css/jquery.cxcalendar.css')">
+
+    <link rel="stylesheet" href="$!env.getStaticURL('css/my.css')" />
+
+    <!-- Match Media polyfill for IE9 -->
+    <!--[if IE 9]><!-->
+    <script src="$!env.getStaticURL('js/ie/matchMedia.js')"></script>
+    <!--<![endif]-->
+
+    <script src="$!env.getStaticURL('js/jquery-1.11.3.js')"></script>
+
+    <!--时间插件-->
+    <script src="$!env.getStaticURL('js/jquery.cxcalendar.min.js')" ></script>
+
+
+    <script src="$!env.getStaticURL('js/bootstrap.min.js')"></script>
+		<!--[if lt IE 9]>
+			<link href="static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css" />
+		<![endif]-->
+		<!--[if IE 6]>
+			<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+			<script>DD_belatedPNG.fix('*');</script>
+		<![endif]-->
+		##<script type="text/javascript" src="$!env.getStaticURL('external/jquery/retina.min.js')" charset="UTF-8"></script>
+		##<script type="text/javascript" src="$!env.getStaticURL('external/jquery/pin/jquery.pin.js')" charset="UTF-8"></script>
+	#elseif("$!{name}" == "xiabian")
+		<script src="$!env.getStaticURL('js/vendors.js')"></script>
+		<script src="$!env.getStaticURL('js/plugins.js')"></script>
+		<script src="$!env.getStaticURL('js/app.js')"></script>
+	#elseif("$!{name}" == "jquery")
+		<script type="text/javascript" src="$!env.getStaticURL('mui/widgets/jquery/jquery-1.11.1.js')" charset="UTF-8"></script>
+	#elseif("$!{name}" == "artTemplate")
+		<script type="text/javascript" src="$!env.getStaticURL('mui/widgets/artTemplate/template.js')" charset="UTF-8"></script>
+	#elseif("$!{name}" == "webuploader")
+		<link rel="stylesheet" type="text/css" href="$!env.getStaticURL('mui/widgets/webuploader/css/webuploader.css')" charset="UTF-8"></link>
+		<script type="text/javascript" src="$!env.getStaticURL('mui/widgets/webuploader/js/webuploader.min.js')"></script>
+	#elseif("$!{name}"=="layer")
+		<script type="text/javascript" src="$!env.getStaticURL('mui/widgets/layer/layer.js')" charset="UTF-8"></script>
+	#elseif("$!{name}"=="preview")
+		<script type="text/javascript" src="$!env.getStaticURL('mui/widgets/preview/js/jquery.imagePreview.1.0.js')" charset="UTF-8"></script>
+	#elseif("$!{name}"=="easyscroll")
+		<link rel="stylesheet" type="text/css" href="$!env.getStaticURL('external/jquery/easyscroll/index.css')" charset="UTF-8"></link>
+		<script type="text/javascript" src="$!env.getStaticURL('external/jquery/easyscroll/easyscroll.js')" charset="UTF-8"></script>
+		<script type="text/javascript" src="$!env.getStaticURL('external/jquery/easyscroll/mousewheel/mousewheel.js')" charset="UTF-8"></script>
+	#elseif("$!{name}"=="pagination")
+		<link rel="stylesheet" type="text/css" href="$!env.getStaticURL('mui/widgets/jquery.pagination/pagination.css')" charset="UTF-8"></link>
+		<script type="text/javascript" src="$!env.getStaticURL('mui/widgets/jquery.pagination/jquery.pagination.js')" charset="UTF-8"></script>
+	#elseif("$!{name}"=="kindeditor")
+		<script type="text/javascript" src="$!env.getStaticURL('mui/widgets/kindeditor/kindeditor-min.js')" charset="UTF-8"></script>
+	#elseif("$!{name}" == "util")
+		<script type="text/javascript" src="$!env.getStaticURL('mui/core/mui-core.js')" charset="UTF-8"></script>
+		<script type="text/javascript" src="$!env.getStaticURL('mui/util/mui-ajax.js')" charset="UTF-8"></script>
+		<script type="text/javascript" src="$!env.getStaticURL('mui/util/mui-string.js')" charset="UTF-8"></script>
+		<script type="text/javascript" src="$!env.getStaticURL('mui/util/mui-exception.js')" charset="UTF-8"></script>
+		<script type="text/javascript" src="$!env.getStaticURL('mui/util/mui-error.js')" charset="UTF-8"></script>
+	#elseif("$!{name}" == "jedate3.5")
+		<script type="text/javascript" src="$!env.getStaticURL('mui/widgets/jedate3.5/jedate.js')" charset="UTF-8"></script>
+		<link rel="stylesheet" type="text/css" href="$!env.getStaticURL('mui/widgets/jedate3.5/skin/jedate.css')" charset="UTF-8"></link>	
+	#elseif("$!{name}" == "swiper")
+		<script type="text/javascript" src="$!env.getStaticURL('js/jquery-1.10.2.js')"></script>
+		<script type="text/javascript" src="$!env.getStaticURL('mui/widgets/swiper/js/swiper.min.js')" charset="UTF-8"></script>
+		<link rel="stylesheet" type="text/css" href="$!env.getStaticURL('mui/widgets/swiper/css/swiper.min.css')" charset="UTF-8"></link>	
+	#elseif("$!{name}" == "validate")
+		<script type="text/javascript" src="$!env.getStaticURL('mui/widgets/jquery.validate/jquery.validate.min.js')" charset="UTF-8"></script>
+		<script type="text/javascript" src="$!env.getStaticURL('mui/widgets/jquery.validate/messages_zh.js')" charset="UTF-8"></script>
+	#elseif("$!{name}" == "font-awesome")
+		<link rel="stylesheet" type="text/css" href="$!env.getStaticURL('mui/widgets/font-awesome/css/font-awesome.css')" charset="UTF-8"></link>
+		#elseif("$!{name}" == "treemenu")
+		<link rel="stylesheet" type="text/css" href="$!env.getStaticURL('treemenu/css/animate.min.css')" charset="UTF-8"></link>
+		<link rel="stylesheet" type="text/css" href="$!env.getStaticURL('treemenu/css/common.css')" charset="UTF-8"></link>
+		<link rel="stylesheet" type="text/css" href="$!env.getStaticURL('treemenu/css/demo.css')" charset="UTF-8"></link>
+		<link rel="stylesheet" type="text/css" href="$!env.getStaticURL('treemenu/resources/icomoon_styles.css')" charset="UTF-8"></link>
+		<link rel="stylesheet" type="text/css" href="$!env.getStaticURL('treemenu/resources/metroStyle.css')" charset="UTF-8"></link>
+		<script type="text/javascript" src="$!env.getStaticURL('treemenu/js/jquery.ztree.core.js')" charset="UTF-8"></script>
+		<script type="text/javascript" src="$!env.getStaticURL('treemenu/js/jquery.ztree.excheck.js')" charset="UTF-8"></script>
+	#elseif("$!{name}" == "pickerDateRange")
+		<link rel="stylesheet" type="text/css" href="$!env.getStaticURL('pickerDateRange/css/dateRange.css')" charset="UTF-8"></link>
+		<link rel="stylesheet" type="text/css" href="$!env.getStaticURL('pickerDateRange/css/monthPicker.css')" charset="UTF-8"></link>
+		<script type="text/javascript" src="$!env.getStaticURL('pickerDateRange/js/dateRange.js')" charset="UTF-8"></script>
+        <script type="text/javascript" src="$!env.getStaticURL('pickerDateRange/js/monthPicker.js')" charset="UTF-8"></script>
+    #elseif("$!{name}" == "validation")
+		<script type="text/javascript" src="$!env.getStaticURL('ui/lib/jquery.validation/1.14.0/jquery.validate.min.js')" charset="UTF-8"></script>
+		<script type="text/javascript" src="$!env.getStaticURL('ui/lib/jquery.validation/1.14.0/validate-methods.js')" charset="UTF-8"></script>
+		<script type="text/javascript" src="$!env.getStaticURL('ui/lib/jquery.validation/1.14.0/messages_zh.min.js')" charset="UTF-8"></script>
+
+	#end
+#end
+
+#** ------------------------------- 
+* Function: KindEditor
+* 
+* @author zhangjl
+* @date   2015-08-10
+*  
+* @param  (String) name  组件名
+* #KindEditor("aaa", {"height:"", "width":"", "value":""})
+* ------------------------------- **#
+#macro(KindEditor $name $attrs)
+   <textarea name="$!name" id="$!name" style="width:$!attrs.get("width");height:$!attrs.get("height");visibility:hidden;">$!attrs.get("value")</textarea>
+   <script type="text/javascript">
+        var editor_$!name;
+		KindEditor.ready(function(K) {
+			editor_$!name = K.create('textarea[name="$!name"]', {
+				allowPreviewEmoticons : false,
+				items : [
+				'undo','redo','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|', 'image', 'link','source'],
+				resizeType : 1
+			});
+			#if($!attrs.get("html")!="")
+	    		editor_$!{name}.html('$!attrs.get("html")');
+	    	#end
+		});
+    </script>
+#end
+
+#** ------------------------------- 
+* Function: WebUploader
+* @author zhangjl
+* @date   2016-05-01
+* @param  (String) name  上传
+* #WebUploader("aaa", {"height:"", "width":""})
+* ------------------------------- **#
+#macro(WebUploader $id $attrs)
+	<div id="web_uploader_$!id">选择图片</div>
+	<div id="web_uploader_list_$!id" class="uploader-list">
+	#if("$!attrs.values" != "")
+		#foreach($img in $!attrs.values.split(","))
+			<li><img src="$!img" style="width:$!attrs.width;height:$!attrs.height;"/><a href="javascript:void(0)" onclick="$(this).parents('li').remove()">删除</a></li>
+			<!--<li><img src="$!env.get('oss.path')$!img" style="width:$!attrs.width;height:$!attrs.height;"/><a href="javascript:void(0)" onclick="$(this).parents('li').remove()">删除</a></li>-->
+		#end
+	#end
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			var uploader_$!{id} = WebUploader.create({
+				auto: true,
+				fileVal:"Filedata",
+				formData:{path:"$!attrs.path"},
+				swf: "$!env.getStaticURL('mui/widgets/webuploader/js/Uploader.swf')",
+				server: "$!env.getWebURL('file/upload')",
+				pick: "#web_uploader_$!{id}",
+				accept: {
+                    title: "Images",
+                    extensions: "gif,jpg,jpeg,bmp,png",
+                    mimeTypes: "image/gif,image/jpg,image/jpeg,image/bmp,image/png"
+                }
+			});
+			uploader_$!{id}.on( 'beforeFileQueued', function(file) {
+    			#if("$!attrs.fileNumLimit"!="")
+					var len = $("#web_uploader_list_$!{id}").find("li").length;
+					if($!attrs.fileNumLimit!=1 && len>=$!attrs.fileNumLimit){
+						layer.msg("超过最大图片数量了，最多只能上传$!attrs.fileNumLimit张",{icon:0});
+						return false;
+					}
+				#end
+				layer.load();
+            });
+			uploader_$!{id}.on('error', function(type) {
+				layer.closeAll("loading");
+				layer.msg("图片格式错误或重复上传",{icon:0})
+            });
+			uploader_$!{id}.on( 'uploadSuccess', function(file,ret) {
+    			//var imgUrl = mui.util.Enum.OSS_PATH + ret.data.filePath;
+    			//var imgUrl = "/"+ret.data.filePath;
+    			var imgUrl="http://127.0.0.1:8011/micropower/"+ret.data.filePath;
+				#if("$!attrs.fileNumLimit"!="" && $!attrs.fileNumLimit==1)
+					$("#web_uploader_list_$!{id}").html("<li><img src=\"" + imgUrl + "\" style=\"width:$!attrs.width;height:$!attrs.height;\"/><a href=\"#\" onclick=\"$(this).parents('li').remove()\">删除</a></li>");
+				#else
+					$("#web_uploader_list_$!{id}").append("<li><img src=\"" + imgUrl + "\" style=\"width:$!attrs.width;height:$!attrs.height;\"/><a href=\"#\" onclick=\"$(this).parents('li').remove()\">删除</a></li>");
+				#end
+            });
+			uploader_$!{id}.on( 'uploadComplete', function(file) {
+				layer.closeAll("loading")
+            });
+		})
+		function get_uploader_$!{id}(){
+			var imgs = "";
+			$("#web_uploader_list_$!{id} li").each(function(){
+				imgs += $(this).find("img").attr("src").replace(mui.util.Enum.OSS_PATH,"") + ",";
+			})
+			if(imgs != ""){
+				imgs = imgs.substring(0,imgs.length-1);
+			}
+			return imgs;
+		}
+    </script>
+#end
+
+#** ------------------------------- 
+* Function: Footer
+* @author zhangjl
+* @date   2016-05-01
+* @param  (String) name  页脚
+* #Footer()
+* ------------------------------- **#
+#macro(Footer )
+	#parse("common/footer.vm")
+#end

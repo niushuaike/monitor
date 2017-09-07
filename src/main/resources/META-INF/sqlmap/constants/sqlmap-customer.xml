@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="customer">
+
+	<!--
+      - ===============================================
+      - 返回 Customer Entity
+      - @author Administrator
+      - @date 2017-07-30
+      - ===============================================
+    -->
+	<resultMap  type="com.micropower.manager.model.po.Customer"	   id="RM_Customer">
+		<id     property="mid"                column="mid"                 jdbcType="BIGINT"   javaType="java.lang.Long"        />
+		<result property="type"               column="type"                jdbcType="INTEGER"  javaType="java.lang.Integer"     />
+		<result property="name"               column="name"                jdbcType="VARCHAR"  javaType="java.lang.String"      />
+		<result property="managementFormat"   column="management_format"   jdbcType="INTEGER"  javaType="java.lang.Integer"     />
+		<result property="industryOwned"      column="Industry_owned"      jdbcType="INTEGER"  javaType="java.lang.Integer"     />
+		<result property="legalPerson"        column="legal_person"        jdbcType="VARCHAR"  javaType="java.lang.String"      />
+		<result property="legalTel"           column="legal_tel"           jdbcType="VARCHAR"  javaType="java.lang.String"      />
+		<result property="linkman"            column="linkman"             jdbcType="VARCHAR"  javaType="java.lang.String"      />
+		<result property="linkmanTel"         column="linkman_tel"         jdbcType="VARCHAR"  javaType="java.lang.String"      />
+		<result property="otherLinkman"       column="other_linkman"       jdbcType="VARCHAR"  javaType="java.lang.String"      />
+		<result property="otherLinkmanTel"    column="other_linkman_tel"   jdbcType="VARCHAR"  javaType="java.lang.String"      />
+		<result property="address"            column="address"             jdbcType="VARCHAR"  javaType="java.lang.String"      />
+		<result property="needArea"           column="need_area"           jdbcType="DECIMAL"  javaType="java.math.BigDecimal"  />
+		<result property="visitingChannel"    column="visiting_channel"    jdbcType="INTEGER"  javaType="java.lang.Integer"     />
+		<result property="channelType"        column="channel_type"        jdbcType="INTEGER"  javaType="java.lang.Integer"     />
+		<result property="intentionType"      column="intention_type"      jdbcType="INTEGER"  javaType="java.lang.Integer"     />
+		<result property="mark"               column="mark"                jdbcType="VARCHAR"  javaType="java.lang.String"      />
+		<result property="channelLinkman"     column="channel_linkman"     jdbcType="VARCHAR"  javaType="java.lang.String"      />
+		<result property="channelLinkTel"     column="channel_link_tel"    jdbcType="VARCHAR"  javaType="java.lang.String"      />
+		<result property="visitingTime"       column="visiting_time"       jdbcType="DATE"     javaType="java.sql.Date"         />
+		<result property="leasingConsultant"  column="leasing_consultant"  jdbcType="BIGINT"   javaType="java.lang.Long"        />
+		<result property="orgId"              column="org_id"              jdbcType="BIGINT"   javaType="java.lang.Long"        />
+	</resultMap>
+
+	<!--
+      - ===============================================
+      - 新增 Customer
+      - @author Administrator
+      - @date 2017-07-30
+      - ===============================================
+    -->
+	<insert id="create" parameterType="com.micropower.manager.model.po.Customer" useGeneratedKeys="true" keyProperty="mid">
+		insert into zs_customer (
+			mid, 
+			type, 
+			name, 
+			management_format, 
+			Industry_owned, 
+			legal_person, 
+			legal_tel, 
+			linkman, 
+			linkman_tel, 
+			other_linkman, 
+			other_linkman_tel, 
+			address, 
+			need_area, 
+			visiting_channel, 
+			channel_type, 
+			intention_type, 
+			mark, 
+			channel_linkman, 
+			channel_link_tel, 
+			visiting_time, 
+			leasing_consultant, 
+			org_id
+		) values (
+		    #{mid}, 
+		    #{type}, 
+		    #{name}, 
+		    #{managementFormat}, 
+		    #{industryOwned}, 
+		    #{legalPerson}, 
+		    #{legalTel}, 
+		    #{linkman}, 
+		    #{linkmanTel}, 
+		    #{otherLinkman}, 
+		    #{otherLinkmanTel}, 
+		    #{address}, 
+		    #{needArea}, 
+		    #{visitingChannel}, 
+		    #{channelType}, 
+		    #{intentionType}, 
+		    #{mark}, 
+		    #{channelLinkman}, 
+		    #{channelLinkTel}, 
+		    #{visitingTime}, 
+		    #{leasingConsultant}, 
+		    #{orgId}
+		)
+	</insert>
+
+	<!--
+      - ===============================================
+      - 修改 Customer
+      - @author Administrator
+      - @date 2017-07-30
+      - ===============================================
+    -->
+	<update id="update" parameterType="com.micropower.manager.model.po.Customer">
+	      update zs_customer
+	      <set >
+	         			      <if test="mid != null" >
+			        mid = #{mid},
+			      </if>
+		      			      <if test="type != null" >
+			        type = #{type},
+			      </if>
+		      			      <if test="name != null" >
+			        name = #{name},
+			      </if>
+		      			      <if test="management_format != null" >
+			        management_format = #{management_format},
+			      </if>
+		      			      <if test="Industry_owned != null" >
+			        Industry_owned = #{Industry_owned},
+			      </if>
+		      			      <if test="legal_person != null" >
+			        legal_person = #{legal_person},
+			      </if>
+		      			      <if test="legal_tel != null" >
+			        legal_tel = #{legal_tel},
+			      </if>
+		      			      <if test="linkman != null" >
+			        linkman = #{linkman},
+			      </if>
+		      			      <if test="linkman_tel != null" >
+			        linkman_tel = #{linkman_tel},
+			      </if>
+		      			      <if test="other_linkman != null" >
+			        other_linkman = #{other_linkman},
+			      </if>
+		      			      <if test="other_linkman_tel != null" >
+			        other_linkman_tel = #{other_linkman_tel},
+			      </if>
+		      			      <if test="address != null" >
+			        address = #{address},
+			      </if>
+		      			      <if test="need_area != null" >
+			        need_area = #{need_area},
+			      </if>
+		      			      <if test="visiting_channel != null" >
+			        visiting_channel = #{visiting_channel},
+			      </if>
+		      			      <if test="channel_type != null" >
+			        channel_type = #{channel_type},
+			      </if>
+		      			      <if test="intention_type != null" >
+			        intention_type = #{intention_type},
+			      </if>
+		      			      <if test="mark != null" >
+			        mark = #{mark},
+			      </if>
+		      			      <if test="channel_linkman != null" >
+			        channel_linkman = #{channel_linkman},
+			      </if>
+		      			      <if test="channel_link_tel != null" >
+			        channel_link_tel = #{channel_link_tel},
+			      </if>
+		      			      <if test="visiting_time != null" >
+			        visiting_time = #{visiting_time},
+			      </if>
+		      			      <if test="leasing_consultant != null" >
+			        leasing_consultant = #{leasing_consultant},
+			      </if>
+		      			      <if test="org_id != null" >
+			        org_id = #{org_id},
+			      </if>
+		      		    </set>
+	</update>
+
+	<!--
+      - ===============================================
+      - 查询 Customer 总数
+      - @author Administrator
+      - @date 2017-07-30
+      - ===============================================
+    -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.micropower.manager.model.po.Customer">
+		select count(*)
+		from zs_customer
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Customer 信息
+      - @author Administrator
+      - @date 2017-07-30
+      - ===============================================
+    -->
+	<select id="query" resultMap="RM_Customer" parameterType="com.micropower.manager.model.po.Customer">
+		select 
+		    mid, 
+		    type, 
+		    name, 
+		    management_format, 
+		    Industry_owned, 
+		    legal_person, 
+		    legal_tel, 
+		    linkman, 
+		    linkman_tel, 
+		    other_linkman, 
+		    other_linkman_tel, 
+		    address, 
+		    need_area, 
+		    visiting_channel, 
+		    channel_type, 
+		    intention_type, 
+		    mark, 
+		    channel_linkman, 
+		    channel_link_tel, 
+		    visiting_time, 
+		    leasing_consultant, 
+		    org_id
+		from zs_customer
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Customer 分页信息
+      - @author Administrator
+      - @date 2017-07-30
+      - ===============================================
+    -->
+	<select id="page" resultMap="RM_Customer" parameterType="java.util.HashMap">
+		select 
+		    mid, 
+		    type, 
+		    name, 
+		    management_format, 
+		    Industry_owned, 
+		    legal_person, 
+		    legal_tel, 
+		    linkman, 
+		    linkman_tel, 
+		    other_linkman, 
+		    other_linkman_tel, 
+		    address, 
+		    need_area, 
+		    visiting_channel, 
+		    channel_type, 
+		    intention_type, 
+		    mark, 
+		    channel_linkman, 
+		    channel_link_tel, 
+		    visiting_time, 
+		    leasing_consultant, 
+		    org_id
+		from zs_customer
+	</select>
+</mapper>

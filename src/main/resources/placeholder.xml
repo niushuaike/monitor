@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<configure>
+	<dataSource>
+		<acquireIncrement>5</acquireIncrement>
+		<acquireRetryAttempts>30</acquireRetryAttempts>
+		<acquireRetryDelay>1000</acquireRetryDelay>
+		<autoCommitOnClose>false</autoCommitOnClose>
+		<checkoutTimeout>30000</checkoutTimeout>
+		<idleConnectionTestPeriod>30</idleConnectionTestPeriod>
+		<initialPoolSize>3</initialPoolSize>
+		<maxIdleTime>10</maxIdleTime>
+		<maxPoolSize>10</maxPoolSize>
+		<minPoolSize>3</minPoolSize>
+		<numHelperThreads>3</numHelperThreads>
+	</dataSource>
+		<mysql>
+		<url>
+			<list>
+				<!--  <property name="default">jdbc:mysql://rm-bp19bd76u6hac0854.mysql.rds.aliyuncs.com:3306/nanfu?characterEncoding=utf8</property>-->
+				 <property name="default">jdbc:mysql://127.0.0.1:3306/choeur?characterEncoding=utf8</property>
+			</list>
+		</url>
+		<username>
+			<list>
+				<property name="default">root</property>
+			</list>
+		</username>
+		<password>
+			<list>
+				<property name="default">root</property>
+			</list>
+		</password>
+	</mysql>
+	<mysql2>
+		<url>
+			<list>
+				<property name="default">jdbc:mysql://192.168.199.128:3306/backups?characterEncoding=utf8</property>
+			</list>
+		</url>
+		<username>
+			<list>
+				<property name="default">root</property>
+			</list>
+		</username>
+		<password>
+			<list>
+				<property name="default">123456</property>
+			</list>
+		</password>
+	</mysql2>
+	<server>
+		<web>
+			<list>
+				<property name="default">/monitor/</property>
+			</list>
+		</web>
+		<static>
+			<list>
+				<property name="default">/monitor/source/</property>
+			</list>
+		</static>
+	</server>
+	<oss>
+		<path>
+			<list>
+				<property name="default">http://localhost:8011/micropower</property>
+			</list>
+		</path>
+	</oss>
+</configure>
