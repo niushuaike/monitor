@@ -97,6 +97,12 @@
 	margin: 0;
 	line-height: 20px;
 }
+.row-font p input{
+	width:45%;
+	text-align: center;
+	border:none;
+	background: none;
+}
 /*机组动力状态*/
 .page-email .row .info{
 	width: 60%;
@@ -135,6 +141,39 @@ html,body{
 	padding:2px 0;
 	position: relative;
 }
+.del{
+	display: none;
+	padding-top: 3px;
+	width: 200px;
+	height: 90px;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px #999;
+	-webkit-box-shadow: 0px 0px 10px #999;
+	position: absolute;
+	top:45px;
+	right: 80px;
+	z-index: 2;
+}
+.del .fadin{
+
+	text-align: right;
+	padding-right: 8px;
+	cursor: pointer;
+}
+.del-left{
+	float: left;
+	width: 33px;
+	height: 50px;
+}
+.del-right{
+	width: 125px;
+	float:left;
+}
+.del-right button{
+	border-radius: 5px;
+	margin-right: 10px;
+}
 .block{
 	padding-top: 5px;
 	width: 330px;
@@ -166,6 +205,9 @@ html,body{
 	float: left;
 	width: 33px;
 	height: 100px;
+}
+.block-left img{
+	margin-top: 15px;
 }
 .block-right{
 	width: 230px;
@@ -278,6 +320,13 @@ html,body{
 .enev-deal button{
 	border-radius: 5px;
 }
+.deal_modal{
+	position: fixed;
+	top:10%;
+	left: 30%;
+	display: none;
+	z-index: 10;
+}
 /*报表中心*/
 .report-btn{
 	text-align: right;
@@ -294,6 +343,48 @@ html,body{
 .report-table tbody tr td:nth-of-type(5){
 	color: #5bc0de;
 	cursor: pointer;
+}
+.state-list{
+	position: fixed;
+	left: 30%;
+	top: 10%;
+}
+.state-list2{
+	position: fixed;
+	left: 30%;
+	top: 10%;
+}
+.report-modal-tit{
+	width: 100%;
+	height: 25px;
+}
+.report-modal-tit button{
+	float: right;
+	padding: 3px 6px;
+}
+.modal-tab{
+	background: #f2f2f2;
+	margin: 20px 7%;
+	
+
+	}
+.modal-tab td{
+	padding: 8px !important;
+	border: none !important;
+	
+}
+.report-footer{
+	width: 100%;
+	padding-right: 8%;
+	
+	}
+.report-footer p{
+	text-align: right;
+}
+.modal-tab input{
+	border:none;
+	background: none;
+	width: 40px;
 }
 /*基础参数设置*/
 .jibne-table input[type=text]{
@@ -354,14 +445,21 @@ html,body{
 }
 /*告警时段设置*/
 .police-table tbody td{
-	padding: 15px 5px !important;
+	padding: 15px 3px !important;
 }
 .police-table input[type=text]{
-	width:42px;
+	width:45px;
 	border-radius: 4px;
-	border:solid #ccc 1px;
-	padding: 0 2px;
+	border:none;
+	padding: 0 1px;
 	
+}
+.police-table input[name=ipt2]{
+	width:80px;
+	border-radius: 4px;
+	border:none;
+	padding: 0 1px;
+
 }
 .police-table span{
 	
@@ -441,7 +539,11 @@ html,body{
 	border-radius: 4px;
 	border:none;
 	background: none;
+	float: right;
 	
+}
+.power-table td{
+	text-align: right;
 }
 .power-btn{
 	width: 100%;
@@ -460,3 +562,34 @@ html,body{
 	left: 30%;
 	display: none;
 }
+/*告警阈值配置*/
+.gao-con{width: 100%;padding: 3% 8%;}
+.gao-tit{width: 100%;height: 20px;border-left:solid #5974d9 2px;line-height: 20px;text-indent: 5px;margin: 10px 0;}
+.gao-table{width: 90%;margin-bottom: 0;}
+.fg{width: 90%;border-top: dashed #ccc 1px;}
+.gao-table td{padding: 8px !important;border:none !important;text-align: right;}
+.gao-table td input{border:solid #e2e1e1 1px;border-radius: 4px;width: 120px;color: #333;}
+.gao-btn{width: 100%;height: 35px;text-align: center;margin:  20px 0;}
+.gao-btn button{margin-right: 20px;}
+/*机柜告警设置*/
+.jigui_modal{position:fixed;top:10%;left:30%}
+.jigui_modal2{position:fixed;top:20%;left:30%}
+.nosel{
+	background-color: #fff;
+	border: none;
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+}
+.select1{
+	background-color: transparent;
+	border: 1px solid #ccc;
+}
+/*本机系统管理*/
+.self_tit{width: 100%;background: #fff;}
+.self_con{width: 100%;padding: 50px 20%;background: #fff;}
+.self_con table td{padding:15px 2px !important;border:none !important}
+.self_con table select{border-radius: 4px;width: 120px;padding:4px;}
+.self_con table td input{width: 90%;border: none;}
+.self_con table td textarea{margin-right: 15px;float: right;width: 430px;resize: none;}
+.system_btn{ width: 100%;text-align: center;}

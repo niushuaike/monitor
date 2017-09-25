@@ -18,9 +18,9 @@
                 </div>
                 <div class="row-font">
                     <p>温度</p>
-                    <p>30℃</p>
+                    <p id="temperature">30℃</p>
                     <p>湿度</p>
-                    <p>60%</p>
+                    <p id="humidity">60%</p>
                 </div>
             </li>
             <li style="background: #e74c3c;">
@@ -29,9 +29,9 @@
                 </div>
                 <div class="row-font">
                     <p>电流</p>
-                    <p>1A</p>
+                    <p id="current1">1A</p>
                     <p>电压</p>
-                    <p>220V</p>
+                    <p id="humidity">220V</p>
                 </div>
             </li>
             <li style="background: #3498db;">
@@ -40,9 +40,9 @@
                 </div>
                 <div class="row-font">
                     <p>前门</p>
-                    <p>开</p>
+                    <p id="frontGate">开</p>
                     <p>后门</p>
-                    <p>关</p>
+                    <p id="backGate">关</p>
                 </div>
             </li>
             <li style="background: #f39c12;">
@@ -51,9 +51,9 @@
                 </div>
                 <div class="row-font">
                     <p>烟感</p>
-                    <p>1A</p>
+                    <p id="smoke">1A</p>
                     <p>水浸</p>
-                    <p>220V</p>
+                    <p id="flood">220V</p>
                 </div>
             </li>
             <li style="background: #34495e;">
@@ -62,9 +62,9 @@
                 </div>
                 <div class="row-font">
                     <p>红外</p>
-                    <p>1A</p>
+                    <p id="infrared">1A</p>
                     <p>关键设备</p>
-                    <p>220V</p>
+                    <p>未检测</p>
                 </div>
             </li>
         </ul>
@@ -72,20 +72,23 @@
 		
 
 		<div class="row title red">
-			<div class="col-lg-12 col-xs-12">
-				警告！当前机柜温度过高
+			<div class="col-lg-12 col-xs-12" id="warninfo">
 			</div>
 		</div>
 		<div class="chart">
 			<p>温湿度监控曲线</p>
-			
+            <div id="main" style="height:400px;"></div>
 		</div>
 </div>
+<script src="$!env.getStaticURL('js/jquery-1.11.3.js')"></script>
 <script src="/monitor/source/js/my.js"></script>
 <script src="/monitor/source/js/huanj.js"></script>
+<script src="/monitor/source/js/echarts.min.js"></script>
 <script>
     $(function(){
-        init();
+        window.setInterval(inithuanj, 1000*2);
+        window.setInterval(warninfo, 1000*2);
+        chartsTH();
     })
 </script>
 

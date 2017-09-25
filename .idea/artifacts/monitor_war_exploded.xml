@@ -96,6 +96,8 @@
           <element id="library" level="project" name="Maven: org.freemarker:freemarker:2.3.21" />
           <element id="library" level="project" name="Maven: net.sourceforge.jexcelapi:jxl:2.6.12" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.14" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-client:1.18.1" />
+          <element id="library" level="project" name="Maven: com.sun.jersey:jersey-core:1.18.1" />
           <element id="library" level="project" name="Maven: com.jcraft:jsch:0.1.53" />
         </element>
       </element>

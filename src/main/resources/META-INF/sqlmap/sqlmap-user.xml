@@ -31,7 +31,6 @@
     -->
 	<insert id="create" parameterType="com.micropower.manager.model.po.User" useGeneratedKeys="true" keyProperty="id">
 		insert into user (
-			id, 
 			role, 
 			username, 
 			password, 
@@ -39,7 +38,6 @@
 			email, 
 			phone
 		) values (
-		    #{id}, 
 		    #{role}, 
 		    #{username}, 
 		    #{password}, 
@@ -81,6 +79,7 @@
 			        phone = #{phone},
 			      </if>
 		      		    </set>
+		WHERE id=#{id}
 	</update>
 
 	<!--
@@ -134,8 +133,24 @@
 		from user
 	</select>
 
+	<select id="list" resultMap="RM_User">
+		select
+		id,
+		role,
+		username,
+		password,
+		realname,
+		email,
+		phone
+		from user
+	</select>
+
 	<delete id="delete"  parameterType="integer">
 		DELETE FROM  user WHERE id=#{id}
 	</delete>
+
+	<select id="getUser" resultType="com.micropower.manager.model.po.User" parameterType="string">
+		SELECT * FROM user WHERE username=#{username}
+	</select>
 
 </mapper>

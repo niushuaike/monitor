@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reportstatus">
+
+	<!--
+      - ===============================================
+      - ���� Reportstatus Entity
+      - @author niushuaike
+      - @date 2017-09-18
+      - ===============================================
+    -->
+	<resultMap  type="com.micropower.manager.model.po.Reportstatus"	   id="RM_Reportstatus">
+		<id     property="id"            column="id"            jdbcType="INTEGER"  javaType="java.lang.Integer"  />
+		<result property="statusno"      column="statusno"      jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="temperature"   column="temperature"   jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="humidity"      column="humidity"      jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="frontgate"     column="frontGate"     jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="backgate"      column="backGate"      jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="smoke"         column="smoke"         jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="flood"         column="flood"         jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="infrared"      column="infrared"      jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="devicestatus"  column="devicestatus"  jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="warninfo"      column="warninfo"      jdbcType="VARCHAR"  javaType="java.lang.String"   />
+	</resultMap>
+
+	<!--
+      - ===============================================
+      - ���� Reportstatus
+      - @author niushuaike
+      - @date 2017-09-18
+      - ===============================================
+    -->
+	<insert id="create" parameterType="com.micropower.manager.model.po.Reportstatus" useGeneratedKeys="true" keyProperty="id">
+		insert into reportstatus (
+			id, 
+			statusno, 
+			temperature, 
+			humidity, 
+			frontGate, 
+			backGate, 
+			smoke, 
+			flood, 
+			infrared, 
+			devicestatus, 
+			warninfo
+		) values (
+		    #{id}, 
+		    #{statusno}, 
+		    #{temperature}, 
+		    #{humidity}, 
+		    #{frontgate}, 
+		    #{backgate}, 
+		    #{smoke}, 
+		    #{flood}, 
+		    #{infrared}, 
+		    #{devicestatus}, 
+		    #{warninfo}
+		)
+	</insert>
+
+	<insert id="add" parameterType="com.micropower.manager.model.po.Reportstatus" useGeneratedKeys="true" keyProperty="id">
+		insert into reportstatus (
+		statusno,
+		temperature,
+		humidity,
+		frontGate,
+		backGate,
+		smoke,
+		flood,
+		infrared,
+		devicestatus,
+		warninfo
+		) values (
+		#{statusno},
+		#{temperature},
+		#{humidity},
+		#{frontgate},
+		#{backgate},
+		#{smoke},
+		#{flood},
+		#{infrared},
+		#{devicestatus},
+		#{warninfo}
+		)
+	</insert>
+
+	<!--
+      - ===============================================
+      - �޸� Reportstatus
+      - @author niushuaike
+      - @date 2017-09-18
+      - ===============================================
+    -->
+	<update id="update" parameterType="com.micropower.manager.model.po.Reportstatus">
+	      update reportstatus
+	      <set >
+	         			      <if test="id != null" >
+			        id = #{id},
+			      </if>
+		      			      <if test="statusno != null" >
+			        statusno = #{statusno},
+			      </if>
+		      			      <if test="temperature != null" >
+			        temperature = #{temperature},
+			      </if>
+		      			      <if test="humidity != null" >
+			        humidity = #{humidity},
+			      </if>
+		      			      <if test="frontgate != null" >
+			        frontGate = #{frontgate},
+			      </if>
+		      			      <if test="backgate != null" >
+			        backGate = #{backgate},
+			      </if>
+		      			      <if test="smoke != null" >
+			        smoke = #{smoke},
+			      </if>
+		      			      <if test="flood != null" >
+			        flood = #{flood},
+			      </if>
+		      			      <if test="infrared != null" >
+			        infrared = #{infrared},
+			      </if>
+		      			      <if test="devicestatus != null" >
+			        devicestatus = #{devicestatus},
+			      </if>
+		      			      <if test="warninfo != null" >
+			        warninfo = #{warninfo},
+			      </if>
+		      		    </set>
+	</update>
+
+	<!--
+      - ===============================================
+      - ��ѯ Reportstatus ����
+      - @author niushuaike
+      - @date 2017-09-18
+      - ===============================================
+    -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.micropower.manager.model.po.Reportstatus">
+		select count(*)
+		from reportstatus
+	</select>
+
+	<!--
+      - ===============================================
+      - ��ѯ Reportstatus ��Ϣ
+      - @author niushuaike
+      - @date 2017-09-18
+      - ===============================================
+    -->
+	<select id="query" resultMap="RM_Reportstatus" parameterType="com.micropower.manager.model.po.Reportstatus">
+		select 
+		    id, 
+		    statusno, 
+		    temperature, 
+		    humidity, 
+		    frontGate, 
+		    backGate, 
+		    smoke, 
+		    flood, 
+		    infrared, 
+		    devicestatus, 
+		    warninfo
+		from reportstatus
+	</select>
+
+	<!--
+      - ===============================================
+      - ��ѯ Reportstatus ��ҳ��Ϣ
+      - @author niushuaike
+      - @date 2017-09-18
+      - ===============================================
+    -->
+	<select id="page" resultMap="RM_Reportstatus" parameterType="java.util.HashMap">
+		select 
+		    id, 
+		    statusno, 
+		    temperature, 
+		    humidity, 
+		    frontGate, 
+		    backGate, 
+		    smoke, 
+		    flood, 
+		    infrared, 
+		    devicestatus, 
+		    warninfo
+		from reportstatus
+		ORDER by id DESC
+	</select>
+
+	<select id="list" resultMap="RM_Reportstatus">
+		select
+		id,
+		statusno,
+		temperature,
+		humidity,
+		frontGate,
+		backGate,
+		smoke,
+		flood,
+		infrared,
+		devicestatus,
+		warninfo
+		from reportstatus
+		ORDER by id DESC
+	</select>
+
+	<select id="queryByStatusno" resultMap="RM_Reportstatus" parameterType="string">
+		select
+		id,
+		statusno,
+		temperature,
+		humidity,
+		frontGate,
+		backGate,
+		smoke,
+		flood,
+		infrared,
+		devicestatus,
+		warninfo
+		from reportstatus
+		WHERE statusno=#{statusno}
+	</select>
+
+	<select id="queryPojoByStatusno" resultType="com.micropower.manager.model.pojo.ReportstatusPojo" parameterType="string">
+		select
+		id,
+		statusno,
+		temperature,
+		humidity,
+		frontGate,
+		backGate,
+		smoke,
+		flood,
+		infrared,
+		devicestatus,
+		warninfo
+		from reportstatus
+		WHERE statusno=#{statusno}
+	</select>
+
+
+	<delete id="delete" parameterType="integer">
+		DELETE FROM reportstatus WHERE id=#{id}
+	</delete>
+</mapper>

@@ -12,7 +12,7 @@
                 };
             return $routeProvider.when(url, config), $routeProvider
         }
-        var routes = ["jizu","keySet","evenR","report", "evenC","huanjing","setTimt","userSet","policeSet", "caseSet","powerSet","huanj"];
+        var routes = ["selfSystem","jizu","keySet","evenR","report", "evenC","huanjing","setTimt","userSet","policeSet", "caseSet","powerSet","huanj"];
         routes.forEach(function(route) {
             setRoutes(route)
         }), $routeProvider.when("/", {
@@ -901,9 +901,6 @@
     }])
 }();
 
-$(function () {
-    init();
-})
 
 function add() {
     alert("haha");

@@ -1,0 +1,68 @@
+<div class="page page-selfSystem clearfix">
+	<div class="row title">
+		<div class="col-lg-6 col-xs-12">
+			单设备后台/设备管理 /本机系统设置
+		</div>
+
+		<div class="col-lg-6 col-xs-12 text-right">
+			<span>当前时间：</span>
+            <span id="now-time"></span>
+		</div>
+	</div>
+	<div class="self_tit">
+		<div class="table-tit">
+			<div class="row">
+				<div class="col-lg-6 col-xs-12">
+					<p class="tit-name">本机系统设置</p>
+				</div>
+				
+				<div class="col-lg-6 col-xs-12">
+					<div class="report-btn">
+						<button type="button" class="btn btn-info" onclick="systemEdit()">编辑</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="self_con">
+		<table class="table">
+			<tr>
+				<td class="text-right">本机地理位置：</td>
+				<td>
+					<select id="s_province" name="s_province" disabled="disabled"></select>  	
+				</td>
+				<td>
+					<select id="s_city" name="s_city" disabled="disabled"></select>
+				</td>
+				<td>
+					<select id="s_county" name="s_county" disabled="disabled"></select>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td colspan="3">
+					<textarea class="form-control" rows="3" id="s_detail" readonly></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td class="text-right">本机IP地址：</td>
+				<td colspan="3"><input type="" name="" id="deviceIp" value="192.168.0.1" readonly/></td>
+			</tr>
+			<tr>
+				<td class="text-right">机器码：</td>
+				<td colspan="3"><input type="text" name="" id="deviceAddress" value="" readonly/></td>
+			</tr>
+		</table>
+		<div class="system_btn" style="display: none;">
+			<button type="button" class="btn btn-info" onclick="systemSave()">保存</button>
+		</div>
+	</div>
+<div>
+<script src="/monitor/source/js/select.js" ></script>
+<script src="/monitor/source/js/selfSystem.js"></script>
+
+	<script>
+        $(function () {
+            systemInit();
+        })
+	</script>

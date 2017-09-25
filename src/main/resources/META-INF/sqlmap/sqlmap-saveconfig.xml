@@ -62,25 +62,26 @@
 	         			      <if test="id != null" >
 			        id = #{id},
 			      </if>
-		      			      <if test="save_config_title != null" >
-			        save_config_title = #{save_config_title},
+		      			      <if test="saveConfigTitle != null" >
+			        save_config_title = #{saveConfigTitle},
 			      </if>
-		      			      <if test="startTime != null" >
-			        startTime = #{startTime},
+		      			      <if test="starttime != null" >
+			        startTime = #{starttime},
 			      </if>
-		      			      <if test="endTime != null" >
-			        endTime = #{endTime},
+		      			      <if test="endtime != null" >
+			        endTime = #{endtime},
 			      </if>
-		      			      <if test="deltaTime != null" >
-			        deltaTime = #{deltaTime},
+		      			      <if test="deltatime != null" >
+			        deltaTime = #{deltatime},
 			      </if>
-		      			      <if test="lastTime != null" >
-			        lastTime = #{lastTime},
+		      			      <if test="lasttime != null" >
+			        lastTime = #{lasttime},
 			      </if>
-		      			      <if test="lastData != null" >
-			        lastData = #{lastData},
+		      			      <if test="lastdata != null" >
+			        lastData = #{lastdata},
 			      </if>
 		      		    </set>
+		WHERE id=#{id}
 	</update>
 
 	<!--
@@ -112,6 +113,7 @@
 		    lastTime, 
 		    lastData
 		from saveConfig
+		WHERE id=#{id}
 	</select>
 
 	<!--
@@ -132,4 +134,17 @@
 		    lastData
 		from saveConfig
 	</select>
+
+	<select id="list" resultMap="RM_Saveconfig" parameterType="java.util.HashMap">
+		select
+		id,
+		save_config_title,
+		startTime,
+		endTime,
+		deltaTime,
+		lastTime,
+		lastData
+		from saveConfig
+	</select>
+
 </mapper>

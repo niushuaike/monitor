@@ -22,11 +22,13 @@
 		<result property="users"         column="users"         jdbcType="VARCHAR"    javaType="java.lang.String"   />
 		<result property="intervaltime"  column="intervaltime"  jdbcType="VARCHAR"    javaType="java.lang.String"   />
 		<result property="ispause"       column="isPause"       jdbcType="TINYINT"    javaType="java.lang.Integer"  />
-		<result property="endpausetime"  column="endPausetime"  jdbcType="TIMESTAMP"  javaType="java.util.Date"     />
+		<result property="endpausetime"  column="endPausetime"  jdbcType="VARCHAR"    javaType="java.lang.String"   />
 		<result property="deviceType"    column="device_type"   jdbcType="TINYINT"    javaType="java.lang.Integer"  />
 		<result property="loginName"     column="login_name"    jdbcType="VARCHAR"    javaType="java.lang.String"   />
 		<result property="loginPasswd"   column="login_passwd"  jdbcType="VARCHAR"    javaType="java.lang.String"   />
-		<result property="lastStyle"     column="last_style"    jdbcType="VARCHAR"    javaType="java.lang.String"   />
+		<result property="deviceAddress" column="device_address" jdbcType="VARCHAR"    javaType="java.lang.String"   />
+		<result property="controlmode" column="controlmode" jdbcType="VARCHAR"    javaType="java.lang.String"   />
+		<result property="machinecode"   column="machinecode"   jdbcType="VARCHAR"    javaType="java.lang.String"   />
 	</resultMap>
 
 	<!--
@@ -38,7 +40,6 @@
     -->
 	<insert id="create" parameterType="com.micropower.manager.model.po.Device" useGeneratedKeys="true" keyProperty="id">
 		insert into device (
-			id, 
 			device_name, 
 			device_ip, 
 			device_port, 
@@ -51,9 +52,10 @@
 			device_type, 
 			login_name, 
 			login_passwd, 
-			last_style
+			device_address,
+			controlmode,
+			machinecode
 		) values (
-		    #{id}, 
 		    #{deviceName}, 
 		    #{deviceIp}, 
 		    #{devicePort}, 
@@ -66,7 +68,9 @@
 		    #{deviceType}, 
 		    #{loginName}, 
 		    #{loginPasswd}, 
-		    #{lastStyle}
+		    #{deviceAddress},
+		    #{controlmode},
+		    #{machinecode}
 		)
 	</insert>
 
@@ -80,17 +84,15 @@
 	<update id="update" parameterType="com.micropower.manager.model.po.Device">
 	      update device
 	      <set >
-	         			      <if test="id != null" >
-			        id = #{id},
+
+		      			      <if test="deviceName != null" >
+			        device_name = #{deviceName},
 			      </if>
-		      			      <if test="device_name != null" >
-			        device_name = #{device_name},
+		      			      <if test="deviceIp != null" >
+			        device_ip = #{deviceIp},
 			      </if>
-		      			      <if test="device_ip != null" >
-			        device_ip = #{device_ip},
-			      </if>
-		      			      <if test="device_port != null" >
-			        device_port = #{device_port},
+		      			      <if test="devicePort != null" >
+			        device_port = #{devicePort},
 			      </if>
 		      			      <if test="timeperiod != null" >
 			        timeperiod = #{timeperiod},
@@ -104,25 +106,33 @@
 		      			      <if test="intervaltime != null" >
 			        intervaltime = #{intervaltime},
 			      </if>
-		      			      <if test="isPause != null" >
-			        isPause = #{isPause},
+		      			      <if test="ispause != null" >
+			        isPause = #{ispause},
 			      </if>
-		      			      <if test="endPausetime != null" >
-			        endPausetime = #{endPausetime},
+		      			      <if test="endpausetime != null" >
+			        endPausetime = #{endpausetime},
 			      </if>
-		      			      <if test="device_type != null" >
-			        device_type = #{device_type},
+		      			      <if test="deviceType != null" >
+			        device_type = #{deviceType},
 			      </if>
-		      			      <if test="login_name != null" >
-			        login_name = #{login_name},
+		      			      <if test="loginName != null" >
+			        login_name = #{loginName},
 			      </if>
-		      			      <if test="login_passwd != null" >
-			        login_passwd = #{login_passwd},
+		      			      <if test="loginPasswd != null" >
+			        login_passwd = #{loginPasswd},
 			      </if>
-		      			      <if test="last_style != null" >
-			        last_style = #{last_style},
+		      			      <if test="deviceAddress != null" >
+			        device_address = #{deviceAddress},
 			      </if>
+			  <if test="controlmode != null" >
+				  controlmode = #{controlmode},
+			  </if>
+			  <if test="machinecode != null" >
+				  machinecode = #{machinecode},
+			  </if>
 		      		    </set>
+
+		where id=#{id}
 	</update>
 
 	<!--
@@ -137,6 +147,12 @@
 		from device
 	</select>
 
+	<select id="querySelfDevice"  resultMap="RM_Device" parameterType="integer">
+		select *
+		from device
+		WHERE device_type=1
+	</select>
+
 	<!--
       - ===============================================
       - 查询 Device 信息
@@ -144,7 +160,7 @@
       - @date 2017-09-04
       - ===============================================
     -->
-	<select id="query" resultMap="RM_Device" parameterType="com.micropower.manager.model.po.Device">
+	<select id="query" resultMap="RM_Device" parameterType="integer">
 		select 
 		    id, 
 		    device_name, 
@@ -159,8 +175,11 @@
 		    device_type, 
 		    login_name, 
 		    login_passwd, 
-		    last_style
+		    device_address,
+		    controlmode,
+		    machinecode
 		from device
+		where id=#{id}
 	</select>
 
 	<!--
@@ -185,7 +204,9 @@
 		    device_type, 
 		    login_name, 
 		    login_passwd, 
-		    last_style
+		    device_address,
+		    controlmode,
+		    machinecode
 		from device
 	</select>
 
@@ -204,7 +225,53 @@
 		device_type,
 		login_name,
 		login_passwd,
-		last_style
+		device_address,
+		controlmode,
+		machinecode
+		from device
+		WHERE device_type!=1
+	</select>
+
+	<select id="list2" resultMap="RM_Device" parameterType="java.util.HashMap">
+		select
+		id,
+		device_name,
+		device_ip,
+		device_port,
+		timeperiod,
+		warnstyleid,
+		users,
+		intervaltime,
+		isPause,
+		endPausetime,
+		device_type,
+		login_name,
+		login_passwd,
+		device_address,
+		controlmode,
+		machinecode
+		from device
+		WHERE device_type=1
+	</select>
+
+	<select id="getKeyDevice" resultMap="RM_Device">
+		select
+		id,
+		device_name,
+		device_ip,
+		device_port,
+		timeperiod,
+		warnstyleid,
+		users,
+		intervaltime,
+		isPause,
+		endPausetime,
+		device_type,
+		login_name,
+		login_passwd,
+		device_address,
+		controlmode,
+		machinecode
 		from device
 		WHERE device_type!=1
 	</select>
@@ -212,5 +279,9 @@
 	<delete id="delete" parameterType="integer">
 		delete from device WHERE id=#{id}
 	</delete>
+
+	<update id="updateAddr">
+		UPDATE device SET device_address=#{deviceAddr} WHERE device_type=1
+	</update>
 
 </mapper>

@@ -56,6 +56,13 @@
       <version>2.6.12</version>
     </dependency>
 
+    <!--jerson -->
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-client</artifactId>
+      <version>1.18.1</version>
+    </dependency>
+
     <!-- jsch 远程连接Linux -->
     <dependency>
       <groupId>com.jcraft</groupId>

@@ -22,12 +22,14 @@
 
 
     <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+        <listener-class>com.micropower.manager.utils.MyListener</listener-class>
     </listener>
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:META-INF/spring/**</param-value>
+        <param-value>classpath:META-INF/spring/app-framework.xml</param-value>
     </context-param>
+
     <context-param>
         <param-name>detectAllHandlerExceptionResolvers</param-name>
         <param-value>false</param-value>
@@ -48,7 +50,17 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/</url-pattern>
     </filter-mapping>
-<!--    <filter>
+
+   <filter>
+       <filter-name>monitor</filter-name>
+       <filter-class>com.micropower.manager.utils.Myfilter</filter-class>
+   </filter>
+    <filter-mapping>
+        <filter-name>monitor</filter-name>
+        <url-pattern>/asdfdsfds</url-pattern>
+    </filter-mapping>
+
+    <filter>
         <filter-name>requestFilter</filter-name>
         <filter-class>com.micropower.manager.common.RequestFilter</filter-class>
         <init-param>
@@ -58,8 +70,9 @@
     </filter>
     <filter-mapping>
         <filter-name>requestFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>-->
+        <url-pattern>/jm/*</url-pattern>
+    </filter-mapping>
+
     <servlet>
         <servlet-name>webmvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

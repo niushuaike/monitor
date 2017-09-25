@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="role">
+
+	<!--
+      - ===============================================
+      - 返回 Role Entity
+      - @author oliver
+      - @date 2017-09-11
+      - ===============================================
+    -->
+	<resultMap  type="com.micropower.manager.model.po.Role"	   id="RM_Role">
+		<id     property="id"        column="id"        jdbcType="INTEGER"  javaType="java.lang.Integer"  />
+		<result property="code"      column="code"      jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="rolename"  column="rolename"  jdbcType="VARCHAR"  javaType="java.lang.String"   />
+	</resultMap>
+
+	<!--
+      - ===============================================
+      - 新增 Role
+      - @author oliver
+      - @date 2017-09-11
+      - ===============================================
+    -->
+	<insert id="create" parameterType="com.micropower.manager.model.po.Role" useGeneratedKeys="true" keyProperty="id">
+		insert into role (
+			id, 
+			code, 
+			rolename
+		) values (
+		    #{id}, 
+		    #{code}, 
+		    #{rolename}
+		)
+	</insert>
+
+	<!--
+      - ===============================================
+      - 修改 Role
+      - @author oliver
+      - @date 2017-09-11
+      - ===============================================
+    -->
+	<update id="update" parameterType="com.micropower.manager.model.po.Role">
+	      update role
+	      <set >
+	         			      <if test="id != null" >
+			        id = #{id},
+			      </if>
+		      			      <if test="code != null" >
+			        code = #{code},
+			      </if>
+		      			      <if test="rolename != null" >
+			        rolename = #{rolename},
+			      </if>
+		      		    </set>
+	</update>
+
+	<!--
+      - ===============================================
+      - 查询 Role 总数
+      - @author oliver
+      - @date 2017-09-11
+      - ===============================================
+    -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.micropower.manager.model.po.Role">
+		select count(*)
+		from role
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Role 信息
+      - @author oliver
+      - @date 2017-09-11
+      - ===============================================
+    -->
+	<select id="query" resultMap="RM_Role" parameterType="com.micropower.manager.model.po.Role">
+		select 
+		    id, 
+		    code, 
+		    rolename
+		from role
+		WHERE  id=#{id}
+	</select>
+
+	<!--
+      - ===============================================
+      - 查询 Role 分页信息
+      - @author oliver
+      - @date 2017-09-11
+      - ===============================================
+    -->
+	<select id="page" resultMap="RM_Role" parameterType="java.util.HashMap">
+		select 
+		    id, 
+		    code, 
+		    rolename
+		from role
+	</select>
+
+	<select id="list" resultMap="RM_Role" parameterType="java.util.HashMap">
+		select
+		id,
+		code,
+		rolename
+		from role
+	</select>
+</mapper>

@@ -1,70 +1,247 @@
 <div class="page page-tabs clearfix">
-	<div class="row title">
-		<div class="col-lg-6 col-xs-12">
-			单设备后台/报表中心
-		</div>
+    <div class="row title">
+        <div class="col-lg-6 col-xs-12">
+            单设备后台/报表中心
+        </div>
 
-		<div class="col-lg-6 col-xs-12 text-right">
-			<span>当前时间：</span>
+        <div class="col-lg-6 col-xs-12 text-right">
+            <span>当前时间：</span>
             <span id="now-time"></span>
-		</div>
-	</div>
-	<div class="table-responsive">
-		<div class="table-tit">
-			<div class="row">
-				<div class="col-lg-6 col-xs-12">
-					<p class="tit-name">报表列表</p>
-				</div>
-				
-				<div class="col-lg-6 col-xs-12">
-					<div class="report-btn">
-						<button type="button" class="btn btn-danger">删除</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<table class="table table-striped">
-			<thead>
-				<tr class="text-center">
-					<th><input class="allChk" type="checkbox" name="" id="" value="" /></th>
-					<th>序号</th>
-					<th>编号</th>
-					<th>状态表</th>
-					<th>异常表</th>
-				</tr>
-			</thead>
-			<tbody class="chk-body">
-				<tr>
-					<td><input type="checkbox" name="" id="" value="" /></td>
-					<td>01</td>
-					<td>PC-100</td>
-					<td>状态表</td>
-					<td>异常表</td>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <div class="table-tit">
+            <div class="row">
+                <div class="col-lg-6 col-xs-12">
+                    <p class="tit-name">报表列表</p>
+                </div>
 
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="" id="" value="" /></td>
-					<td>011</td>
-					<td>PC-200</td>
-					<td>状态表</td>
-					<td>异常表</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="" id="" value="" /></td>
-					<td>033</td>
-					<td>PC-500</td>
-					<td>状态表</td>
-					<td>异常表</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="" id="" value="" /></td>
-					<td>017</td>
-					<td>PC-2530</td>
-					<td>状态表</td>
-					<td>异常表</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-<div>
+                <div class="col-lg-6 col-xs-12">
+                    <div class="report-btn">
+                        <button type="button" class="btn btn-danger" onclick="deletereportbyid()">删除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped report-table">
+            <thead>
+            <tr class="text-center">
+                <th><input class="allChk" type="checkbox" name="" id="" value=""/></th>
+                <th>序号</th>
+                <th>编号</th>
+                <th>状态表</th>
+                <th>异常表</th>
+            </tr>
+            </thead>
+            <tbody class="chk-body" id="tablecontent1">
+            <tr>
+                <td><input type="checkbox" name="" id="0" value=""/></td>
+                <td>01</td>
+                <td>PC-100</td>
+                <td class="report-state">状态表</td>
+                <td class="report-state2">异常表</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div id="Pagination" class="pagination"></div>
+    <div class="state-list" style="display: none;">
+        <div class="modal-dialog modal-dialog2">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">状态表</h4>
+                </div>
+                <div class="modal-body2" style="height: 530px;overflow-y: scroll;">
+                    <div class="report-modal-tit">
+                        <span>机柜状态</span>
+                        <button type="button" class="btn btn-default" onclick="print1()">打印</button>
+                    </div>
+                    <div id="printstatus">
+                        <form id="ff_jgstatus">
+                            <div class="table-responsive modal-tab">
+                                <table class="table">
+                                    <tr>
+                                        <td>序号</td>
+                                        <td>传感器</td>
+                                        <td>状态</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>温度</td>
+                                        <td><input type="text" name="temperature"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>湿度</td>
+                                        <td><input type="text" name="humidity"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>前门</td>
+                                        <td><input type="text" name="frontgate"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>水浸</td>
+                                        <td><input type="text" name="flood"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>红外</td>
+                                        <td><input type="text" name="infrared"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>烟感</td>
+                                        <td><input type="text" name="smoke"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>后门</td>
+                                        <td><input type="text" name="backgate"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </form>
+                        <div class="report-modal-tit">
+                            <span>设备状态</span>
+                        </div>
+                        <div class="table-responsive modal-tab">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <td>序号</td>
+                                    <td>设备名</td>
+                                    <td>网络状态</td>
+                                    <td>硬件状态</td>
+                                </tr>
+                                </thead>
+                                <tbody id="tablecontent2">
+                                <tr>
+                                    <td>1</td>
+                                    <td>温度</td>
+                                    <td>30℃</td>
+                                    <td>1</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="report-footer">
+                            <p>
+                                <span>时间：</span>
+                                <span class="rep-time"></span>&nbsp;
+                                <span class="rep-time2"></span>
+
+                            </p>
+                            <p>
+                                <span>负责人：</span>
+                                <span>张三</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="state-list2" style="display: none;">
+        <div class="modal-dialog modal-dialog2">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close">&times;</button>
+                    <h4 class="modal-title">异常表</h4>
+                </div>
+                <div class="modal-body2" style="height: 430px;overflow-y: scroll;">
+                    <div class="report-modal-tit">
+                        <span>异常状态</span>
+                        <button type="button" class="btn btn-default" onclick="print2()">打印</button>
+                    </div>
+                    <div id="printexception">
+                        <div class="table-responsive modal-tab">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <td>序号</td>
+                                    <td>名称</td>
+                                    <td>异常</td>
+                                </tr>
+                                </thead>
+                                <tbody id="tablecontent3">
+                                <tr>
+                                    <td>1</td>
+                                    <td>温度</td>
+                                    <td>设备端口异常</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>温度</td>
+                                    <td>设备端口异常</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="report-footer">
+                            <p>
+                                <span>时间：</span>
+                                <span class="rep-time"></span>&nbsp;
+                                <span class="rep-time2"></span>
+
+                            </p>
+                            <p>
+                                <span>负责人：</span>
+                                <span>张三</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="$!env.getStaticURL('js/jquery-1.11.3.js')"></script>
 <script src="/monitor/source/js/my.js"></script>
+<script src="/monitor/source/js/report.js"></script>
+<script src="/monitor/source/js/jquery.jqprint-0.3.js"></script>
+<script src="/monitor/source/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/monitor/source/js/nsk.js"></script>
+#LoadMUI("artTemplate")
+#LoadMUI("pagination")
+<script>
+    $(function () {
+        initReport(1);
+    })
+</script>
+
+
+<script type="text/html" id="tabletemplate1">
+    {{each list as value i}}
+    <tr>
+        <td><input type="checkbox" value="{{value.id}}"/></td>
+        <td>{{i+1}}</td>
+        <td>{{value.statusno}}</td>
+        <td class="report-state" onclick="getStatusmy('{{value.statusno}}')">状态表</td>
+        <td class="report-state2" onclick="getException('{{value.statusno}}')">异常表</td>
+    </tr>
+    {{/each}}
+</script>
+
+<script type="text/html" id="tabletemplate2">
+    {{each list as value i}}
+    <tr>
+        <td>{{i+1}}</td>
+        <td>{{value.devicename}}</td>
+        <td>{{value.pingstatus}}</td>
+        <td>{{value.hardware}}</td>
+    </tr>
+    {{/each}}
+</script>
+
+<script type="text/html" id="tabletemplate3">
+    {{each list as value i}}
+    <tr>
+        <td>{{i+1}}</td>
+        <td>{{value.warntype.warntypename}}</td>
+        <td>{{value.warnlog.warnDescription}}</td>
+    </tr>
+    {{/each}}
+</script>

@@ -1,109 +1,163 @@
 <div class="page page-notification clearfix">
 
-	<div class="row title">
-		<div class="col-lg-6 col-xs-12">
-			单设备后台/事件处理
-		</div>
+    <div class="row title">
+        <div class="col-lg-6 col-xs-12">
+            单设备后台/事件处理
+        </div>
 
-		<div class="col-lg-6 col-xs-12 text-right">
-			<span>当前时间：</span>
+        <div class="col-lg-6 col-xs-12 text-right">
+            <span>当前时间：</span>
             <span id="now-time"></span>
-		</div>
-	</div>
-	<div class="table-responsive">
-		<div class="table-tit">
-			<div class="row">
-				<div class="col-lg-3 col-xs-12">
-					<p class="tit-name">事件处理列表</p>
-				</div>
-				<div class="col-lg-3 col-xs-12">
-					<span>告警类型：</span>
-					<select class="even-sel2">
-						<option>温度告警</option>
-						<option>湿度告警</option>
-						<option>门碰告警</option>
-						<option>服务器告警</option>
-						<option>冻结告警</option>
-						<option>水浸告警</option>
-						<option>红外告警</option>
-						<option>烟感告警</option>
-						<option>机组告警</option>
-						<option>短信告警</option>
-					</select>
-					
-				</div>
-				<div class="col-lg-6">
-					<div class="enev-deal">
-						<span>告警时间：</span>
-						<span><input class="warn-time" type="text" readonly></span>
-						<span>~</span>
-						<span><input class="warn-time" type="text" readonly></span>
-						<button type="button" class="btn btn-info btn-sm">查询</button>
-						<button type="button" class="btn btn-warning btn-sm">处理</button>
-						<button type="button" class="btn btn-danger btn-sm">删除</button>
-					</div>
-				</div>
-				
-			</div>
-		</div>
-		<table class="table table-striped">
-			<thead>
-				<tr class="text-center">
-					<th><input class="allChk" type="checkbox" name="" id="" value="" /></th>
-					<th>序号</th>
-					<th>告警类型</th>
-					<th>告警信息</th>
-					<th>图片</th>
-					<th>链接状态</th>
-					<th>告警时间</th>
-					<th>状态说明</th>
-				</tr>
-			</thead>
-			<tbody class="chk-body">
-				<tr>
-					<td><input type="checkbox" name="" id="" value="" /></td>
-					<td>01</td>
-					<td>类型1</td>
-					<td>温度太高</td>
-					<td>无</td>
-					<td>ping:offfline</td>
-					<td>2017</td>
-					<td>略</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="" id="" value="" /></td>
-					<td>012</td>
-					<td>类型12</td>
-					<td>温度太高</td>
-					<td>无</td>
-					<td>ping:offfline</td>
-					<td>207</td>
-					<td>略</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="" id="" value="" /></td>
-					<td>013</td>
-					<td>类型16</td>
-					<td>温度太高</td>
-					<td>无</td>
-					<td>ping:offfline</td>
-					<td>2087</td>
-					<td>略</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="" id="" value="" /></td>
-					<td>45</td>
-					<td>类型45</td>
-					<td>温度太高</td>
-					<td>无</td>
-					<td>ping:offfline</td>
-					<td>007</td>
-					<td>略</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <div class="table-tit">
+            <div class="row">
+                <div class="col-lg-3 col-xs-12">
+                    <p class="tit-name">事件处理列表</p>
+                </div>
+                <div class="col-lg-3 col-xs-12">
+                    <span>告警类型：</span>
+                    <select class="even-sel2" id="warntypeid">
+                        <option value="-1">全部类型</option>
+
+                    </select>
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="enev-deal">
+                        <span>告警时间：</span>
+                        <span><input class="warn-time" type="text" readonly id="starttime"></span>
+                        <span>~</span>
+                        <span><input class="warn-time" type="text" readonly id="endtime"></span>
+                        <button type="button" class="btn btn-info btn-sm" id="querywarnlogid">查询</button>
+                        <button type="button" class="btn btn-warning btn-sm" onclick="deal_modal()">处理</button>
+                        #*<button type="button" class="btn btn-danger btn-sm" onclick="deletewarnlog()">删除</button>*#
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="deal_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" onclick="closeDel()">&times;</button>
+                            <h4 class="modal-title">事件处理</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-lg-3 col-sm-2 control-label">处理类型：</label>
+                                <div class="col-lg-9 col-sm-10">
+                                    <select class="form-control" id="decriptionfirst">
+                                        <option id="decription1">正常维护</option>
+                                        <option id="decription2">系统故障</option>
+                                        <option id="decription3">设备故障</option>
+                                        <option id="decription4">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 col-sm-2 control-label">说明：</label>
+                                <div class="col-lg-9 col-sm-10">
+                                    <textarea class="form-control" rows="3" id="decriptionlast" style="resize: none;"></textarea>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" onclick="closeDel()">取消</button>
+                            <button type="button" class="btn btn-primary" onclick="saveDel()">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr class="text-center">
+                <th><input class="allChk" type="checkbox" name="" id="" value=""/></th>
+                <th>序号</th>
+                <th>告警类型</th>
+                <th>告警信息</th>
+                <th>图片</th>
+                <th>链接状态</th>
+                <th>告警时间</th>
+                <th>状态说明</th>
+                <th>操作描述</th>
+            </tr>
+            </thead>
+            <tbody class="chk-body" id="table_content">
+            <tr>
+                <td><input type="checkbox" name="" id="" value=""/></td>
+                <td>01</td>
+                <td>类型1</td>
+                <td>温度太高</td>
+                <td>无</td>
+                <td>ping:offfline</td>
+                <td>2017</td>
+                <td>略</td>
+                <td>略</td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="Pagination" class="pagination"></div>
+    </div>
 </div>
-<script src="/monitor/source/js/jquery.cxcalendar.min.js" ></script>
+<script src="$!env.getStaticURL('js/jquery-1.11.3.js')"></script>
+<script src="/monitor/source/js/jquery.cxcalendar.min.js"></script>
 <script src="/monitor/source/js/evenC.js"></script>
 <script src="/monitor/source/js/my.js"></script>
+
+#LoadMUI("artTemplate")
+#LoadMUI("pagination")
+
+<script>
+    $(function () {
+        initwarnlog(1);
+        querywarnlog();
+    })
+</script>
+
+<script type="text/html" id="t:table_tmp">
+    {{each list as value i}}
+    <tr>
+        <td><input type="checkbox" name="" id="id" value="{{value.warnlog.id}}"/></td>
+        <td>{{i+1}}</td>
+        <td>{{value.warntype.warntypename}}</td>
+        <td>{{value.warnlog.warnDescription}}</td>
+        <td>
+            {{if value.warnlog.pictureUrl==''}}
+            无
+            {{else}}
+            <a href="../{{value.warnlog.pictureUrl}}" target="_blank">点击查看</a>
+            {{/if}}
+        </td>
+        <td>ping:offfline</td>
+        <td>{{value.warnlog.warnTime}}</td>
+        <td>
+            {{if value.warnlog.warnState=='0'}}
+            未处理
+            {{else if value.warnlog.warnState=='1'}}
+            派工
+            {{else if value.warnlog.warnState=='2'}}
+            维修中
+            {{else if value.warnlog.warnState=='3'}}
+            完工
+            {{else if value.warnlog.warnState=='4'}}
+            消警
+            {{/if}}
+        </td>
+        <td>{{value.warnlog.operationDetail}}</td>
+    </tr>
+    {{/each}}
+</script>
+
+<script type="text/html" id="t:warntype_tmp">
+    {{each list as value i}}
+    <option value="{{value.id}}">{{value.warntypename}}</option>
+    {{/each}}
+</script>

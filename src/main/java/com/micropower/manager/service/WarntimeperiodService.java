@@ -2,6 +2,7 @@ package com.micropower.manager.service;
 
 import com.micropower.manager.model.po.User;
 import com.micropower.manager.model.po.Warntimeperiod;
+import com.micropower.manager.model.pojo.WarntimeperiodPojo;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ public interface WarntimeperiodService extends BaseService<Warntimeperiod> {
 
     Integer delete(Integer id);
 
-    List<Warntimeperiod> list();
+    List<WarntimeperiodPojo> listpojo();
 
+    List<Warntimeperiod> list();
 }

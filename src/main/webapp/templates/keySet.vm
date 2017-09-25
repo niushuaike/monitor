@@ -1,4 +1,4 @@
-<div class="page page-typography">
+<div class="page page-keySet">
 	<div class="row title">
 		<div class="col-lg-6 col-xs-12">
 			单设备后台/环境系统
@@ -19,23 +19,38 @@
 					<div class="tit-btn text-right">
 						<button type="button" class="btn btn-success mr10 key-btn">添加</button>
 						<button type="button" class="btn btn-primary mr10 key-edit">编辑</button>
-						<button type="button" class="btn btn-danger mr10">删除</button>
-						<button type="button" class="btn btn-warning mr10">冻结</button>
+						<button type="button" class="btn btn-danger mr10" id="deletebyid">删除</button>
+                        <div class="del">
+                            <span class="fadin" onclick="closeDel($(this))">X</span>
+                            <div class="block_con">
+                                <div class="del-left">
+                                    <img src="/monitor/source/images/block.png"/>
+                                </div>
+                                <div class="del-right">
+                                    <p class="block-tit">请勾选一条数据</p>
+                                    <p>
+                                        <button type="button" class="btn btn-info btn-sm" onclick="closeDel($(this))">确定</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-warning mr10">冻结</button>
 						<div class="block" style="display: none;">
 							<span class="fadin">X</span>
 							<div class="block_con">
 								<div class="block-left">
-									<img src="images/block.png"/>
+									<img src="/monitor/source/images/block.png"/>
 								</div>
 								<div class="block-right">
 									<p class="block-tit">请输入冻结警告时间</p>
 									<p>
-										<input type="text" name="" id="" value="" />
+										<input type="text" name="" id="intervaltimeid" value="" />
 										<span>分钟</span>
 									</p>
 									<p>
 										<button type="button" class="btn btn-default btn-sm">取消</button>
-										<button type="button" class="btn btn-info btn-sm">保存</button>
+										<button type="button" class="btn btn-info btn-sm" id="savepauseid">保存</button>
 									</p>
 								</div>
 							</div>
@@ -74,81 +89,77 @@
 	                <h4 class="modal-title" id="myModalLabel">添加关键设备</h4>
 	            </div>
 	            <div class="modal-body">
-	            	<form class="form-horizontal" role="form">
+	            	<form class="form-horizontal" role="form" id="formadd">
 						<div class="form-group">
 							<label class="col-lg-3 col-sm-2 control-label">设备名称：</label>
 							<div class="col-lg-9 col-sm-10">
-								<input type="text" class="form-control">
+								<input type="hidden" name="id" id="deviceId">
+								<input type="text" class="form-control" name="deviceName" id="deviceNameModal">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-lg-3 col-sm-2 control-label">设备类型：</label>
+							<label class="col-lg-3 col-sm-2 control-label">设备类N型：</label>
 							<div class="col-lg-9 col-sm-10">
-								<select class="form-control">
-							      	<option>海康</option>
-							      	<option>大华</option>
-							      	<option>普通</option>
+								<select class="form-control" name="deviceType" id="deviceTypeModal">
+							      	<option value="2" id="deviceTypeModal2">普通</option>
+							      	<option value="3" id="deviceTypeModal3">海康</option>
+							      	<option value="4" id="deviceTypeModal4">大华</option>
 							    </select>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 col-sm-2 control-label">IP地址：</label>
-							<div class="col-lg-9 col-sm-10 ip-number">
-								<input type="text" class="form-control">
-								<input type="text" class="form-control">
-								<input type="text" class="form-control">
-								<input type="text" class="form-control">
+							<div class="col-lg-9 col-sm-10 ">
+								<input type="text" class="form-control" name="deviceIp" id="deviceIpModal">
+
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 col-sm-2 control-label">端口：</label>
 							<div class="col-lg-9 col-sm-10">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="devicePort" id="devicePortModal">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 col-sm-2 control-label">登录账号：</label>
 							<div class="col-lg-9 col-sm-10">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="loginName" id="loginNameModal">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 col-sm-2 control-label">登录密码：</label>
 							<div class="col-lg-9 col-sm-10">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="loginPasswd" id="loginPassedModal">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 col-sm-2 control-label">时间段方案：</label>
 							<div class="col-lg-9 col-sm-10">
-								<select class="form-control" id="warntimeperiod">
-							      	<option>全时段</option>
-							      	<option>工作时段</option>
+								<select class="form-control" id="timeperiodModal" name="timeperiod">
+							      	<option>未设置</option>
 							    </select>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 col-sm-2 control-label">告警方式：</label>
-							<div class="col-lg-9 col-sm-10 radio-lable">
+							<div class="col-lg-9 col-sm-10 radio-lable" id="warnstyle">
 								<label class="radio-inline">
-									<input type="radio" id="sex-1" name="mail" value="option1"> 邮件警告 
-								</label>
-								<label class="radio-inline">
-									<input type="radio" id="sex-2" name="mail" value="option2">禁止警告
+									<input type="radio" id="sex-1" name="mail" value="option1"> 未设置
 								</label>
 							</div>
 						</div>
 						<div class="form-group mail" style="display: none;">
 							<label class="col-lg-3 col-sm-2 control-label">通知用户：</label>
 							<div class="col-lg-9 col-sm-10 give-person">
-								<input type="text" class="form-control">
+								<input type="hidden" name="users" id="userssubmit" value="">
+								<input type="text" class="form-control"  id="users" value="">
 								<button type="button" class="btn btn-info btn-sm modal-sel">选择</button>
 							</div>
 						</div>
 						<div class="form-group mail" style="display: none;">
 							<label class="col-lg-3 control-label">重复告警时间：</label>
 							<div class="col-lg-9 col-sm-10 warn-time">
-								<input type="text" class="form-control">
+								<input type="text" class="form-control" name="intervaltime">
 								<span>分钟</span>
 							</div>
 						</div>
@@ -157,7 +168,7 @@
 	            </div>
 	            <div class="modal-footer">
 	                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-	                <button type="button" class="btn btn-primary">保存</button>
+	                <button type="button" class="btn btn-primary" id="btn-sava">保存</button>
 	            </div>
 	        </div>
 	    </div>
@@ -183,9 +194,9 @@
 
 								</tr>
 							</thead>
-							<tbody class="chk-body2">
+							<tbody class="chk-body2" id="selectuser">
 								<tr>
-									<td><input type="checkbox" name="" id="" value="" /></td>
+									<td><input type="checkbox" name="u" id="" value="" /></td>
 									<td>张三</td>
 									<td>1245646@163.com</td>
 									<td>12345645</td>
@@ -193,7 +204,7 @@
 
 								</tr>
 								<tr>
-									<td><input type="checkbox" name="" id="" value="" /></td>
+									<td><input type="checkbox" name="u" id="" value="" /></td>
 									<td>李四</td>
 									<td>17894646@163.com</td>
 									<td>7894</td>
@@ -207,119 +218,22 @@
 	            </div>
 	            <div class="modal-footer">
 	                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-	                <button type="button" class="btn btn-primary">保存</button>
+	                <button type="button" class="btn btn-primary" id="btn_selectuser">保存</button>
 	            </div>
 	        </div>
 	    </div>
 	</div>
-<!-- 模态框（Modal） 编辑-->
-##	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-##	    <div class="modal-dialog">
-##	        <div class="modal-content">
-##	            <div class="modal-header">
-##	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-##	                <h4 class="modal-title" id="myModalLabel">添加关键设备</h4>
-##	            </div>
-##	            <div class="modal-body">
-##	            	<form class="form-horizontal" role="form">
-##						<div class="form-group">
-##							<label class="col-lg-3 col-sm-2 control-label">设备名称：</label>
-##							<div class="col-lg-9 col-sm-10">
-##								<input type="text" class="form-control">
-##							</div>
-##						</div>
-##						<div class="form-group">
-##							<label class="col-lg-3 col-sm-2 control-label">设备类型：</label>
-##							<div class="col-lg-9 col-sm-10">
-##								<select class="form-control">
-##							      	<option>海康</option>
-##							      	<option>大华</option>
-##							      	<option>普通</option>
-##							    </select>
-##							</div>
-##						</div>
-##						<div class="form-group">
-##							<label class="col-lg-3 col-sm-2 control-label">IP地址：</label>
-##							<div class="col-lg-9 col-sm-10 ip-number">
-##								<input type="text" class="form-control">
-##								<input type="text" class="form-control">
-##								<input type="text" class="form-control">
-##								<input type="text" class="form-control">
-##							</div>
-##						</div>
-##						<div class="form-group">
-##							<label class="col-lg-3 col-sm-2 control-label">端口：</label>
-##							<div class="col-lg-9 col-sm-10">
-##								<input type="text" class="form-control">
-##							</div>
-##						</div>
-##						<div class="form-group">
-##							<label class="col-lg-3 col-sm-2 control-label">登录账号：</label>
-##							<div class="col-lg-9 col-sm-10">
-##								<input type="text" class="form-control">
-##							</div>
-##						</div>
-##						<div class="form-group">
-##							<label class="col-lg-3 col-sm-2 control-label">登录密码：</label>
-##							<div class="col-lg-9 col-sm-10">
-##								<input type="text" class="form-control">
-##							</div>
-##						</div>
-##						<div class="form-group">
-##							<label class="col-lg-3 col-sm-2 control-label">时间段方案：</label>
-##							<div class="col-lg-9 col-sm-10">
-##								<select class="form-control">
-##							      	<option>全时段</option>
-##							      	<option>工作时段</option>
-##							    </select>
-##							</div>
-##						</div>
-##						<div class="form-group">
-##							<label class="col-lg-3 col-sm-2 control-label">告警方式：</label>
-##							<div class="col-lg-9 col-sm-10 radio-lable">
-##								<label class="radio-inline">
-##									<input type="radio" id="sex-3" name="mail" value="option1"> 邮件警告
-##								</label>
-##								<label class="radio-inline">
-##									<input type="radio" id="sex-4" name="mail" value="option2">禁止警告
-##								</label>
-##							</div>
-##						</div>
-##						<div class="form-group mail" style="display: none;">
-##							<label class="col-lg-3 col-sm-2 control-label">通知用户：</label>
-##							<div class="col-lg-9 col-sm-10 give-person">
-##								<input type="text" class="form-control">
-##								<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#selectModal">选择</button>
-##							</div>
-##						</div>
-##						<div class="form-group mail" style="display: none;">
-##							<label class="col-lg-3 control-label">重复告警时间：</label>
-##							<div class="col-lg-9 col-sm-10 warn-time">
-##								<input type="text" class="form-control">
-##								<span>分钟</span>
-##							</div>
-##						</div>
-##					</form>
-##
-##	            </div>
-##	            <div class="modal-footer">
-##	                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-##	                <button type="button" class="btn btn-primary">保存</button>
-##	            </div>
-##	        </div>
-##	    </div>
-##	</div>
 </div>
+<script src="$!env.getStaticURL('js/jquery-1.11.3.js')"></script>
 <script src="/monitor/source/js/my.js"></script>
 <script src="/monitor/source/js/keySet.js"></script>
-#*<script>
-	$(function () {
-		init();
+<script>
+
+
+    $(function () {
+        init();
+        deletebyid();
+        savepause();
     })
 
-	function add() {
-	    alert("haha");
-		$('#myModal11').modal('show');
-	    alert("hahal");
-    }
-</script>*#
+</script>

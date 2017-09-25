@@ -34,7 +34,7 @@ public class EasyPage extends Page<Object> {
 	}
 	
 	public EasyPage(int pageNum) {
-		this(20, pageNum);
+		this(10, pageNum);
 	}
 	
 	public EasyPage(int pageSize, int pageNum) {
@@ -63,7 +63,7 @@ public class EasyPage extends Page<Object> {
 		}
 		
 		String pageSize = request.getParameter("pageSize");
-		int ps = 20;
+		int ps = 10;
 		if (StringUtil.isNotEmpty(pageSize)) {
 			ps = Integer.valueOf(pageSize);
 		}

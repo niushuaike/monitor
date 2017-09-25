@@ -34,7 +34,7 @@ public class TestMapping extends TestBase {
 		
 		MappingRuning runing = new MappingRuning(Engine.mysql, url, userName, passwd);
 
-		runing.generate("warnstyle", beanPath, sqlmapPath, packageName);
+		runing.generate("alarmthreshold", beanPath, sqlmapPath, packageName);
 
 		
 	}

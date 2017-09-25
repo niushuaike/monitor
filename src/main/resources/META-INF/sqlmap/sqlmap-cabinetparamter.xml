@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cabinetparamter">
+
+	<!--
+      - ===============================================
+      - ���� Cabinetparamter Entity
+      - @author niushuaike
+      - @date 2017-09-18
+      - ===============================================
+    -->
+	<resultMap  type="com.micropower.manager.model.po.Cabinetparamter"	   id="RM_Cabinetparamter">
+		<id     property="mid"                     column="mid"                       jdbcType="BIGINT"   javaType="java.lang.Long"     />
+		<result property="tempSetting"             column="temp_setting"              jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="tempDifference"          column="temp_difference"           jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="probeCorrection"         column="probe_correction"          jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="envlControlTemperature"  column="envl_control_temperature"  jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="envControlBacklash"      column="env_control_backlash"      jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="envProbeCorrection"      column="env_probe_correction"      jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="comConStratTime"         column="com_con_strat_time"        jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="comProtectionTime"       column="com_protection_time"       jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="iaeDelayTime"            column="iae_delay_time"            jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="temFaultStartTime"       column="tem_fault_start_time"      jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="temFaultEndTime"         column="tem_fault_end_time"        jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="openTem"                 column="open_tem"                  jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="openDifference"          column="open_difference"           jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="controlMode"             column="control_mode"              jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="comCurrentOneTop"        column="com_current_one_top"       jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="comCurrentOneDown"       column="com_current_one_down"      jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="comCurrentTwoTop"        column="com_current_two_top"       jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="comCurrentTwoDown"       column="com_current_two_down"      jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="cenCurrentOneTop"        column="cen_current_one_top"       jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="cenCurrentOneDown"       column="cen_current_one_down"      jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="cenCurrentTwoTop"        column="cen_current_two_top"       jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="cenCurrentTwoDown"       column="cen_current_two_down"      jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="dissipateCurrentTop"     column="dissipate_current_top"     jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="dissipateCurrentDown"    column="dissipate_current_down"    jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="loopCurrentTop"          column="loop_current_top"          jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="loopCurrentDown"         column="loop_current_down"         jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="address"                 column="address"                   jdbcType="VARCHAR"  javaType="java.lang.String"   />
+	</resultMap>
+
+	<!--
+      - ===============================================
+      - ���� Cabinetparamter
+      - @author niushuaike
+      - @date 2017-09-18
+      - ===============================================
+    -->
+	<insert id="create" parameterType="com.micropower.manager.model.po.Cabinetparamter" useGeneratedKeys="true" keyProperty="mid">
+		insert into cabinetparamter (
+			mid, 
+			temp_setting, 
+			temp_difference, 
+			probe_correction, 
+			envl_control_temperature, 
+			env_control_backlash, 
+			env_probe_correction, 
+			com_con_strat_time, 
+			com_protection_time, 
+			iae_delay_time, 
+			tem_fault_start_time, 
+			tem_fault_end_time, 
+			open_tem, 
+			open_difference, 
+			control_mode, 
+			com_current_one_top, 
+			com_current_one_down, 
+			com_current_two_top, 
+			com_current_two_down, 
+			cen_current_one_top, 
+			cen_current_one_down, 
+			cen_current_two_top, 
+			cen_current_two_down, 
+			dissipate_current_top, 
+			dissipate_current_down, 
+			loop_current_top, 
+			loop_current_down, 
+			address
+		) values (
+		    #{mid}, 
+		    #{tempSetting}, 
+		    #{tempDifference}, 
+		    #{probeCorrection}, 
+		    #{envlControlTemperature}, 
+		    #{envControlBacklash}, 
+		    #{envProbeCorrection}, 
+		    #{comConStratTime}, 
+		    #{comProtectionTime}, 
+		    #{iaeDelayTime}, 
+		    #{temFaultStartTime}, 
+		    #{temFaultEndTime}, 
+		    #{openTem}, 
+		    #{openDifference}, 
+		    #{controlMode}, 
+		    #{comCurrentOneTop}, 
+		    #{comCurrentOneDown}, 
+		    #{comCurrentTwoTop}, 
+		    #{comCurrentTwoDown}, 
+		    #{cenCurrentOneTop}, 
+		    #{cenCurrentOneDown}, 
+		    #{cenCurrentTwoTop}, 
+		    #{cenCurrentTwoDown}, 
+		    #{dissipateCurrentTop}, 
+		    #{dissipateCurrentDown}, 
+		    #{loopCurrentTop}, 
+		    #{loopCurrentDown}, 
+		    #{address}
+		)
+	</insert>
+
+	<!--
+      - ===============================================
+      - �޸� Cabinetparamter
+      - @author niushuaike
+      - @date 2017-09-18
+      - ===============================================
+    -->
+	<update id="update" parameterType="com.micropower.manager.model.po.Cabinetparamter">
+	      update cabinetparamter
+		<set >
+			<if test="mid != null and mid !=''" >
+				mid = #{mid},
+			</if>
+			<if test="tempSetting != null and tempSetting !=''" >
+				temp_setting = #{tempSetting},
+			</if>
+			<if test="tempDifference != null and tempDifference !=''" >
+				temp_difference = #{tempDifference},
+			</if>
+			<if test="probeCorrection != null and probeCorrection !=''" >
+				probe_correction = #{probeCorrection},
+			</if>
+			<if test="envlControlTemperature != null and envlControlTemperature !=''" >
+				envl_control_temperature = #{envlControlTemperature},
+			</if>
+			<if test="envControlBacklash != null and envControlBacklash !=''" >
+				env_control_backlash = #{envControlBacklash},
+			</if>
+			<if test="envProbeCorrection != null and envProbeCorrection !=''" >
+				env_probe_correction = #{envProbeCorrection},
+			</if>
+			<if test="comConStratTime != null and comConStratTime !=''" >
+				com_con_strat_time = #{comConStratTime},
+			</if>
+			<if test="comProtectionTime != null and comProtectionTime !=''" >
+				com_protection_time = #{comProtectionTime},
+			</if>
+			<if test="iaeDelayTime != null and iaeDelayTime !=''" >
+				iae_delay_time = #{iaeDelayTime},
+			</if>
+			<if test="temFaultStartTime != null and temFaultStartTime !=''" >
+				tem_fault_start_time = #{temFaultStartTime},
+			</if>
+			<if test="temFaultEndTime != null and temFaultEndTime !=''" >
+				tem_fault_end_time = #{temFaultEndTime},
+			</if>
+			<if test="openTem != null and openTem !=''" >
+				open_tem = #{openTem},
+			</if>
+			<if test="openDifference != null and openDifference !=''" >
+				open_difference = #{openDifference},
+			</if>
+			<if test="controlMode != null and controlMode !=''" >
+				control_mode = #{controlMode},
+			</if>
+			<if test="comCurrentOneTop != null and comCurrentOneTop !=''" >
+				com_current_one_top = #{comCurrentOneTop},
+			</if>
+			<if test="comCurrentOneDown != null and comCurrentOneDown !=''" >
+				com_current_one_down = #{comCurrentOneDown},
+			</if>
+			<if test="comCurrentTwoTop != null and comCurrentTwoTop !=''" >
+				com_current_two_top = #{comCurrentTwoTop},
+			</if>
+			<if test="comCurrentTwoDown != null and comCurrentTwoDown !=''" >
+				com_current_two_down = #{comCurrentTwoDown},
+			</if>
+			<if test="cenCurrentOneTop != null and cenCurrentOneTop !=''" >
+				cen_current_one_top = #{cenCurrentOneTop},
+			</if>
+			<if test="cenCurrentOneDown != null and cenCurrentOneDown !=''" >
+				cen_current_one_down = #{cenCurrentOneDown},
+			</if>
+			<if test="cenCurrentTwoTop != null and cenCurrentTwoTop !=''" >
+				cen_current_two_top = #{cenCurrentTwoTop},
+			</if>
+			<if test="cenCurrentTwoDown != null and cenCurrentTwoDown !=''" >
+				cen_current_two_down = #{cenCurrentTwoDown},
+			</if>
+			<if test="dissipateCurrentTop != null and dissipateCurrentTop !=''" >
+				dissipate_current_top = #{dissipateCurrentTop},
+			</if>
+			<if test="dissipateCurrentDown != null and dissipateCurrentDown !=''" >
+				dissipate_current_down = #{dissipateCurrentDown},
+			</if>
+			<if test="loopCurrentTop != null and loopCurrentTop !=''" >
+				loop_current_top = #{loopCurrentTop},
+			</if>
+			<if test="loopCurrentDown != null and loopCurrentDown !=''" >
+				loop_current_down = #{loopCurrentDown},
+			</if>
+			<if test="address != null and address !=''" >
+				address = #{address},
+			</if>
+		</set>
+		WHERE mid=1
+	</update>
+
+	<!--
+      - ===============================================
+      - ��ѯ Cabinetparamter ����
+      - @author niushuaike
+      - @date 2017-09-18
+      - ===============================================
+    -->
+	<select id="count" resultType="java.lang.Integer" parameterType="com.micropower.manager.model.po.Cabinetparamter">
+		select count(*)
+		from cabinetparamter
+	</select>
+
+	<!--
+      - ===============================================
+      - ��ѯ Cabinetparamter ��Ϣ
+      - @author niushuaike
+      - @date 2017-09-18
+      - ===============================================
+    -->
+	<select id="queryOnlyOne" resultMap="RM_Cabinetparamter" parameterType="com.micropower.manager.model.po.Cabinetparamter">
+		select 
+		    mid, 
+		    temp_setting, 
+		    temp_difference, 
+		    probe_correction, 
+		    envl_control_temperature, 
+		    env_control_backlash, 
+		    env_probe_correction, 
+		    com_con_strat_time, 
+		    com_protection_time, 
+		    iae_delay_time, 
+		    tem_fault_start_time, 
+		    tem_fault_end_time, 
+		    open_tem, 
+		    open_difference, 
+		    control_mode, 
+		    com_current_one_top, 
+		    com_current_one_down, 
+		    com_current_two_top, 
+		    com_current_two_down, 
+		    cen_current_one_top, 
+		    cen_current_one_down, 
+		    cen_current_two_top, 
+		    cen_current_two_down, 
+		    dissipate_current_top, 
+		    dissipate_current_down, 
+		    loop_current_top, 
+		    loop_current_down, 
+		    address
+		from cabinetparamter
+		WHERE mid=1
+	</select>
+
+	<!--
+      - ===============================================
+      - ��ѯ Cabinetparamter ��ҳ��Ϣ
+      - @author niushuaike
+      - @date 2017-09-18
+      - ===============================================
+    -->
+	<select id="page" resultMap="RM_Cabinetparamter" parameterType="java.util.HashMap">
+		select 
+		    mid, 
+		    temp_setting, 
+		    temp_difference, 
+		    probe_correction, 
+		    envl_control_temperature, 
+		    env_control_backlash, 
+		    env_probe_correction, 
+		    com_con_strat_time, 
+		    com_protection_time, 
+		    iae_delay_time, 
+		    tem_fault_start_time, 
+		    tem_fault_end_time, 
+		    open_tem, 
+		    open_difference, 
+		    control_mode, 
+		    com_current_one_top, 
+		    com_current_one_down, 
+		    com_current_two_top, 
+		    com_current_two_down, 
+		    cen_current_one_top, 
+		    cen_current_one_down, 
+		    cen_current_two_top, 
+		    cen_current_two_down, 
+		    dissipate_current_top, 
+		    dissipate_current_down, 
+		    loop_current_top, 
+		    loop_current_down, 
+		    address
+		from cabinetparamter
+	</select>
+</mapper>

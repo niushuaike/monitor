@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* pagination */
+.pagination{font-size:80%;padding-right: 3px; padding-left: 3px; padding-bottom: 3px; margin: 12px; padding-top: 12px; text-align: center;margin:0 auto;}    
+.pagination a{text-decoration:none;border:solid 1px #AAE;color:#15B;}
+.pagination a,.pagination span{display:inline-block;padding:0.3em 0.5em;margin-right:5px;margin-bottom:5px;}
+.pagination .current{background:#26B;color:#fff;border:solid 1px #AAE;}
+.pagination .current.prev, .pagination .current.next{color:#999;border-color:#999;background:#fff;}
+
+/*分页*/
+.pagination { font-size: 13px; text-align: center; }
+.pagination .current.prev, .pagination .current.next {color: #333; border-color: #ddd;background: #fff;}
+.pagination .current { background: #fcae59;color: #fff; border: solid 1px #fef7f0;}
+.pagination input{display:inline-block;padding: 0.36em 0.5em; margin-bottom: 5px;border: solid 1px #ddd;}
+.pagination a {text-decoration: none;border: solid 1px #ddd;color: #333;}
+.pagination a:hover {text-decoration: none;border: solid 1px #fef7f0;color: #fff;}

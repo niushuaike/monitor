@@ -5,5 +5,5 @@ package com.micropower.manager.utils;
  */
 public interface Constant {
 
-    String DATAPATH="D:\\code\\monitor\\src\\main\\java\\com\\micropower\\manager\\utils\\";
+    String DATAPATH="http://192.168.199.152/data/";
 }

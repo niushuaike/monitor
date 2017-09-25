@@ -19,7 +19,7 @@
 		<url>
 			<list>
 				<!--  <property name="default">jdbc:mysql://rm-bp19bd76u6hac0854.mysql.rds.aliyuncs.com:3306/nanfu?characterEncoding=utf8</property>-->
-				 <property name="default">jdbc:mysql://127.0.0.1:3306/choeur?characterEncoding=utf8</property>
+				 <property name="default">jdbc:mysql://192.168.199.105:3306/choeur?characterEncoding=utf8</property>
 			</list>
 		</url>
 		<username>

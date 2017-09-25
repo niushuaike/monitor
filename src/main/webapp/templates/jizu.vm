@@ -1,15 +1,15 @@
 <div class="page page-email clearfix" ng-controller="EmailCtrl">
-		<div class="row title">
-			<div class="col-lg-6 col-xs-12">
-				单设备后台/机组动力状态
-			</div>
+    <div class="row title">
+        <div class="col-lg-6 col-xs-12">
+            单设备后台/机组动力状态
+        </div>
 
-			<div class="col-lg-6 col-xs-12 text-right">
-				<span>当前时间：</span>
-	            <span id="now-time"></span>
-			</div>
-		</div>
-
+        <div class="col-lg-6 col-xs-12 text-right">
+            <span>当前时间：</span>
+            <span id="now-time"></span>
+        </div>
+    </div>
+    <form id="jizuff">
     <div class="row">
         <ul>
             <li style="background:#1abc9c;">
@@ -17,10 +17,10 @@
                     <i class="fa fa-sun-o fa-4x" aria-hidden="true"></i>
                 </div>
                 <div class="row-font">
-                    <p>温度设定</p>
-                    <p>30℃</p>
-                    <p>环境控制温度</p>
-                    <p>30℃</p>
+                    <p>箱内温度</p>
+                    <p><input type="text" name="xnwd" value="0">℃</p>
+                    <p>环境温度</p>
+                    <p><input type="text" name="hjkz" value="0">℃</p>
                 </div>
             </li>
             <li style="background: #e74c3c;">
@@ -29,9 +29,9 @@
                 </div>
                 <div class="row-font">
                     <p>压缩机1电流</p>
-                    <p>1A</p>
+                    <p><input type="text" name="ysjone" value="0">A</p>
                     <p>压缩机2电流</p>
-                    <p>220V</p>
+                    <p><input type="text" name="ysjtwo" value="0">A</p>
                 </div>
             </li>
             <li style="background: #3498db;">
@@ -40,9 +40,9 @@
                 </div>
                 <div class="row-font">
                     <p>离心风机1电流</p>
-                    <p>1A</p>
+                    <p><input type="text" name="lxfjone" value="0">A</p>
                     <p>离心风机2电流</p>
-                    <p>2A</p>
+                    <p><input type="text" name="lxfjtwo" value="0">A</p>
                 </div>
             </li>
             <li style="background: #f39c12;">
@@ -51,9 +51,9 @@
                 </div>
                 <div class="row-font">
                     <p>散热风机电流</p>
-                    <p>1A</p>
+                    <p><input type="text" name="srfj" value="0">A</p>
                     <p>循环风机电流</p>
-                    <p>1A</p>
+                    <p><input type="text" name="xhfj" value="0">A</p>
                 </div>
             </li>
             <li style="background: #34495e;">
@@ -61,22 +61,34 @@
                     <i class="fa fa-sun-o fa-4x" aria-hidden="true"></i>
                 </div>
                 <div class="row-font">
-                    <p>工作状态</p>
-                    <p>正常</p>
+                    <p>设备开机状态</p>
+                    <p><input type="text" name="gzztstatus" value="暂无"></p>
                     <p>故障状态</p>
-                    <p>无</p>
+                    <p><input type="text" name="sbktztstatus" value="暂无"></p>
                 </div>
             </li>
         </ul>
     </div>
-		<div class="row title red">
-			<div class="col-lg-12 col-xs-12">
-				警告！当前机柜温度过高
-			</div>
-		</div>
-		<div class="chart">
-			<p>温湿度监控曲线</p>
-			
-		</div>
+    </form>
+    <div class="row title red">
+        <div class="col-lg-12 col-xs-12" id="warninfo">
+        </div>
+    </div>
+    <div class="chart">
+        <p>温度监控曲线</p>
+        <div id="jizuth" style="height:400px;"></div>
+    </div>
 </div>
+<script src="$!env.getStaticURL('js/jquery-1.11.3.js')"></script>
 <script src="/monitor/source/js/my.js"></script>
+<script src="/monitor/source/js/echarts.min.js"></script>
+<script src="/monitor/source/js/nsk.js"></script>
+<script src="/monitor/source/js/jizu.js"></script>
+
+<script>
+    $(function(){
+        initJZ();
+        window.setInterval(warninfo, 1000*2);
+        chartsJZ()
+    })
+</script>

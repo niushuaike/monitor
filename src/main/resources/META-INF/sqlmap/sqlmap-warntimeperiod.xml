@@ -33,7 +33,6 @@
     -->
 	<insert id="create" parameterType="com.micropower.manager.model.po.Warntimeperiod" useGeneratedKeys="true" keyProperty="id">
 		insert into warntimeperiod (
-			id, 
 			timeperiodname, 
 			Sunday, 
 			Monday, 
@@ -43,7 +42,6 @@
 			Friday, 
 			Saturday
 		) values (
-		    #{id}, 
 		    #{timeperiodname}, 
 		    #{sunday}, 
 		    #{monday}, 
@@ -65,34 +63,33 @@
 	<update id="update" parameterType="com.micropower.manager.model.po.Warntimeperiod">
 	      update warntimeperiod
 	      <set >
-	         			      <if test="id != null" >
-			        id = #{id},
-			      </if>
+
 		      			      <if test="timeperiodname != null" >
 			        timeperiodname = #{timeperiodname},
 			      </if>
-		      			      <if test="Sunday != null" >
-			        Sunday = #{Sunday},
+		      			      <if test="sunday != null" >
+			        Sunday = #{sunday},
 			      </if>
-		      			      <if test="Monday != null" >
-			        Monday = #{Monday},
+		      			      <if test="monday != null" >
+			        Monday = #{monday},
 			      </if>
-		      			      <if test="Tuesday != null" >
-			        Tuesday = #{Tuesday},
+		      			      <if test="tuesday != null" >
+			        Tuesday = #{tuesday},
 			      </if>
-		      			      <if test="Wednesday != null" >
-			        Wednesday = #{Wednesday},
+		      			      <if test="wednesday != null" >
+			        Wednesday = #{wednesday},
 			      </if>
-		      			      <if test="Thursday != null" >
-			        Thursday = #{Thursday},
+		      			      <if test="thursday != null" >
+			        Thursday = #{thursday},
 			      </if>
-		      			      <if test="Friday != null" >
-			        Friday = #{Friday},
+		      			      <if test="friday != null" >
+			        Friday = #{friday},
 			      </if>
-		      			      <if test="Saturday != null" >
-			        Saturday = #{Saturday},
+		      			      <if test="saturday != null" >
+			        Saturday = #{saturday},
 			      </if>
 		      		    </set>
+		WHERE id=#{id}
 	</update>
 
 	<!--
@@ -149,6 +146,7 @@
 		    Saturday
 		from warntimeperiod
 	</select>
+
 	<select id="list" resultMap="RM_Warntimeperiod" >
 		select
 		id,
@@ -162,4 +160,9 @@
 		Saturday
 		from warntimeperiod
 	</select>
+
+	<delete id="delete" parameterType="integer">
+		DELETE FROM warntimeperiod WHERE id=#{id}
+	</delete>
+
 </mapper>

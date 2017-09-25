@@ -1,28 +1,55 @@
 //索引 根据索引进行编辑
-			var index;
-			$('.chk-body tr').click(function(){
-				 index=$(this).index();
-						
-			})
-			//编辑
-			$(".jichu-edit").click(function(){
-				var ipt=$('.chk-body tr').eq(index).find('input[type=text]');
-				ipt.css('border','solid #ccc 1px');
-				ipt.attr('readonly',false);
-				$('.chk-body .ipt-p').eq(index).show();
-			})
-			//取消
-			$('.chk-body .not-save').click(function(){
-				var ipt=$('.chk-body tr').eq(index).find('input[type=text]');
-				ipt.css('border','none');
-				ipt.attr('readonly','readonly');
-				$('.ipt-p').hide();
-			})
-			//保存
-			$('.chk-body .save').click(function(){
-				var ipt=$('.chk-body tr').eq(index).find('input[type=text]');
-				ipt.css('border','none');
-				ipt.attr('readonly','readonly');
-				$('.ipt-p').hide();
-			})
-			
+
+$(function () {
+    $('.gao-table input').attr('readonly', true)
+})//初始化input为只读
+
+//编辑
+function edit() {
+    $('.gao-table input').attr('readonly', false).css('border-color', '#ccc')
+}
+//保存
+function save() {
+    $('.gao-table input').attr('readonly', true).css('border-color', '#e2e1e1');
+    updatethreshold();
+}
+
+
+function initthreshold() {
+    var url = "/monitor/bjm/alarmthreshold/queryOnlyOne";
+    var params = {}
+
+    $.post(url, params, function (data) {
+        $("#threshold_form").formEdit(data);
+    })
+}
+
+function updatethreshold() {
+    var url = "/monitor/bjm/alarmthreshold/updateAlarmThreshold";
+    var params = $("#threshold_form").serializeArray();
+
+    $.post(url, params, function (data) {
+        if (data == 1) {
+            alert("修改成功");
+            initthreshold();
+        } else {
+            alert("修改失败");
+        }
+    })
+}
+
+function recoverDefault() {
+    var url = "/monitor/bjm/alarmthreshold/recoverDefault";
+    alert("开始请求！");
+    var params = {
+
+    }
+    $.post(url, params, function (data) {
+        if (data == 1) {
+            alert("恢复成功!");
+            initthreshold();
+        } else {
+            alert("恢复失败!");
+        }
+    })
+}

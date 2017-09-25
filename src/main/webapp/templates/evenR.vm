@@ -1,4 +1,4 @@
-<div class="page page-icons">
+<div class="page page-icon">
 
 	<div class="row title">
 		<div class="col-lg-6 col-xs-12">
@@ -19,26 +19,17 @@
 				<div class="col-lg-4 col-xs-12 text-left">
 					<div class="tit-btn">
 						<span>告警类型：</span>
-						<select class="form-control even-sel">
-							<option>温度告警</option>
-							<option>湿度告警</option>
-							<option>门碰告警</option>
-							<option>服务器告警</option>
-							<option>冻结告警</option>
-							<option>水浸告警</option>
-							<option>红外告警</option>
-							<option>烟感告警</option>
-							<option>机组告警</option>
-							<option>短信告警</option>
+						<select class="form-control even-sel" id="warntypeid">
+							<option value="-1">全部告警</option>
 						</select>
 					</div>
 				</div>
 				<div class="col-lg-5 col-xs-12 even-btn">
 					<span>告警时间：</span>
-						<span><input class="warn-time" type="text" readonly></span>
+						<span><input class="warn-time" type="text" readonly id="starttime"></span>
 						<span>~</span>
-						<span><input class="warn-time" type="text" readonly></span>
-						<button type="button" class="btn btn-info btn-sm">查询</button>
+						<span><input class="warn-time" type="text" readonly id="endtime"></span>
+						<button type="button" class="btn btn-info btn-sm" id="querywarnlogid">查询</button>
 				</div>
 			</div>
 		</div>
@@ -53,9 +44,10 @@
 					<th>链接状态</th>
 					<th>告警时间</th>
 					<th>状态说明</th>
+					<th>操作描述</th>
 				</tr>
 			</thead>
-			<tbody class="chk-body">
+			<tbody class="chk-body" id="table_content">
 				<tr>
 					<td><input type="checkbox" name="" id="" value="" /></td>
 					<td>01</td>
@@ -65,42 +57,66 @@
 					<td>ping:offfline</td>
 					<td>2017</td>
 					<td>略</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="" id="" value="" /></td>
-					<td>012</td>
-					<td>类型12</td>
-					<td>温度太高</td>
-					<td>无</td>
-					<td>ping:offfline</td>
-					<td>207</td>
-					<td>略</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="" id="" value="" /></td>
-					<td>013</td>
-					<td>类型16</td>
-					<td>温度太高</td>
-					<td>无</td>
-					<td>ping:offfline</td>
-					<td>2087</td>
-					<td>略</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="" id="" value="" /></td>
-					<td>45</td>
-					<td>类型45</td>
-					<td>温度太高</td>
-					<td>无</td>
-					<td>ping:offfline</td>
-					<td>007</td>
 					<td>略</td>
 				</tr>
 			</tbody>
 		</table>
+        <div id="Pagination" class="pagination"></div>
 	</div>
 
 </div>
+<script src="$!env.getStaticURL('js/jquery-1.11.3.js')"></script>
 <script src="/monitor/source/js/jquery.cxcalendar.min.js" ></script>
 <script src="/monitor/source/js/evenC.js"></script>
 <script src="/monitor/source/js/my.js"></script>
+#LoadMUI("artTemplate")
+#LoadMUI("pagination")
+
+<script>
+    $(function () {
+        initwarnlog(1);
+        querywarnlog();
+    })
+</script>
+
+<script type="text/html" id="t:table_tmp">
+    {{each list as value i}}
+    <tr>
+        <td><input type="checkbox" name="" id="" value="" /></td>
+        <td>{{i+1}}</td>
+        <td>{{value.warntype.warntypename}}</td>
+        <td>{{value.warnlog.warnDescription}}</td>
+        <td>
+            {{if value.warnlog.pictureUrl==''}}
+            无
+            {{else}}
+            <a href="../{{value.warnlog.pictureUrl}}" target="_blank">点击查看</a>
+            {{/if}}
+		</td>
+        <td>ping:offfline</td>
+        <td>{{value.warnlog.warnTime}}</td>
+        <td>
+            {{if value.warnlog.warnState=='0'}}
+            未处理
+            {{else if value.warnlog.warnState=='1'}}
+            派工
+            {{else if value.warnlog.warnState=='2'}}
+            维修中
+            {{else if value.warnlog.warnState=='3'}}
+            完工
+            {{else if value.warnlog.warnState=='4'}}
+            消警
+            {{/if}}
+        </td>
+        <td>{{value.warnlog.operationDetail}}</td>
+    </tr>
+    {{/each}}
+</script>
+
+<script type="text/html" id="t:warntype_tmp">
+    {{each list as value i}}
+    <option value="{{value.id}}">{{value.warntypename}}</option>
+    {{/each}}
+</script>
+
+

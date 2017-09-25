@@ -1,115 +1,391 @@
-<link rel="stylesheet" href="../../styles/jquery.datetimepicker.css" />
+<link rel="stylesheet" href="../../styles/jquery.datetimepicker.css"/>
 <div class="page page-dingshiSave clearfix">
-	<div class="row title">
-		<div class="col-lg-6 col-xs-12">
-			单设备后台/设备管理 /定时保存设置
-		</div>
+    <div class="row title">
+        <div class="col-lg-6 col-xs-12">
+            单设备后台/设备管理 /定时保存设置
+        </div>
 
-		<div class="col-lg-6 col-xs-12">
-			<span>当前时间：</span>
+        <div class="col-lg-6 col-xs-12">
+            <span>当前时间：</span>
             <span id="now-time"></span>
-		</div>
-	</div>
-	<div class="table-responsive">
-		<div class="table-tit">
-			<div class="row">
-				<div class="col-lg-6 col-xs-12">
-					<p class="tit-name">定时保存设置</p>
-				</div>
-				
-				<div class="col-lg-6 col-xs-12">
-					<div class="report-btn">
-						<button type="button" class="btn btn-info time-edit">编辑</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<table class="table table-striped time-table">
-			<thead>
-				<tr class="text-center">
-					<th><input class="allChk" type="checkbox" name="" id="" value="" /></th>
-					<th>序号</th>
-					<th>名称</th>
-					<th>开始</th>
-					<th>结束</th>
-					<th>间隔（小时）</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody class="chk-body">
-				<tr>
-					<td><input type="checkbox" name="" id="" value="" /></td>
-					<td>01</td>
-					<td>定时保存设置</td>
-					<td>	
-						<select class="time-sel" name="" disabled="disabled">
-							<option value="">01:00</option>
-							<option value="">02:00</option>
-							<option value="">03:00</option>
-							<option value="">04:00</option>
-							<option value="">05:00</option>
-							<option value="">06:00</option>
-							<option value="">07:00</option>
-							<option value="">08:00</option>
-							<option value="">09:00</option>
-							<option value="">10:00</option>
-							<option value="">11:00</option>
-							<option value="">12:00</option>
-							<option value="">13:00</option>
-							<option value="">14:00</option>
-							<option value="">15:00</option>
-							<option value="">16:00</option>
-							<option value="">17:00</option>
-							<option value="">18:00</option>
-							<option value="">19:00</option>
-							<option value="">20:00</option>
-							<option value="">21:00</option>
-							<option value="">22:00</option>
-							<option value="">23:00</option>
-							<option value="">24:00</option>
-						</select>
-					</td>
-					<td>
-						<select class="time-sel" name="" disabled="disabled">
-							<option value="">01:00</option>
-							<option value="">02:00</option>
-							<option value="">03:00</option>
-							<option value="">04:00</option>
-							<option value="">05:00</option>
-							<option value="">06:00</option>
-							<option value="">07:00</option>
-							<option value="">08:00</option>
-							<option value="">09:00</option>
-							<option value="">10:00</option>
-							<option value="">11:00</option>
-							<option value="">12:00</option>
-							<option value="">13:00</option>
-							<option value="">14:00</option>
-							<option value="">15:00</option>
-							<option value="">16:00</option>
-							<option value="">17:00</option>
-							<option value="">18:00</option>
-							<option value="">19:00</option>
-							<option value="">20:00</option>
-							<option value="">21:00</option>
-							<option value="">22:00</option>
-							<option value="">23:00</option>
-							<option value="">24:00</option>
-						</select>
-					</td>
-					
-					<td>
-						<input class="time-ipt" type="" name="" id="" value="2" readonly/>
-					</td>
-					<td class="text-left">
-						<span style="display: none;" class="time-notSave">取消</span>
-						<span style="display: none;" class="time-save">保存</span>
-					</td>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <div class="table-tit">
+            <div class="row">
+                <div class="col-lg-6 col-xs-12">
+                    <p class="tit-name">定时保存设置</p>
+                </div>
 
-				</tr>
-			</tbody>
-		</table>
-	</div>
-<div>
-<script src="/monitor/source/js/my.js"></script>
-<script src="/monitor/source/js/setTime.js"></script>
+                <div class="col-lg-6 col-xs-12">
+                    <div class="report-btn">
+                        <button type="button" class="btn btn-info time-edit">编辑</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped time-table">
+            <thead>
+            <tr class="text-center">
+                <th><input class="allChk" type="checkbox" name="" id=""/></th>
+                <th>序号</th>
+                <th>名称</th>
+                <th>开始</th>
+                <th>结束</th>
+                <th>间隔（小时）</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody class="chk-body" id="table_content">
+            <tr>
+                <td><input type="checkbox" name="" id=""/></td>
+                <td>01</td>
+                <td>定时保存设置</td>
+                <td>
+                    <select class="time-sel" name="" disabled="disabled">
+                        <option value="01:00">01:00</option>
+                        <option value="01:00">02:00</option>
+                        <option value="01:00">03:00</option>
+                        <option value="01:00">04:00</option>
+                        <option value="01:00">05:00</option>
+                        <option value="01:00">06:00</option>
+                        <option value="01:00">07:00</option>
+                        <option value="01:00">08:00</option>
+                        <option value="01:00">09:00</option>
+                        <option value="01:00">10:00</option>
+                        <option value="01:00">11:00</option>
+                        <option value="01:00">12:00</option>
+                        <option value="01:00">13:00</option>
+                        <option value="01:00">14:00</option>
+                        <option value="01:00">15:00</option>
+                        <option value="01:00">16:00</option>
+                        <option value="01:00">17:00</option>
+                        <option value="01:00">18:00</option>
+                        <option value="01:00">19:00</option>
+                        <option value="01:00">20:00</option>
+                        <option value="01:00">21:00</option>
+                        <option value="01:00">22:00</option>
+                        <option value="01:00">23:00</option>
+                        <option value="01:00">24:00</option>
+                    </select>
+                </td>
+                <td>
+                    <select class="time-sel" name="" disabled="disabled">
+                        <option value="01:00">01:00</option>
+                        <option value="01:00">02:00</option>
+                        <option value="01:00">03:00</option>
+                        <option value="01:00">04:00</option>
+                        <option value="01:00">05:00</option>
+                        <option value="01:00">06:00</option>
+                        <option value="01:00">07:00</option>
+                        <option value="01:00">08:00</option>
+                        <option value="01:00">09:00</option>
+                        <option value="01:00">10:00</option>
+                        <option value="01:00">11:00</option>
+                        <option value="01:00">12:00</option>
+                        <option value="01:00">13:00</option>
+                        <option value="01:00">14:00</option>
+                        <option value="01:00">15:00</option>
+                        <option value="01:00">16:00</option>
+                        <option value="01:00">17:00</option>
+                        <option value="01:00">18:00</option>
+                        <option value="01:00">19:00</option>
+                        <option value="01:00">20:00</option>
+                        <option value="01:00">21:00</option>
+                        <option value="01:00">22:00</option>
+                        <option value="01:00">23:00</option>
+                        <option value="01:00">24:00</option>
+                    </select>
+                </td>
+
+                <td>
+                    <input class="time-ipt" type="" name="" id="" value="2" readonly/>
+                </td>
+                <td class="text-left">
+                    <span style="display: none;" class="time-notSave">取消</span>
+                    <span style="display: none;" class="time-save">保存</span>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <script src="$!env.getStaticURL('js/jquery-1.11.3.js')"></script>
+        <script src="/monitor/source/js/my.js"></script>
+        <script src="/monitor/source/js/setTime.js"></script>
+        #LoadMUI("artTemplate")
+        #LoadMUI("pagination")
+
+        <script>
+            $(function () {
+                initsaveconfig();
+            })
+        </script>
+
+        <script type="text/html" id="t:table_tmp">
+            {{each list as value i}}
+            <tr>
+                <td><input type="checkbox" id="id" value="{{value.id}}"/></td>
+                <td><input type="text" name="" value="{{i+1}}"/></td>
+                <td><input type="text" id="saveConfigTitle" value="{{value.saveConfigTitle}}"/></td>
+                <td>
+                    <select class="time-sel" disabled="disabled" id="starttime" value="{{value.starttime}}">
+                        <option value="01:00"
+                                {{if value.starttime=="01:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >01:00</option>
+                        <option value="02:00"
+                                {{if value.starttime=="02:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >02:00</option>
+                        <option value="03:00"
+                                {{if value.starttime=="03:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >03:00</option>
+                        <option value="04:00"
+                                {{if value.starttime=="04:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >04:00</option>
+                        <option value="05:00"
+                                {{if value.starttime=="05:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >05:00</option>
+                        <option value="06:00"
+                                {{if value.starttime=="06:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >06:00</option>
+                        <option value="07:00"
+                                {{if value.starttime=="07:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >07:00</option>
+                        <option value="08:00"
+                                {{if value.starttime=="08:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >08:00</option>
+                        <option value="09:00"
+                                {{if value.starttime=="09:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >09:00</option>
+                        <option value="10:00"
+                                {{if value.starttime=="10:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >10:00</option>
+                        <option value="11:00"
+                                {{if value.starttime=="11:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >11:00</option>
+                        <option value="12:00"
+                                {{if value.starttime=="12:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >12:00</option>
+                        <option value="13:00"
+                                {{if value.starttime=="13:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >13:00</option>
+                        <option value="14:00"
+                                {{if value.starttime=="14:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >14:00</option>
+                        <option value="15:00"
+                                {{if value.starttime=="15:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >15:00</option>
+                        <option value="16:00"
+                                {{if value.starttime=="16:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >16:00</option>
+                        <option value="17:00"
+                                {{if value.starttime=="17:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >17:00</option>
+                        <option value="18:00"
+                                {{if value.starttime=="18:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >18:00</option>
+                        <option value="19:00"
+                                {{if value.starttime=="19:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >19:00</option>
+                        <option value="20:00"
+                                {{if value.starttime=="20:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >20:00</option>
+                        <option value="21:00"
+                                {{if value.starttime=="21:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >21:00</option>
+                        <option value="22:00"
+                                {{if value.starttime=="22:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >22:00</option>
+                        <option value="23:00"
+                                {{if value.starttime=="23:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >23:00</option>
+                        <option value="24:00"
+                                {{if value.starttime=="24:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >24:00</option>
+                    </select>
+                </td>
+                <td>
+                    <select class="time-sel" disabled="disabled" id="endtime" value="{{value.endtime}}">
+                        <option value="01:00"
+                                {{if value.endtime=="01:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >01:00</option>
+                        <option value="02:00"
+                                {{if value.endtime=="02:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >02:00</option>
+                        <option value="03:00"
+                                {{if value.endtime=="03:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >03:00</option>
+                        <option value="04:00"
+                                {{if value.endtime=="04:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >04:00</option>
+                        <option value="05:00"
+                                {{if value.endtime=="05:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >05:00</option>
+                        <option value="06:00"
+                                {{if value.endtime=="06:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >06:00</option>
+                        <option value="07:00"
+                                {{if value.endtime=="07:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >07:00</option>
+                        <option value="08:00"
+                                {{if value.endtime=="08:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >08:00</option>
+                        <option value="09:00"
+                                {{if value.endtime=="09:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >09:00</option>
+                        <option value="10:00"
+                                {{if value.endtime=="10:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >10:00</option>
+                        <option value="11:00"
+                                {{if value.endtime=="11:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >11:00</option>
+                        <option value="12:00"
+                                {{if value.endtime=="12:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >12:00</option>
+                        <option value="13:00"
+                                {{if value.endtime=="13:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >13:00</option>
+                        <option value="14:00"
+                                {{if value.endtime=="14:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >14:00</option>
+                        <option value="15:00"
+                                {{if value.endtime=="15:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >15:00</option>
+                        <option value="16:00"
+                                {{if value.endtime=="16:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >16:00</option>
+                        <option value="17:00"
+                                {{if value.endtime=="17:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >17:00</option>
+                        <option value="18:00"
+                                {{if value.endtime=="18:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >18:00</option>
+                        <option value="19:00"
+                                {{if value.endtime=="19:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >19:00</option>
+                        <option value="20:00"
+                                {{if value.endtime=="20:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >20:00</option>
+                        <option value="21:00"
+                                {{if value.endtime=="21:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >21:00</option>
+                        <option value="22:00"
+                                {{if value.endtime=="22:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >22:00</option>
+                        <option value="23:00"
+                                {{if value.endtime=="23:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >23:00</option>
+                        <option value="24:00"
+                                {{if value.endtime=="24:00"}}
+                                selected = "selected"
+                                {{/if}}
+                        >24:00</option>
+                    </select>
+                </td>
+
+                <td>
+                    <input class="time-ipt"  id="deltatime" value="{{value.deltatime}}" readonly/>
+                </td>
+                <td class="text-left">
+                    <span style="display: none;" class="time-notSave">取消</span>
+                    <span style="display: none;" class="time-save" onclick="savetimesave()">保存</span>
+                </td>
+
+            </tr>
+            {{/each}}
+        </script>

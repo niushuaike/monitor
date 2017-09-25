@@ -1,0 +1,9 @@
+*{margin: 0;padding: 0;}
+body{background: url(../images/login.gif);}
+.login_m{ width:403px; margin:20% auto; height:375px;}
+.login_boder{ background:url(../images/login_bg.png) no-repeat; height:302px; overflow:hidden;}
+.login_padding{padding:28px 47px 20px 47px ;}
+.login_padding h2{ color:#4f5d80; text-transform:uppercase; font-size:12px; font-weight:normal; margin-bottom:11px;}
+.login_boder input.txt_input{ width:295px; height:36px; border:1px solid #cad2db;  padding:0 5px; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; line-height:36px; margin-bottom:10px; font-size:14px; color:#717171; font-family:Arial;}
+.rem_sub{width: 100%;text-align: center;}
+.rem_sub input.sub_button{ margin-top: 30px;width:122px; height:32px; background:url(../images/site_bg.png) no-repeat -153px -850px; border:none; color:#FFF; padding-bottom:2px; font-size:14px; font-weight:bold;}

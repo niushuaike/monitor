@@ -33,17 +33,17 @@ public class Device implements IPO {
 	/**
 	 * 主机名
 	 */
-	private String deviceName;
+	private String deviceName="";
 
 	/**
 	 * IP地址
 	 */
-	private String deviceIp;
+	private String deviceIp="";
 
 	/**
 	 * 主机端口
 	 */
-	private String devicePort;
+	private String devicePort="";
 
 	/**
 	 * 告警时段id
@@ -53,27 +53,27 @@ public class Device implements IPO {
 	/**
 	 * 告警方式ID
 	 */
-	private String warnstyleid;
+	private String warnstyleid="";
 
 	/**
 	 * 通知用户
 	 */
-	private String users;
+	private String users="";
 
 	/**
 	 * 告警间隔时间
 	 */
-	private String intervaltime;
+	private String intervaltime="";
 
 	/**
 	 * 
 	 */
-	private Integer ispause;
+	private Integer ispause=0;
 
 	/**
 	 * 
 	 */
-	private String endpausetime;
+	private String endpausetime="";
 
 	/**
 	 * 设备类型
@@ -83,17 +83,43 @@ public class Device implements IPO {
 	/**
 	 * 
 	 */
-	private String loginName;
+	private String loginName="";
 
 	/**
 	 * 
 	 */
-	private String loginPasswd;
+	private String loginPasswd="";
 
 	/**
 	 * 
 	 */
-	private String lastStyle;
+	private String deviceAddress="";
+
+	/**
+	 *
+	 */
+	private String controlmode="";
+
+	/**
+	 *
+	 */
+	private String machinecode="";
+
+	public String getControlmode() {
+		return controlmode;
+	}
+
+	public void setControlmode(String controlmode) {
+		this.controlmode = controlmode;
+	}
+
+	public String getMachinecode() {
+		return machinecode;
+	}
+
+	public void setMachinecode(String machinecode) {
+		this.machinecode = machinecode;
+	}
 
 	public Integer getId() {
 		return id;
@@ -186,11 +212,12 @@ public class Device implements IPO {
 	public void setLoginPasswd(String loginPasswd) {
 		this.loginPasswd = loginPasswd;
 	}
-	public String getLastStyle() {
-		return lastStyle;
+
+	public String getDeviceAddress() {
+		return deviceAddress;
 	}
-	
-	public void setLastStyle(String lastStyle) {
-		this.lastStyle = lastStyle;
+
+	public void setDeviceAddress(String deviceAddress) {
+		this.deviceAddress = deviceAddress;
 	}
 }

@@ -112,6 +112,7 @@
 		    warn_state, 
 		    operation_detail
 		from warnlog
+		WHERE id=#{id}
 	</select>
 
 	<!--
@@ -131,10 +132,108 @@
 		    warn_state, 
 		    operation_detail
 		from warnlog
+		WHERE 1=1
+		<if test="warntypeid != null and warntypeid!='' and warntypeid != -1" >
+			AND warn_type = #{warntypeid}
+		</if>
+		<if test="starttime != null and starttime!=''" >
+			AND unix_timestamp(warn_time) > unix_timestamp(#{starttime})
+		</if>
+		<if test="endtime != null and endtime!=''" >
+			AND <![CDATA[ unix_timestamp(warn_time) < unix_timestamp(#{endtime}) ]]>
+		</if>
 	</select>
+
+	<select id="list" resultMap="RM_Warnlog" parameterType="java.util.HashMap">
+		select
+		id,
+		warn_type,
+		warn_description,
+		picture_url,
+		warn_time,
+		warn_state,
+		operation_detail
+		from warnlog
+		WHERE 1=1
+		<if test="warn_type != null and warn_type!=''" >
+			AND warn_type = #{warntypeid}
+		</if>
+		<if test="warn_type != null and warn_type!=''" >
+			AND warn_time > #{starttime}
+		</if>
+		<if test="warn_type != null and warn_type!=''" >
+			AND warn_time = #{endtime}
+		</if>
+	</select>
+
+	<select id="historyWarnlog" resultMap="RM_Warnlog" >
+		select
+		id,
+		warn_type,
+		warn_description,
+		picture_url,
+		warn_time,
+		warn_state,
+		operation_detail
+		from warnlog
+		WHERE warn_state IN (3,4)
+	</select>
+
+	<select id="currentWarnlog" resultMap="RM_Warnlog" >
+		select
+		id,
+		warn_type,
+		warn_description,
+		picture_url,
+		warn_time,
+		warn_state,
+		operation_detail
+		from warnlog
+		WHERE warn_state IN (0,1,2)
+	</select>
+
+	<update id="updateWarnLogStatus" parameterType="map">
+		update warnlog
+		SET warn_state=#{warnstate}
+		WHERE id=#{id}
+
+	</update>
+
+	<update id="updateWarnLogOperationDetail" parameterType="map">
+		update warnlog
+		SET operation_detail=#{operationDetail}
+		WHERE id=#{id}
+
+	</update>
 
 	<delete id="delete" parameterType="integer">
 		DELETE FROM warnlog where id=#{id}
 	</delete>
+
+	<select id="getDispacth" resultMap="RM_Warnlog" >
+		select
+		id,
+		warn_type,
+		warn_description,
+		picture_url,
+		warn_time,
+		warn_state,
+		operation_detail
+		from warnlog
+		WHERE warn_state=1
+	</select>
+
+	<select id="getWarnlogByType" resultMap="RM_Warnlog" parameterType="integer" >
+		select
+		id,
+		warn_type,
+		warn_description,
+		picture_url,
+		warn_time,
+		warn_state,
+		operation_detail
+		from warnlog
+		WHERE warn_type=#{warntype}
+	</select>
 
 </mapper>

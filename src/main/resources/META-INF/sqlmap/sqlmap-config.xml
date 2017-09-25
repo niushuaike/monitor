@@ -31,9 +31,12 @@
 	</plugins>
 	
 	<mappers>
+		<mapper resource="META-INF/sqlmap/sqlmap-alarmthreshold.xml"/>
+		<mapper resource="META-INF/sqlmap/sqlmap-cabinetparamter.xml"/>
 		<mapper resource="META-INF/sqlmap/sqlmap-device.xml"/>
+		<mapper resource="META-INF/sqlmap/sqlmap-reportstatus.xml"/>
+		<mapper resource="META-INF/sqlmap/sqlmap-role.xml"/>
 		<mapper resource="META-INF/sqlmap/sqlmap-saveconfig.xml"/>
-		<mapper resource="META-INF/sqlmap/sqlmap-threshold.xml"/>
 		<mapper resource="META-INF/sqlmap/sqlmap-user.xml"/>
 		<mapper resource="META-INF/sqlmap/sqlmap-warnlog.xml"/>
 		<mapper resource="META-INF/sqlmap/sqlmap-warnstyle.xml"/>

@@ -93,4 +93,13 @@
 		    warnstylename
 		from warnstyle
 	</select>
+
+	<select id="list" resultMap="RM_Warnstyle">
+		select
+		id,
+		warnstylename
+		from warnstyle
+		where id !=2 and id != 3 and id != 4
+	</select>
+
 </mapper>
