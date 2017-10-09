@@ -35,7 +35,6 @@ public class DataParseservice {
             RawData rawData = ParseDataUtil.parseRecentOneData((String) servletContext.getAttribute("cabinet_data_path"));
             map = ParseDataUtil.getDeviceStatus(rawData);
 
-
         } catch (Exception e) {
             map.put("error", "数据解析异常，或者文件未找到！");
         }
@@ -61,6 +60,12 @@ public class DataParseservice {
         map.put("time",time);
         map.put("temperature",temperature);
         map.put("humidity",humidity);
+        return map;
+    }
+
+    public Map<String, String> getDeviceStatus() {
+        Map<String,String> map = new HashMap<>();
+        map.put("deviceStatus", (String) servletContext.getAttribute("deviceStatus"));
         return map;
     }
 }

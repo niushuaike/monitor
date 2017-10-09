@@ -5,7 +5,7 @@
  * @project
  * @author niushuaike
  * @version 1.0
- * @date 2017-09-22
+ * @date 2017-09-27
  */
 package com.micropower.manager.model.po;
 
@@ -30,24 +30,44 @@ public class Alarmthreshold implements IPO {
 	private Long id;
 
 	/**
-	 * 机柜温度报警阈值最小值
+	 * 柜内温度预警阈值最小值
 	 */
-	private String jgWdMin;
+	private String gnWdYjMin;
 
 	/**
-	 * 机柜温度报警阈值最大值
+	 * 柜内温度预警阈值最大值
 	 */
-	private String jgWdMax;
+	private String gnWdYjMax;
 
 	/**
-	 * 机柜湿度报警阈值最小值
+	 * 柜内温度告警阈值最小值
 	 */
-	private String jgSdMin;
+	private String gnWdGjMin;
 
 	/**
-	 * 机柜湿度报警阈值最大值
+	 * 柜内温度告警阈值最大值
 	 */
-	private String jgSdMax;
+	private String gnWdGjMax;
+
+	/**
+	 * 柜内湿度预警阈值最小值
+	 */
+	private String gnSdYjMin;
+
+	/**
+	 * 柜内湿度预警阈值最大值
+	 */
+	private String gnSdYjMax;
+
+	/**
+	 * 柜内湿度告警阈值最小值
+	 */
+	private String gnSdGjMin;
+
+	/**
+	 * 柜内湿度告警阈值最大值
+	 */
+	private String gnSdGjMax;
 
 	/**
 	 * 压缩机1电流预警阈值最小值
@@ -190,24 +210,9 @@ public class Alarmthreshold implements IPO {
 	private String hjkzGjMax;
 
 	/**
-	 * 内温度预警最小值箱
+	 * 阈值类型：0，当前；1，设定值
 	 */
-	private String xnwdYjMin;
-
-	/**
-	 * 箱内温度预警最大值
-	 */
-	private String xnwdYjMax;
-
-	/**
-	 * 箱内温度告警最小值
-	 */
-	private String xnwdGjMin;
-
-	/**
-	 * 箱内温度告警最大值
-	 */
-	private String xnwdGjMax;
+	private String thresholdtype;
 
 	public Long getId() {
 		return id;
@@ -216,33 +221,61 @@ public class Alarmthreshold implements IPO {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getJgWdMin() {
-		return jgWdMin;
+	public String getGnWdYjMin() {
+		return gnWdYjMin;
 	}
 	
-	public void setJgWdMin(String jgWdMin) {
-		this.jgWdMin = jgWdMin;
+	public void setGnWdYjMin(String gnWdYjMin) {
+		this.gnWdYjMin = gnWdYjMin;
 	}
-	public String getJgWdMax() {
-		return jgWdMax;
-	}
-	
-	public void setJgWdMax(String jgWdMax) {
-		this.jgWdMax = jgWdMax;
-	}
-	public String getJgSdMin() {
-		return jgSdMin;
+	public String getGnWdYjMax() {
+		return gnWdYjMax;
 	}
 	
-	public void setJgSdMin(String jgSdMin) {
-		this.jgSdMin = jgSdMin;
+	public void setGnWdYjMax(String gnWdYjMax) {
+		this.gnWdYjMax = gnWdYjMax;
 	}
-	public String getJgSdMax() {
-		return jgSdMax;
+	public String getGnWdGjMin() {
+		return gnWdGjMin;
 	}
 	
-	public void setJgSdMax(String jgSdMax) {
-		this.jgSdMax = jgSdMax;
+	public void setGnWdGjMin(String gnWdGjMin) {
+		this.gnWdGjMin = gnWdGjMin;
+	}
+	public String getGnWdGjMax() {
+		return gnWdGjMax;
+	}
+	
+	public void setGnWdGjMax(String gnWdGjMax) {
+		this.gnWdGjMax = gnWdGjMax;
+	}
+	public String getGnSdYjMin() {
+		return gnSdYjMin;
+	}
+	
+	public void setGnSdYjMin(String gnSdYjMin) {
+		this.gnSdYjMin = gnSdYjMin;
+	}
+	public String getGnSdYjMax() {
+		return gnSdYjMax;
+	}
+	
+	public void setGnSdYjMax(String gnSdYjMax) {
+		this.gnSdYjMax = gnSdYjMax;
+	}
+	public String getGnSdGjMin() {
+		return gnSdGjMin;
+	}
+	
+	public void setGnSdGjMin(String gnSdGjMin) {
+		this.gnSdGjMin = gnSdGjMin;
+	}
+	public String getGnSdGjMax() {
+		return gnSdGjMax;
+	}
+	
+	public void setGnSdGjMax(String gnSdGjMax) {
+		this.gnSdGjMax = gnSdGjMax;
 	}
 	public String getYsjOneYjMin() {
 		return ysjOneYjMin;
@@ -440,32 +473,11 @@ public class Alarmthreshold implements IPO {
 	public void setHjkzGjMax(String hjkzGjMax) {
 		this.hjkzGjMax = hjkzGjMax;
 	}
-	public String getXnwdYjMin() {
-		return xnwdYjMin;
+	public String getThresholdtype() {
+		return thresholdtype;
 	}
 	
-	public void setXnwdYjMin(String xnwdYjMin) {
-		this.xnwdYjMin = xnwdYjMin;
-	}
-	public String getXnwdYjMax() {
-		return xnwdYjMax;
-	}
-	
-	public void setXnwdYjMax(String xnwdYjMax) {
-		this.xnwdYjMax = xnwdYjMax;
-	}
-	public String getXnwdGjMin() {
-		return xnwdGjMin;
-	}
-	
-	public void setXnwdGjMin(String xnwdGjMin) {
-		this.xnwdGjMin = xnwdGjMin;
-	}
-	public String getXnwdGjMax() {
-		return xnwdGjMax;
-	}
-	
-	public void setXnwdGjMax(String xnwdGjMax) {
-		this.xnwdGjMax = xnwdGjMax;
+	public void setThresholdtype(String thresholdtype) {
+		this.thresholdtype = thresholdtype;
 	}
 }

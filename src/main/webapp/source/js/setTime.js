@@ -51,11 +51,11 @@ function initsaveconfig() {
 
     $.post(url, params, function (data) {
         console.log("定时保存配置：", data);
-        html = template('t:table_tmp', {
+        html = template('setTime_tmp', {
             list: data
         });
 
-        $("#table_content").html(html);
+        $("#table_contentsetTime").html(html);
         toEdit();
     })
 }
@@ -72,10 +72,10 @@ function savetimesave() {
 
     $.post(url, params, function (data) {
         if(data==1){
-            alert("修改成功");
+            layer.msg("修改成功");
             initsaveconfig();
         }else{
-            alert("修改失败");
+            layer.msg("修改失败");
         }
     })
 }

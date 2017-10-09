@@ -95,4 +95,14 @@ public class WarnLogServiceImpl extends BaseServiceImpl<Warnlog> implements Warn
     public Warnlog getWarnlogById(Integer id) {
         return queryById(id);
     }
+
+    @Override
+    public List<Warnlog> getWarnlogByStatus(Integer warnstate) {
+        return (List<Warnlog>) manager.list(namespace+"getWarnlogByStatus",warnstate);
+    }
+
+    @Override
+    public List<Warnlog> getWarnlogDoor() {
+        return (List<Warnlog>) manager.list(namespace+"getWarnlogDoor");
+    }
 }

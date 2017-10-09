@@ -70,11 +70,11 @@ function save(obj) {
     }
     $.post(url, params, function (data) {
         if (data==1){
-            alert("改动成功！");
+            layer.msg("改动成功！");
             initPoliceSet();
 
         }else {
-            alert("改动失败！");
+            layer.msg("改动失败！");
         }
     });
 
@@ -119,12 +119,12 @@ function initPoliceSet() {
 
     $.post(url, params, function (data) {
         console.log("warnperiodpojo", data);
-        html = template('t:table_tmp', {
+        html = template('policeSet_tmp', {
             list: data
         });
         console.log("warnperhtml", html);
 
-        $("#table_content").html(html);
+        $("#table_contentpoliceSet").html(html);
     });
 }
 
@@ -137,11 +137,11 @@ function deletewarnperiod() {
             }
             $.post(url, params, function (data) {
                if (data==1){
-                   alert("删除成功！");
+                   layer.msg("删除成功！");
                    initPoliceSet();
 
                }else {
-                   alert("删除失败！");
+                   layer.msg("删除失败！");
                }
             });
         }

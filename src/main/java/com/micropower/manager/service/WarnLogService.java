@@ -33,4 +33,8 @@ public interface WarnLogService extends BaseService<Warnlog>{
     Integer updateWarnLogOperationDetail(Map<String, String> paramesMapMy);
 
     Warnlog getWarnlogById(Integer id);
+
+    List<Warnlog> getWarnlogByStatus(Integer warnstate);
+
+    List<Warnlog> getWarnlogDoor();
 }

@@ -142,7 +142,7 @@ public class DeviceServiceImpl extends BaseServiceImpl<Device> implements Device
     }
 
     @Override
-    public Integer updateAddr(String deviceAddress) {
-        return manager.getSqlSessionTemplate().update(namespace+"updateAddr",deviceAddress);
+    public Integer updateAddr(Map<String, String> parameterMap) {
+        return manager.getSqlSessionTemplate().update(namespace+"updateAddr", parameterMap);
     }
 }

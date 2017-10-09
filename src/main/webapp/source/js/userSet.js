@@ -85,9 +85,10 @@ function save(obj) {
     };
     $.post(url, params, function (data) {
         if (data == 1) {
-            alert("变动成功");
+            layer.msg("变动成功");
+            inituseraccess();
         } else {
-            alert("变动失败");
+            layer.msg("变动失败");
         }
     })
 
@@ -109,11 +110,11 @@ function inituseraccess() {
 
     $.post(url, params, function (data) {
         console.log("用户信息：", data);
-        html = template('t:table_tmp', {
+        html = template('userSet_tmp', {
             list: data
         });
 
-        $("#table_content").html(html);
+        $("#table_contentuserSet").html(html);
     })
 }
 
@@ -130,10 +131,10 @@ function deleteuser() {
 
             $.post(url, params, function (data) {
                 if (data == 1) {
-                    alert("删除成功");
+                    layer.msg("删除成功");
                     inituseraccess();
                 } else {
-                    alert("删除失败");
+                    layer.msg("删除失败");
                 }
             })
         }

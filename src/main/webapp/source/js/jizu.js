@@ -1,6 +1,7 @@
 /**
  * Created by niushuaike on 2017/9/22.
  */
+
 function initJZ() {
     var url = "/monitor/datap/getRecentOneP";
     var params = {}
@@ -18,14 +19,17 @@ function warninfo() {
     }
 
     $.post(url, params, function (data) {
-        console.log("告警信息：", data);
-        if (data!="[]") {
-            $("#warninfo").html(data);
+        html = template('warninfo_template', {
+            list: data
+        });
 
-        } else {
-
-            $("#warninfo").html("一切正常");
-        }
+        $("#table_content").html(html);
+        //上往下滚动
+        $('.jizu_tit').liMarquee({
+            direction: 'up',
+            scrollamount: 20,
+            hoverstop: false
+        });
 
     })
 }
@@ -82,7 +86,7 @@ function chartsJZ() {
 var requestFlag = 1;
 function refreshJiZuChart() {
     var date = new Date();
-    var url = "/monitor/datap/getJiZuTHinfo?data=" + date;
+    var url = "/monitor/data/getTHinfo?data=" + date;
     var params = {
         requestFlag: 1
     }

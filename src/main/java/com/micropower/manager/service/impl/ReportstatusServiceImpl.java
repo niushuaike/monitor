@@ -31,9 +31,16 @@ public class ReportstatusServiceImpl extends BaseServiceImpl<Reportstatus> imple
     }
 
     @Override
-    public Pages<List<Reportstatus>> list(EasyPage page) {
-        Pages<List<Reportstatus>> pages = getPages(null, page);
-        return getPages(null, page);
+    public Pages<List<Reportstatus>> list(Map<String, String> paramesMapMy, EasyPage page) {
+        String starttime = paramesMapMy.get("starttime");
+        String endtime = paramesMapMy.get("endtime");
+        if(endtime!=null&&endtime.equals(starttime)){
+            starttime=endtime;
+            paramesMapMy.put("starttime",starttime);
+            paramesMapMy.put("endtime","");
+        }
+        Pages<List<Reportstatus>> pages = getPages(paramesMapMy, page);
+        return getPages(paramesMapMy, page);
     }
 
     @Override

@@ -41,45 +41,7 @@
                 <th>周日</th>
             </tr>
             </thead>
-            <tbody class="chk-body" id="table_content">
-            <tr>
-                <td><input type="checkbox" name="" id="" value=""/></td>
-                <td>0102</td>
-                <td>全时段</td>
-                <td>
-                    <input type="text" class="datetimepicker"/><span>~</span><input type="text" class="datetimepicker"/>
-                    <div class="pox" style="display: none;"></div>
-                </td>
-                <td>
-                    <input type="text" class="datetimepicker"/><span>~</span><input type="text" class="datetimepicker"/>
-                    <div class="pox" style="display: none;"></div>
-                </td>
-                <td>
-                    <input type="text" class="datetimepicker"/><span>~</span><input type="text" class="datetimepicker"/>
-                    <div class="pox" style="display: none;"></div>
-                </td>
-                <td>
-                    <input type="text" class="datetimepicker"/><span>~</span><input type="text" class="datetimepicker"/>
-                    <div class="pox" style="display: none;"></div>
-                </td>
-                <td>
-                    <input type="text" class="datetimepicker"/><span>~</span><input type="text" class="datetimepicker"/>
-                    <div class="pox" style="display: none;"></div>
-                </td>
-                <td>
-                    <input type="text" class="datetimepicker"/><span>~</span><input type="text" class="datetimepicker"/>
-                    <div class="pox" style="display: none;"></div>
-                </td>
-                <td>
-                    <input type="text" class="datetimepicker"/><span>~</span><input type="text" class="datetimepicker"/>
-                    <div class="pox" style="display: none;"></div>
-                    <p style="display: none;">
-                        <button class="police-notSave" onclick="notSave($(this))">取消</button>
-                        <button class="police-save" onclick="save($(this))">保存</button>
-                    </p>
-                </td>
-
-            </tr>
+            <tbody class="chk-body" id="table_contentpoliceSet">
             </tbody>
         </table>
     </div>
@@ -100,7 +62,7 @@
 
         </script>
 
-        <script type="text/html" id="t:table_tmp">
+        <script type="text/html" id="policeSet_tmp">
             {{each list as value i}}
             <tr>
                 <td><input type="checkbox" name="" id="" value="{{value.id}}"/></td>

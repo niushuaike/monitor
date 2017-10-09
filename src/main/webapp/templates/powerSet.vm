@@ -1,170 +1,318 @@
 <div class="page page-yonghuSet clearfix">
-	<div class="row title">
-		<div class="col-lg-6 col-xs-12">
-			单设备后台/设备管理 /机柜参数设置
-		</div>
+    <div class="row title">
+        <div class="col-lg-6 col-xs-12">
+            单设备后台/设备管理 /机柜参数设置
+        </div>
 
-		<div class="col-lg-6 col-xs-12">
-			<span>当前时间：</span>
+        <div class="col-lg-6 col-xs-12 text-right">
+            <span>当前时间：</span>
             <span id="now-time"></span>
-		</div>
-	</div>
-	<div class="table-laogongSet">
-		<div class="table-tit">
-			<div class="row">
-				<div class="col-lg-6 col-xs-12">
-					<p class="tit-name">机柜告警设置</p>
-				</div>
-				
-				<div class="col-lg-6 col-xs-12">
-					<div class="report-btn">
-						<button type="button" class="btn btn-warning" onclick="recoverCabinetSetDefault()">恢复默认</button>
-						<button type="button" class="btn btn-info worker-edit">编辑</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<form id="powerSetForm">
-		<div class="table-responsive">
-			<table class="table table-striped power-table">
-				<tr>
-					<td>
-						<label for="">温度设定值：</label>
-						<input type="text" name="tempSetting" id="" value="" readonly />
-					</td>
-					<td>
-						<label for="">温度回差：</label>
-						<input type="text" name="tempDifference" id="" value="" readonly />
-					</td>
-					<td>
-						<label for="">库温探头校正：</label>
-						<input type="text" name="probeCorrection" id="" value="" readonly/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="">环境控制温度：</label>
-						<input type="text" name="envlControlTemperature" id="" value="" readonly/>
-					</td>
-					<td>
-						<label for="">环境控制回差：</label>
-						<input type="text" name="envControlBacklash" id="" value="" readonly/>
-					</td>
-					<td>
-						<label for="">环境探头校正：</label>
-						<input type="text" name="envProbeCorrection" id="" value="" readonly/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="">压缩机连续开机时间：</label>
-						<input type="text" name="comConStratTime" id="" value="" readonly/>
-					</td>
-					<td>
-						<label for="">压缩机保护时间：</label>
-						<input type="text" name="comProtectionTime" id="" value="" readonly/>
-					</td>
-					<td>
-						<label for="">风门延时转换时间：</label>
-						<input type="text" name="iaeDelayTime" id="" value="" readonly/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="">温度传感器故障开机时间：</label>
-						<input type="text" name="temFaultStartTime" id="" value="" readonly/>
-					</td>
-					<td>
-						<label for="">温度传感器故障停机时间：</label>
-						<input type="text" name="temFaultEndTime" id="" value="" readonly/>
-					</td>
-					<td>
-						<label for="">开门温度：</label>
-						<input type="text" name="openTem" id="" value="" readonly/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="">开门回差：</label>
-						<input type="text" name="openDifference" id="" value="" readonly/>
-					</td>
-					<td>
-						<label for="">通讯地址：</label>
-						<input type="text" name="address" id="" value="" readonly/>
-					</td>
-					<td>
-						<label for="">压缩机1电流上限：</label>
-						<input type="text" name="comCurrentOneTop" id="" value="" readonly/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="">压缩机2电流上限：</label>
-						<input type="text" name="comCurrentTwoTop" id="" value="" readonly/>
-					</td>
-					<td>
-						<label for="">离心风机1电流上限：</label>
-						<input type="text" name="cenCurrentOneTop" id="" value="" readonly/>
-					</td>
-					<td>
-						<label for="">离心风机2电流上限：</label>
-						<input type="text" name="cenCurrentTwoTop" id="" value="" readonly/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="">散热风机电流上限：</label>
-						<input type="text" name="dissipateCurrentTop" id="" value="" readonly/>
-					</td>
-					<td>
-						<label for="">循环风机电流上限：</label>
-						<input type="text" name="loopCurrentTop" id="" value="" readonly/>
-					</td>
-					<td>
-						<label for="">压缩机1电流下限：</label>
-						<input type="text" name="comCurrentOneDown" id="" value="" readonly/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="">压缩机2电流下限：</label>
-						<input type="text" name="comCurrentTwoDown" id="" value="" readonly/>
-					</td>
-					<td>
-						<label for="">离心风机1电流下限：</label>
-						<input type="text" name="cenCurrentOneDown" id="" value="" readonly/>
-					</td>
-					<td>
-						<label for="">离心风机2电流下限：</label>
-						<input type="text" name="cenCurrentTwoDown" id="" value="" readonly/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="">散热风机电流下限：</label>
-						<input type="text" name="dissipateCurrentDown" id="" value="" readonly/>
-					</td>
-					<td>
-						<label for="">循环风机电流下限：</label>
-						<input type="text" name="loopCurrentDown" id="" value="" readonly/>
-					</td>
-					<td></td>
-					
-				</tr>
-			</table>
-		</div>
-		<div class="power-btn">
-			<button type="button" class="btn btn-default worker-notSave">取消</button>
-			<button type="button" class="btn btn-info worker-notSave" onclick="updatethreshold()">保存</button>
-		</div>
+        </div>
+    </div>
+    <div class="table-laogongSet">
+        <div class="table-tit">
+            <div class="row">
+                <div class="col-lg-6 col-xs-12">
+                    <p class="tit-name">机柜告警设置</p>
+                </div>
+
+                <div class="col-lg-6 col-xs-12">
+                    <div class="report-btn">
+                        <button type="button" class="btn btn-default" onclick="jiguiDefault()">修改默认值</button>
+                        <button type="button" class="btn btn-warning" onclick="recoverCabinetSetDefault()">恢复默认</button>
+                        <button type="button" class="btn btn-info worker-edit">编辑</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form id="powerSetForm">
+            <input type="hidden" name="parametertype">
+            <div class="table-responsive">
+                <table class="table power-table">
+                    <tr>
+                        <td>
+                            <label for="">温度设定值：</label>
+                            <input type="text" name="tempSetting" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">温度回差：</label>
+                            <input type="text" name="tempDifference" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">库温探头校正：</label>
+                            <input type="text" name="probeCorrection" id="" value="" readonly/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="">环境控制温度：</label>
+                            <input type="text" name="envlControlTemperature" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">环境控制回差：</label>
+                            <input type="text" name="envControlBacklash" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">环境探头校正：</label>
+                            <input type="text" name="envProbeCorrection" id="" value="" readonly/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="">压缩机连续开机时间：</label>
+                            <input type="text" name="comConStratTime" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">压缩机保护时间：</label>
+                            <input type="text" name="comProtectionTime" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">风门延时转换时间：</label>
+                            <input type="text" name="iaeDelayTime" id="" value="" readonly/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="">温度传感器故障开机时间：</label>
+                            <input type="text" name="temFaultStartTime" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">温度传感器故障停机时间：</label>
+                            <input type="text" name="temFaultEndTime" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">开门温度：</label>
+                            <input type="text" name="openTem" id="" value="" readonly/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="">开门回差：</label>
+                            <input type="text" name="openDifference" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">通讯地址：</label>
+                            <input type="text" name="address" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">压缩机1电流上限：</label>
+                            <input type="text" name="comCurrentOneTop" id="" value="" readonly/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="">压缩机2电流上限：</label>
+                            <input type="text" name="comCurrentTwoTop" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">离心风机1电流上限：</label>
+                            <input type="text" name="cenCurrentOneTop" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">离心风机2电流上限：</label>
+                            <input type="text" name="cenCurrentTwoTop" id="" value="" readonly/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="">散热风机电流上限：</label>
+                            <input type="text" name="dissipateCurrentTop" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">循环风机电流上限：</label>
+                            <input type="text" name="loopCurrentTop" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">压缩机1电流下限：</label>
+                            <input type="text" name="comCurrentOneDown" id="" value="" readonly/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="">压缩机2电流下限：</label>
+                            <input type="text" name="comCurrentTwoDown" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">离心风机1电流下限：</label>
+                            <input type="text" name="cenCurrentOneDown" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">离心风机2电流下限：</label>
+                            <input type="text" name="cenCurrentTwoDown" id="" value="" readonly/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="">散热风机电流下限：</label>
+                            <input type="text" name="dissipateCurrentDown" id="" value="" readonly/>
+                        </td>
+                        <td>
+                            <label for="">循环风机电流下限：</label>
+                            <input type="text" name="loopCurrentDown" id="" value="" readonly/>
+                        </td>
+                        <td></td>
+
+                    </tr>
+                </table>
+            </div>
+            <div class="power-btn jigui_footer" style="display: none">
+                <button type="button" class="btn btn-default worker-notSave">取消</button>
+                <button type="button" class="btn btn-info worker-notSave" onclick="updateParameter()">保存</button>
+            </div>
         </form>
-	</div>
-<div>
-    <script src="$!env.getStaticURL('js/jquery-1.11.3.js')"></script>
-    <script src="/monitor/source/js/powerSet.js"></script>
-    <script src="/monitor/source/js/nsk.js"></script>
-	<script>
-		$(function () {
-            initCanibetSet();
-        })
-	</script>
+    </div>
+    <!--设定默认值弹窗-->
+    <div class="jigui_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="jiguiNotSave($(this))">&times;</button>
+                    <h4 class="modal-title">修改默认值设定</h4>
+                </div>
+                <form id="powerDefaultSetForm">
+                    <input type="hidden" name="parametertype">
+                    <div class="modal-body">
+                        <table class="table power-table power-table2">
+                            <tr>
+                                <td>
+                                    <label for="">温度设定值：</label>
+                                    <input type="text" name="tempSetting" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">温度回差：</label>
+                                    <input type="text" name="tempDifference" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">库温探头校正：</label>
+                                    <input type="text" name="probeCorrection" id="" value=""/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="">环境控制温度：</label>
+                                    <input type="text" name="envlControlTemperature" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">环境控制回差：</label>
+                                    <input type="text" name="envControlBacklash" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">环境探头校正：</label>
+                                    <input type="text" name="envProbeCorrection" id="" value=""/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="">压缩机连续开机时间：</label>
+                                    <input type="text" name="comConStratTime" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">压缩机保护时间：</label>
+                                    <input type="text" name="comProtectionTime" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">风门延时转换时间：</label>
+                                    <input type="text" name="iaeDelayTime" id="" value=""/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="">温度传感器故障开机时间：</label>
+                                    <input type="text" name="temFaultStartTime" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">温度传感器故障停机时间：</label>
+                                    <input type="text" name="temFaultEndTime" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">开门温度：</label>
+                                    <input type="text" name="openTem" id="" value=""/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="">开门回差：</label>
+                                    <input type="text" name="openDifference" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">通讯地址：</label>
+                                    <input type="text" name="address" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">压缩机1电流上限：</label>
+                                    <input type="text" name="comCurrentOneTop" id="" value=""/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="">压缩机2电流上限：</label>
+                                    <input type="text" name="comCurrentTwoTop" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">离心风机1电流上限：</label>
+                                    <input type="text" name="cenCurrentOneTop" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">离心风机2电流上限：</label>
+                                    <input type="text" name="cenCurrentTwoTop" id="" value=""/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="">散热风机电流上限：</label>
+                                    <input type="text" name="dissipateCurrentTop" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">循环风机电流上限：</label>
+                                    <input type="text" name="loopCurrentTop" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">压缩机1电流下限：</label>
+                                    <input type="text" name="comCurrentOneDown" id="" value=""/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="">压缩机2电流下限：</label>
+                                    <input type="text" name="comCurrentTwoDown" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">离心风机1电流下限：</label>
+                                    <input type="text" name="cenCurrentOneDown" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">离心风机2电流下限：</label>
+                                    <input type="text" name="cenCurrentTwoDown" id="" value=""/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="">散热风机电流下限：</label>
+                                    <input type="text" name="dissipateCurrentDown" id="" value=""/>
+                                </td>
+                                <td>
+                                    <label for="">循环风机电流下限：</label>
+                                    <input type="text" name="loopCurrentDown" id="" value=""/>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div class="gao-btn">
+                            <button type="button" class="btn btn-default" onclick="jiguiNotSave($(this))">取消</button>
+                            <button type="button" id="powersetnot" class="btn btn-info" onclick="updateDefaultParameter()">保存</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div>
+        <script src="$!env.getStaticURL('js/jquery-1.11.3.js')"></script>
+        <script src="/monitor/source/js/my.js"></script>
+        <script src="/monitor/source/js/powerSet.js"></script>
+        <script src="/monitor/source/js/nsk.js"></script>
+        <script>
+            $(function () {
+                initCanibetSet();
+            })
+        </script>

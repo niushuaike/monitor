@@ -20,6 +20,7 @@
 		<result property="warnTime"         column="warn_time"         jdbcType="TIMESTAMP"  javaType="java.util.Date"     />
 		<result property="warnState"        column="warn_state"        jdbcType="TINYINT"    javaType="java.lang.Integer"  />
 		<result property="operationDetail"  column="operation_detail"  jdbcType="VARCHAR"    javaType="java.lang.String"   />
+		<result property="completeTime"  column="complete_time"  jdbcType="VARCHAR"    javaType="java.lang.String"   />
 	</resultMap>
 
 	<!--
@@ -37,7 +38,8 @@
 			picture_url, 
 			warn_time, 
 			warn_state, 
-			operation_detail
+			operation_detail,
+			complete_time
 		) values (
 		    #{id}, 
 		    #{warnType}, 
@@ -45,7 +47,8 @@
 		    #{pictureUrl}, 
 		    #{warnTime}, 
 		    #{warnState}, 
-		    #{operationDetail}
+		    #{operationDetail},
+		    #{completeTime}
 		)
 	</insert>
 
@@ -80,7 +83,11 @@
 		      			      <if test="operation_detail != null" >
 			        operation_detail = #{operation_detail},
 			      </if>
-		      		    </set>
+
+		<if test="completeTime != null" >
+			complete_time = #{completeTime},
+		</if>
+	</set>
 	</update>
 
 	<!--
@@ -110,7 +117,8 @@
 		    picture_url, 
 		    warn_time, 
 		    warn_state, 
-		    operation_detail
+		    operation_detail,
+		    complete_time
 		from warnlog
 		WHERE id=#{id}
 	</select>
@@ -130,7 +138,8 @@
 		    picture_url, 
 		    warn_time, 
 		    warn_state, 
-		    operation_detail
+		    operation_detail,
+		complete_time
 		from warnlog
 		WHERE 1=1
 		<if test="warntypeid != null and warntypeid!='' and warntypeid != -1" >
@@ -142,6 +151,7 @@
 		<if test="endtime != null and endtime!=''" >
 			AND <![CDATA[ unix_timestamp(warn_time) < unix_timestamp(#{endtime}) ]]>
 		</if>
+		order by id desc
 	</select>
 
 	<select id="list" resultMap="RM_Warnlog" parameterType="java.util.HashMap">
@@ -152,7 +162,8 @@
 		picture_url,
 		warn_time,
 		warn_state,
-		operation_detail
+		operation_detail,
+		complete_time
 		from warnlog
 		WHERE 1=1
 		<if test="warn_type != null and warn_type!=''" >
@@ -164,6 +175,7 @@
 		<if test="warn_type != null and warn_type!=''" >
 			AND warn_time = #{endtime}
 		</if>
+		order by id desc
 	</select>
 
 	<select id="historyWarnlog" resultMap="RM_Warnlog" >
@@ -174,9 +186,11 @@
 		picture_url,
 		warn_time,
 		warn_state,
-		operation_detail
+		operation_detail,
+		complete_time
 		from warnlog
 		WHERE warn_state IN (3,4)
+		order by id desc
 	</select>
 
 	<select id="currentWarnlog" resultMap="RM_Warnlog" >
@@ -187,14 +201,19 @@
 		picture_url,
 		warn_time,
 		warn_state,
-		operation_detail
+		operation_detail,
+		complete_time
 		from warnlog
 		WHERE warn_state IN (0,1,2)
+		order by id desc
 	</select>
 
 	<update id="updateWarnLogStatus" parameterType="map">
 		update warnlog
 		SET warn_state=#{warnstate}
+		<if test="completeTime != null and completeTime!=''" >
+			, complete_time = #{completeTime}
+		</if>
 		WHERE id=#{id}
 
 	</update>
@@ -218,9 +237,11 @@
 		picture_url,
 		warn_time,
 		warn_state,
-		operation_detail
+		operation_detail,
+		complete_time
 		from warnlog
 		WHERE warn_state=1
+		order by id desc
 	</select>
 
 	<select id="getWarnlogByType" resultMap="RM_Warnlog" parameterType="integer" >
@@ -231,9 +252,41 @@
 		picture_url,
 		warn_time,
 		warn_state,
-		operation_detail
+		operation_detail,
+		complete_time
 		from warnlog
 		WHERE warn_type=#{warntype}
+		order by id desc
+	</select>
+
+	<select id="getWarnlogByStatus" resultMap="RM_Warnlog" parameterType="integer" >
+		select
+		id,
+		warn_type,
+		warn_description,
+		picture_url,
+		warn_time,
+		warn_state,
+		operation_detail,
+		complete_time
+		from warnlog
+		WHERE warn_state=#{warnstate}
+		order by id desc
+	</select>
+
+	<select id="getWarnlogDoor" resultMap="RM_Warnlog" >
+		select
+		id,
+		warn_type,
+		warn_description,
+		picture_url,
+		warn_time,
+		warn_state,
+		operation_detail,
+		complete_time
+		from warnlog
+		WHERE warn_state in (1,2)
+		order by id desc
 	</select>
 
 </mapper>

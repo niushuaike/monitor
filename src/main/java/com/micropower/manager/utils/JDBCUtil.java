@@ -15,7 +15,7 @@ public class JDBCUtil {
 		try {
 			//properties.load(JDBCUtil.class.getClassLoader().getResourceAsStream("DB.properties"));
 			String driver = "com.mysql.jdbc.Driver";
-			url = "jdbc:mysql://127.0.0.1:3306/choeur?characterEncoding=utf8&useSSL=true";
+			url = "jdbc:mysql:///monitor?characterEncoding=utf8&useSSL=true";
 			user = "root";
 			password = "root";
 			Class.forName(driver);

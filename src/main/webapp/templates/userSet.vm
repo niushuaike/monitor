@@ -39,27 +39,8 @@
                 <th></th>
             </tr>
             </thead>
-            <tbody class="chk-body" id="table_content">
-            <tr>
-                <td><input type="checkbox" name="" id="" value=""/></td>
-                <td>1</td>
-                <td><input type="text" value="0102"/></td>
-                <td><input type="text" value="123456"/></td>
-                <td><input type="text" value="张三"/></td>
-                <td><input type="text" value="132456@qq.com"/></td>
-                <td><input type="text" value="110"/></td>
-                <td><input type="text" value="管理员"/></td>
-                <td>
-                    <select>
-                        <option value="1">管理员</option>
-                        <option value="2">什么什么</option>
-                    </select>
-                </td>
-                <td>
-                    <span style="display: none;" class='time-notSave'>取消</span>
-                    <span style="display: none;" class='time-save'>保存</span>
-                </td>
-            </tr>
+            <tbody class="chk-body" id="table_contentuserSet">
+
             </tbody>
         </table>
     </div>
@@ -76,13 +57,13 @@
             })
         </script>
 
-        <script type="text/html" id="t:table_tmp">
+        <script type="text/html" id="userSet_tmp">
             {{each list as value i}}
             <tr>
                 <td><input type="checkbox" name="" id="" value="{{value.user.id}}"/></td>
                 <td>{{i+1}}</td>
                 <td><input type="text" value="{{value.user.username}}"/></td>
-                <td><input type="text" value="{{value.user.password}}"/></td>
+                <td><input type="password" value="{{value.user.password}}"/></td>
                 <td><input type="text" value="{{value.user.realname}}"/></td>
                 <td><input type="text" value="{{value.user.email}}"/></td>
                 <td><input type="text" value="{{value.user.phone}}"/></td>

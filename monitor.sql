@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 152
-Source Server Version : 50623
-Source Host           : 192.168.199.152:3306
+Source Server         : mysql
+Source Server Version : 50716
+Source Host           : localhost:3306
 Source Database       : monitor
 
 Target Server Type    : MYSQL
-Target Server Version : 50623
+Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2017-09-25 09:57:16
+Date: 2017-10-09 09:41:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,10 +21,14 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `alarmthreshold`;
 CREATE TABLE `alarmthreshold` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `jg_wd_min` varchar(10) DEFAULT NULL COMMENT '机柜温度报警阈值最小值',
-  `jg_wd_max` varchar(10) DEFAULT NULL COMMENT '机柜温度报警阈值最大值',
-  `jg_sd_min` varchar(10) DEFAULT NULL COMMENT '机柜湿度报警阈值最小值',
-  `jg_sd_max` varchar(10) DEFAULT NULL COMMENT '机柜湿度报警阈值最大值',
+  `gn_wd_yj_min` varchar(10) DEFAULT NULL COMMENT '柜内温度预警阈值最小值',
+  `gn_wd_yj_max` varchar(10) DEFAULT NULL COMMENT '柜内温度预警阈值最大值',
+  `gn_wd_gj_min` varchar(10) DEFAULT NULL COMMENT '柜内温度告警阈值最小值',
+  `gn_wd_gj_max` varchar(10) DEFAULT NULL COMMENT '柜内温度告警阈值最大值',
+  `gn_sd_yj_min` varchar(10) DEFAULT NULL COMMENT '柜内湿度预警阈值最小值',
+  `gn_sd_yj_max` varchar(10) DEFAULT NULL COMMENT '柜内湿度预警阈值最大值',
+  `gn_sd_gj_min` varchar(10) DEFAULT NULL COMMENT '柜内湿度告警阈值最小值',
+  `gn_sd_gj_max` varchar(10) DEFAULT NULL COMMENT '柜内湿度告警阈值最大值',
   `ysj_one_yj_min` varchar(10) DEFAULT NULL COMMENT '压缩机1电流预警阈值最小值',
   `ysj_one_yj_max` varchar(10) DEFAULT NULL COMMENT '压缩机1电流预警阈值最大值',
   `ysj_two_yj_min` varchar(10) DEFAULT NULL COMMENT '压缩机2电流预警阈值最小值',
@@ -53,17 +57,15 @@ CREATE TABLE `alarmthreshold` (
   `xhfj_gj_max` varchar(10) DEFAULT NULL COMMENT '循环风机电流告警阈值最大值',
   `hjkz_gj_min` varchar(10) DEFAULT NULL COMMENT '环境控制温度告警阈值最小值',
   `hjkz_gj_max` varchar(10) DEFAULT NULL COMMENT '环境控制温度告警阈值最大值',
-  `xnwd_yj_min` varchar(10) DEFAULT '' COMMENT '内温度预警最小值箱',
-  `xnwd_yj_max` varchar(10) DEFAULT NULL COMMENT '箱内温度预警最大值',
-  `xnwd_gj_min` varchar(10) DEFAULT NULL COMMENT '箱内温度告警最小值',
-  `xnwd_gj_max` varchar(10) DEFAULT NULL COMMENT '箱内温度告警最大值',
+  `thresholdtype` varchar(10) DEFAULT NULL COMMENT '阈值类型：0，当前；1，设定值',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of alarmthreshold
 -- ----------------------------
-INSERT INTO `alarmthreshold` VALUES ('1', '0', '60', '10', '95', '1', '5', '1', '5', '0.05', '1', '0.05', '1', '0.05', '1', '0.05', '1', '0', '50', '1', '5', '1', '5', '0.05', '1', '0.05', '1', '0.05', '1', '0.05', '1', '0', '50', '0', '50', '0', '50');
+INSERT INTO `alarmthreshold` VALUES ('1', '1', '40', '0', '40', '10', '70', '0', '70', '0', '3', '0', '3', '0', '3', '0', '3', '0', '0.2', '0', '3', '0', '50', '0', '5', '0', '5', '0', '5', '0', '5', '0', '5', '0', '5', '0', '50', '0');
+INSERT INTO `alarmthreshold` VALUES ('2', '1', '40', '0', '40', '10', '70', '0', '90', '0', '3', '0', '3', '0', '3', '0', '3', '0', '3', '0', '3', '0', '50', '0', '5', '0', '5', '0', '5', '0', '5', '0', '5', '0', '5', '0', '50', '1');
 
 -- ----------------------------
 -- Table structure for cabinetparamter
@@ -98,13 +100,15 @@ CREATE TABLE `cabinetparamter` (
   `loop_current_top` varchar(10) DEFAULT NULL COMMENT '循环风机电流上限',
   `loop_current_down` varchar(10) DEFAULT NULL COMMENT '循环风机电流下限',
   `address` varchar(100) DEFAULT NULL COMMENT '通讯地址',
+  `parametertype` varchar(10) DEFAULT NULL COMMENT '参数类型：0，设置值；1，恢复默认设置值',
   PRIMARY KEY (`mid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cabinetparamter
 -- ----------------------------
-INSERT INTO `cabinetparamter` VALUES ('1', '26', '9', '0', '30', '10', '0', '2', '10', '30', '20', '20', '15', '10', '1', '5', '1', '5', '1', '1', '0.05', '1', '0.05', '1', '0.05', '1', '0.05', 'dsadsa');
+INSERT INTO `cabinetparamter` VALUES ('1', '26', '9', '0', '30', '10', '0', '2', '10', '30', '20', '20', '15', '10', '1', '5', '1', '5', '1', '1', '0.05', '1', '0.05', '1', '0.05', '1', '0.05', '1', '0');
+INSERT INTO `cabinetparamter` VALUES ('2', '26', '9', '0', '30', '10', '0', '2', '10', '30', '20', '20', '15', '10', null, '5', '1', '5', '1', '1', '0.05', '1', '0.05', '1', '0.05', '1', '0.05', null, '1');
 
 -- ----------------------------
 -- Table structure for device
@@ -127,14 +131,15 @@ CREATE TABLE `device` (
   `device_address` varchar(255) DEFAULT NULL,
   `machinecode` varchar(255) DEFAULT NULL,
   `controlmode` varchar(255) DEFAULT NULL,
+  `maincontrolip` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=69 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of device
 -- ----------------------------
-INSERT INTO `device` VALUES ('52', '温湿度对对对', '192.168.199.105', '', '10', '1', '1', '10', '0', '', '1', 'nsk', '123', '河南省 漯河市 召陵区 是的范德萨 ', '1506151276107626100', '1');
-INSERT INTO `device` VALUES ('68', 'asdf', 'asdf', 'asdf', '3', '5', '', '', '0', '', '2', 'sdf', 'g', '', '', '');
+INSERT INTO `device` VALUES ('52', '温湿度对对对', '192.168.199.105', '', '10', '5', '', '', '0', '', '1', '', '', 'windows', '1507284057219894100', '', 'http://192.168.199.111:8080');
+INSERT INTO `device` VALUES ('80', 'xiaomi ', '192.168.199.244', '', '3', '5', '', '', '0', '', '2', '', '', '', '', '', null);
 
 -- ----------------------------
 -- Table structure for msgqueue
@@ -193,84 +198,203 @@ CREATE TABLE `reportstatus` (
   `devicestatus` varchar(255) DEFAULT NULL COMMENT 'json数组存储',
   `warninfo` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=775 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=990 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of reportstatus
 -- ----------------------------
-INSERT INTO `reportstatus` VALUES ('700', '2017-09-22-11:42:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('701', '2017-09-22-11:43:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('702', '2017-09-22-11:44:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('703', '2017-09-22-11:45:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('704', '2017-09-22-11:46:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('705', '2017-09-22-11:47:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('706', '2017-09-22-11:48:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('707', '2017-09-22-11:49:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('708', '2017-09-22-11:50:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('709', '2017-09-22-11:51:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('710', '2017-09-22-11:52:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('711', '2017-09-22-11:53:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('712', '2017-09-22-11:54:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('713', '2017-09-22-11:55:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('714', '2017-09-22-11:56:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('715', '2017-09-22-11:57:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('716', '2017-09-22-11:58:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('717', '2017-09-22-11:59:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('718', '2017-09-22-12:00:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('719', '2017-09-22-12:01:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('720', '2017-09-22-12:02:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('721', '2017-09-22-12:03:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('722', '2017-09-22-12:04:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('723', '2017-09-22-12:05:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('724', '2017-09-22-12:06:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('725', '2017-09-22-12:07:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('726', '2017-09-22-12:08:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('727', '2017-09-22-12:09:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('728', '2017-09-22-12:10:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('729', '2017-09-22-12:11:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('730', '2017-09-22-12:12:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('731', '2017-09-22-12:13:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('732', '2017-09-22-12:14:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('733', '2017-09-22-12:15:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('734', '2017-09-22-12:16:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('735', '2017-09-22-12:17:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('736', '2017-09-22-12:18:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('737', '2017-09-22-12:19:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('738', '2017-09-22-12:20:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('739', '2017-09-22-12:21:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('740', '2017-09-22-12:22:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('741', '2017-09-22-12:23:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('742', '2017-09-22-12:24:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('743', '2017-09-22-12:25:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('744', '2017-09-22-12:26:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('745', '2017-09-22-12:27:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('746', '2017-09-22-12:28:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('747', '2017-09-22-12:29:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('748', '2017-09-22-12:30:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('749', '2017-09-22-12:31:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('750', '2017-09-22-12:32:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('751', '2017-09-22-12:33:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('752', '2017-09-22-12:34:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('753', '2017-09-22-12:35:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('754', '2017-09-22-12:36:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('755', '2017-09-22-12:37:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('756', '2017-09-22-12:38:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('757', '2017-09-22-12:39:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('758', '2017-09-22-12:40:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('759', '2017-09-22-12:41:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('760', '2017-09-22-12:42:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('761', '2017-09-22-12:43:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('762', '2017-09-22-12:44:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('763', '2017-09-22-12:45:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('764', '2017-09-22-12:46:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('765', '2017-09-22-12:47:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('766', '2017-09-22-12:48:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('767', '2017-09-22-12:49:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('768', '2017-09-22-12:50:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('769', '2017-09-22-12:51:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('770', '2017-09-22-12:52:13', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('771', '2017-09-22-12:53:02', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
-INSERT INTO `reportstatus` VALUES ('772', '2017-09-22-12:54:34', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"无法检测\",\"devicename\":\"小米地方干部吃饭是个\",\"hardware\":\"无法检测\"},{\"pingstatus\":\"无法检测\",\"devicename\":\"的说法都是\",\"hardware\":\"无法检测\"}]', '');
+INSERT INTO `reportstatus` VALUES ('798', '2017-09-30-13:00:16', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('799', '2017-09-30-13:02:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('800', '2017-09-30-13:04:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('801', '2017-09-30-13:06:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('802', '2017-09-30-13:08:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('803', '2017-09-30-13:10:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('804', '2017-09-30-13:12:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('805', '2017-09-30-13:15:25', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('806', '2017-09-30-13:16:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('807', '2017-09-30-13:18:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('808', '2017-09-30-13:20:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('809', '2017-09-30-13:22:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('810', '2017-09-30-13:24:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('811', '2017-09-30-13:26:45', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('812', '2017-09-30-13:28:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('813', '2017-09-30-13:30:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('814', '2017-09-30-13:32:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('815', '2017-09-30-13:34:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('816', '2017-09-30-13:36:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('817', '2017-09-30-13:38:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('818', '2017-09-30-13:40:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('819', '2017-09-30-13:42:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('820', '2017-09-30-13:44:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('821', '2017-09-30-13:47:06', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('822', '2017-09-30-13:52:28', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('823', '2017-09-30-13:56:10', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('824', '2017-09-30-14:00:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('825', '2017-09-30-14:02:36', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('826', '2017-09-30-14:04:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('827', '2017-09-30-14:06:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('828', '2017-09-30-14:10:08', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('829', '2017-09-30-14:12:27', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('830', '2017-09-30-14:14:01', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('831', '2017-09-30-14:16:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('832', '2017-09-30-14:18:14', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14015,');
+INSERT INTO `reportstatus` VALUES ('833', '2017-09-30-14:20:10', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14015,');
+INSERT INTO `reportstatus` VALUES ('834', '2017-09-30-14:22:01', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14015,');
+INSERT INTO `reportstatus` VALUES ('835', '2017-09-30-14:24:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('836', '2017-09-30-14:26:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('837', '2017-09-30-14:28:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('838', '2017-09-30-14:30:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('839', '2017-09-30-14:32:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('840', '2017-09-30-14:34:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('841', '2017-09-30-14:36:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('842', '2017-09-30-14:38:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('843', '2017-09-30-14:40:18', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('844', '2017-09-30-14:42:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('845', '2017-09-30-14:44:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('846', '2017-09-30-14:46:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('847', '2017-09-30-14:48:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('848', '2017-09-30-14:50:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('849', '2017-09-30-14:52:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('850', '2017-09-30-14:54:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('851', '2017-09-30-14:56:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('852', '2017-09-30-14:58:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14018,14017,14016,');
+INSERT INTO `reportstatus` VALUES ('853', '2017-10-05-14:16:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('854', '2017-10-05-14:18:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('855', '2017-10-05-14:20:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('856', '2017-10-05-14:22:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('857', '2017-10-05-14:24:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('858', '2017-10-05-14:26:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('859', '2017-10-05-14:28:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('860', '2017-10-05-14:30:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('861', '2017-10-05-14:32:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('862', '2017-10-05-14:34:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('863', '2017-10-05-14:36:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('864', '2017-10-05-14:38:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('865', '2017-10-05-14:40:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('866', '2017-10-05-14:42:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('867', '2017-10-05-14:44:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('868', '2017-10-05-14:46:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('869', '2017-10-05-14:48:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('870', '2017-10-05-14:50:04', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('871', '2017-10-05-14:52:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('872', '2017-10-05-14:54:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('873', '2017-10-05-14:56:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('874', '2017-10-05-14:58:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('875', '2017-10-06-11:15:35', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('876', '2017-10-06-11:16:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('877', '2017-10-06-11:18:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('878', '2017-10-06-11:20:03', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('879', '2017-10-06-11:22:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('880', '2017-10-06-11:24:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('881', '2017-10-06-11:26:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('882', '2017-10-06-11:28:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('883', '2017-10-06-11:30:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('884', '2017-10-06-11:32:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('885', '2017-10-06-11:34:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('886', '2017-10-06-11:36:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('887', '2017-10-06-11:38:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('888', '2017-10-06-11:40:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('889', '2017-10-06-11:42:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('890', '2017-10-06-11:44:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('891', '2017-10-06-11:46:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('892', '2017-10-06-11:48:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('893', '2017-10-06-11:50:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('894', '2017-10-06-11:52:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('895', '2017-10-06-11:54:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('896', '2017-10-06-11:56:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('897', '2017-10-06-11:58:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('898', '2017-10-06-12:00:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('899', '2017-10-06-12:02:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('900', '2017-10-06-12:04:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('901', '2017-10-06-12:06:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('902', '2017-10-06-12:08:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('903', '2017-10-06-12:10:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('904', '2017-10-06-12:12:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('905', '2017-10-06-12:14:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('906', '2017-10-06-12:16:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('907', '2017-10-06-12:18:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('908', '2017-10-06-12:20:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('909', '2017-10-06-12:22:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('910', '2017-10-06-12:24:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('911', '2017-10-06-12:26:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('912', '2017-10-06-12:28:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('913', '2017-10-06-12:30:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('914', '2017-10-06-12:32:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('915', '2017-10-06-12:34:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('916', '2017-10-06-12:36:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('917', '2017-10-06-12:38:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('918', '2017-10-06-12:40:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('919', '2017-10-06-12:42:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('920', '2017-10-06-12:44:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('921', '2017-10-06-12:46:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('922', '2017-10-06-12:48:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('923', '2017-10-06-12:50:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('924', '2017-10-06-12:52:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('925', '2017-10-06-12:54:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('926', '2017-10-06-12:56:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('927', '2017-10-06-12:58:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('928', '2017-10-06-13:00:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('929', '2017-10-06-13:02:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('930', '2017-10-06-13:04:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('931', '2017-10-06-13:06:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('932', '2017-10-06-13:08:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('933', '2017-10-06-13:10:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('934', '2017-10-06-13:12:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('935', '2017-10-06-13:14:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('936', '2017-10-06-13:16:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('937', '2017-10-06-13:18:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('938', '2017-10-06-13:20:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('939', '2017-10-06-13:22:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('940', '2017-10-06-13:24:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('941', '2017-10-06-13:26:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('942', '2017-10-06-13:28:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('943', '2017-10-06-13:30:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('944', '2017-10-06-13:32:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('945', '2017-10-06-13:34:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('946', '2017-10-06-13:36:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('947', '2017-10-06-13:38:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('948', '2017-10-06-13:40:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('949', '2017-10-06-13:42:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('950', '2017-10-06-13:44:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('951', '2017-10-06-13:46:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('952', '2017-10-06-13:48:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('953', '2017-10-06-13:50:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('954', '2017-10-06-13:52:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('955', '2017-10-06-13:54:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14023,');
+INSERT INTO `reportstatus` VALUES ('956', '2017-10-06-13:56:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14024,14023,');
+INSERT INTO `reportstatus` VALUES ('957', '2017-10-06-13:58:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14025,14024,14023,');
+INSERT INTO `reportstatus` VALUES ('958', '2017-10-06-14:00:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14025,14024,14023,');
+INSERT INTO `reportstatus` VALUES ('959', '2017-10-06-14:02:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14025,14024,14023,');
+INSERT INTO `reportstatus` VALUES ('960', '2017-10-06-14:04:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14025,14024,14023,');
+INSERT INTO `reportstatus` VALUES ('961', '2017-10-06-14:06:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14025,14024,14023,');
+INSERT INTO `reportstatus` VALUES ('962', '2017-10-06-14:08:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14025,14024,14023,');
+INSERT INTO `reportstatus` VALUES ('963', '2017-10-06-14:10:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14025,14024,14023,');
+INSERT INTO `reportstatus` VALUES ('964', '2017-10-06-14:12:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14025,14024,14023,');
+INSERT INTO `reportstatus` VALUES ('965', '2017-10-06-14:14:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14025,14024,14023,');
+INSERT INTO `reportstatus` VALUES ('966', '2017-10-06-14:16:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14025,14024,14023,');
+INSERT INTO `reportstatus` VALUES ('967', '2017-10-06-14:18:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14028,14027,14026,');
+INSERT INTO `reportstatus` VALUES ('968', '2017-10-06-14:20:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14028,14027,14026,');
+INSERT INTO `reportstatus` VALUES ('969', '2017-10-06-14:22:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14028,14027,14026,');
+INSERT INTO `reportstatus` VALUES ('970', '2017-10-06-14:24:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14028,14027,14026,');
+INSERT INTO `reportstatus` VALUES ('971', '2017-10-06-14:26:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14028,14027,14026,');
+INSERT INTO `reportstatus` VALUES ('972', '2017-10-06-14:28:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14028,14027,14026,');
+INSERT INTO `reportstatus` VALUES ('973', '2017-10-06-14:30:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14028,14027,14026,');
+INSERT INTO `reportstatus` VALUES ('974', '2017-10-06-14:32:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14028,14027,14026,');
+INSERT INTO `reportstatus` VALUES ('975', '2017-10-06-14:34:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14028,14027,14026,');
+INSERT INTO `reportstatus` VALUES ('976', '2017-10-06-14:36:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14028,14027,14026,');
+INSERT INTO `reportstatus` VALUES ('977', '2017-10-06-14:38:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('978', '2017-10-06-14:40:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '');
+INSERT INTO `reportstatus` VALUES ('979', '2017-10-06-14:42:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14029,');
+INSERT INTO `reportstatus` VALUES ('980', '2017-10-06-14:44:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14030,14029,');
+INSERT INTO `reportstatus` VALUES ('981', '2017-10-06-14:46:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14030,14029,');
+INSERT INTO `reportstatus` VALUES ('982', '2017-10-06-14:48:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14031,14030,14029,');
+INSERT INTO `reportstatus` VALUES ('983', '2017-10-06-14:50:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14031,14030,14029,');
+INSERT INTO `reportstatus` VALUES ('984', '2017-10-06-14:52:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14031,14030,14029,');
+INSERT INTO `reportstatus` VALUES ('985', '2017-10-06-14:54:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14031,14030,14029,');
+INSERT INTO `reportstatus` VALUES ('986', '2017-10-06-14:56:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14031,14030,14029,');
+INSERT INTO `reportstatus` VALUES ('987', '2017-10-06-14:58:00', '27.3℃', '79.1%', '关', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"正常\",\"devicename\":\"小米1\"}]', '14035,14034,14033,14032,');
+INSERT INTO `reportstatus` VALUES ('988', '2017-10-08-13:00:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"异常\",\"devicename\":\"xiaomi \"}]', '');
+INSERT INTO `reportstatus` VALUES ('989', '2017-10-08-14:00:00', '27.3℃', '79.1%', '开', '关', '正常', '正常', '正常', '[{\"pingstatus\":\"异常\",\"devicename\":\"xiaomi \"}]', '');
 
 -- ----------------------------
 -- Table structure for role
@@ -298,7 +422,7 @@ CREATE TABLE `saveconfig` (
   `save_config_title` varchar(50) NOT NULL COMMENT '定时保存名称',
   `startTime` varchar(50) DEFAULT NULL COMMENT '起始时间',
   `endTime` varchar(50) DEFAULT NULL COMMENT '结束时间',
-  `deltaTime` varchar(2) DEFAULT NULL COMMENT '间隔时间',
+  `deltaTime` varchar(10) DEFAULT NULL COMMENT '间隔时间',
   `lastTime` varchar(50) DEFAULT NULL COMMENT '最近保存时间',
   `lastData` varchar(1000) DEFAULT NULL COMMENT '最近数据',
   PRIMARY KEY (`id`)
@@ -307,7 +431,7 @@ CREATE TABLE `saveconfig` (
 -- ----------------------------
 -- Records of saveconfig
 -- ----------------------------
-INSERT INTO `saveconfig` VALUES ('1', '定时保存配置', '02:00', '24:00', '1', '20170811-1722', '温度:29.7℃,湿度:50.5%,前门:关,水浸:正常,红外:正常,烟感:正常,后门:关。');
+INSERT INTO `saveconfig` VALUES ('1', '定时保存配置', '09:00', '14:00', '1', '20170811-1722', '温度:29.7℃,湿度:50.5%,前门:关,水浸:正常,红外:正常,烟感:正常,后门:关。');
 
 -- ----------------------------
 -- Table structure for threshold
@@ -341,7 +465,7 @@ CREATE TABLE `user` (
   `email` varchar(50) NOT NULL COMMENT '邮箱地址',
   `phone` varchar(20) NOT NULL COMMENT '联系电话',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of user
@@ -360,21 +484,16 @@ CREATE TABLE `warnlog` (
   `warn_time` datetime NOT NULL COMMENT '告警时间',
   `warn_state` tinyint(4) NOT NULL COMMENT '告警状态',
   `operation_detail` varchar(200) DEFAULT NULL,
+  `complete_time` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13475 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=14059 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of warnlog
 -- ----------------------------
-INSERT INTO `warnlog` VALUES ('13473', '7', '红外异常', null, '2017-09-24 15:23:16', '3', null);
-INSERT INTO `warnlog` VALUES ('13474', '15', '告警离心风机1电流为1.4A，正常电流在1A到0.05A之间。', null, '2017-09-24 16:29:38', '3', null);
-INSERT INTO `warnlog` VALUES ('13471', '21', '告警循环风机电流为1.8A，正常电流在0.05A到1A之间。', null, '2017-09-24 14:56:39', '3', null);
-INSERT INTO `warnlog` VALUES ('13472', '23', '告警箱内温度为88.0℃，正常温度在0℃到50℃之间。', null, '2017-09-24 14:56:39', '3', null);
-INSERT INTO `warnlog` VALUES ('13470', '19', '告警散热风机电流为1.7A，正常电流在0.05A到1A之间。', null, '2017-09-24 14:56:39', '3', null);
-INSERT INTO `warnlog` VALUES ('13469', '17', '告警离心风机2电流为1.5A，正常电流在1A到0.05A之间。', null, '2017-09-24 14:56:39', '3', null);
-INSERT INTO `warnlog` VALUES ('13468', '15', '告警离心风机1电流为1.4A，正常电流在1A到0.05A之间。', null, '2017-09-24 14:56:39', '4', null);
-INSERT INTO `warnlog` VALUES ('13467', '2', '当前湿度为82.0%，正常湿度在10%到70%之间。', null, '2017-09-24 14:56:39', '3', null);
-INSERT INTO `warnlog` VALUES ('13466', '3', '前门打开;', 'source/picture/20170924-145638-1.jpeg', '2017-09-24 14:56:38', '3', null);
+INSERT INTO `warnlog` VALUES ('14058', '18', '预警散热风机电流为0.8A，正常电流在0A到0.2A之间;', null, '2017-10-08 17:15:02', '0', null, null);
+INSERT INTO `warnlog` VALUES ('14057', '2', '当前湿度为79.1，正常湿度在0到70之间;', null, '2017-10-08 17:15:02', '0', null, null);
+INSERT INTO `warnlog` VALUES ('14056', '3', '前门打开;', 'source/picture/20171008-171502-1.jpeg', '2017-10-08 17:15:02', '0', null, null);
 
 -- ----------------------------
 -- Table structure for warnstyle
@@ -410,7 +529,7 @@ CREATE TABLE `warntimeperiod` (
   `Friday` varchar(20) NOT NULL COMMENT '周五',
   `Saturday` varchar(20) NOT NULL COMMENT '周六',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='告警时段设置';
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='告警时段设置';
 
 -- ----------------------------
 -- Records of warntimeperiod
@@ -431,16 +550,12 @@ CREATE TABLE `warntype` (
 -- ----------------------------
 -- Records of warntype
 -- ----------------------------
-INSERT INTO `warntype` VALUES ('1', '温度报警');
 INSERT INTO `warntype` VALUES ('2', '湿度报警');
 INSERT INTO `warntype` VALUES ('3', '前门报警');
-INSERT INTO `warntype` VALUES ('4', '服务器告警');
-INSERT INTO `warntype` VALUES ('5', '冻结报警');
+INSERT INTO `warntype` VALUES ('5', '冻结告警');
 INSERT INTO `warntype` VALUES ('6', '水浸报警');
 INSERT INTO `warntype` VALUES ('7', '红外报警');
 INSERT INTO `warntype` VALUES ('8', '烟感报警');
-INSERT INTO `warntype` VALUES ('9', '机组告警');
-INSERT INTO `warntype` VALUES ('10', '短信告警');
 INSERT INTO `warntype` VALUES ('11', '后门报警');
 INSERT INTO `warntype` VALUES ('12', '压缩机1电流预警');
 INSERT INTO `warntype` VALUES ('13', '压缩机1电流报警');
@@ -452,8 +567,8 @@ INSERT INTO `warntype` VALUES ('18', '散热风机电流预警');
 INSERT INTO `warntype` VALUES ('19', '散热风机电流报警');
 INSERT INTO `warntype` VALUES ('20', '循环风机电流预警');
 INSERT INTO `warntype` VALUES ('21', '循环风机电流报警');
-INSERT INTO `warntype` VALUES ('22', '箱内温度预警');
-INSERT INTO `warntype` VALUES ('23', '箱内温度报警');
+INSERT INTO `warntype` VALUES ('22', '柜内温度预警');
+INSERT INTO `warntype` VALUES ('23', '柜内温度报警');
 INSERT INTO `warntype` VALUES ('24', '环境温度预警');
 INSERT INTO `warntype` VALUES ('25', '环境温度报警');
 INSERT INTO `warntype` VALUES ('26', '压缩机2电流预警');

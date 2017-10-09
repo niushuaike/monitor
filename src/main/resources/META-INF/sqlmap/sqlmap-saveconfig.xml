@@ -30,7 +30,7 @@
       - ===============================================
     -->
 	<insert id="create" parameterType="com.micropower.manager.model.po.Saveconfig" useGeneratedKeys="true" keyProperty="id">
-		insert into saveConfig (
+		insert into saveconfig (
 			id, 
 			save_config_title, 
 			startTime, 
@@ -57,7 +57,7 @@
       - ===============================================
     -->
 	<update id="update" parameterType="com.micropower.manager.model.po.Saveconfig">
-	      update saveConfig
+	      update saveconfig
 	      <set >
 	         			      <if test="id != null" >
 			        id = #{id},
@@ -93,7 +93,7 @@
     -->
 	<select id="count" resultType="java.lang.Integer" parameterType="com.micropower.manager.model.po.Saveconfig">
 		select count(*)
-		from saveConfig
+		from saveconfig
 	</select>
 
 	<!--
@@ -112,7 +112,7 @@
 		    deltaTime, 
 		    lastTime, 
 		    lastData
-		from saveConfig
+		from saveconfig
 		WHERE id=#{id}
 	</select>
 
@@ -132,10 +132,10 @@
 		    deltaTime, 
 		    lastTime, 
 		    lastData
-		from saveConfig
+		from saveconfig
 	</select>
 
-	<select id="list" resultMap="RM_Saveconfig" parameterType="java.util.HashMap">
+	<select id="list" resultMap="RM_Saveconfig">
 		select
 		id,
 		save_config_title,
@@ -144,7 +144,7 @@
 		deltaTime,
 		lastTime,
 		lastData
-		from saveConfig
+		from saveconfig
 	</select>
 
 </mapper>

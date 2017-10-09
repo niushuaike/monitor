@@ -24,11 +24,9 @@ public class Myfilter implements Filter {
             @Override
             public void run() {
                 ThreadPoolTaskScheduler threadPoolTaskScheduler = SpringUtil.getBean(ThreadPoolTaskScheduler.class);
-
                 threadPoolTaskScheduler.schedule(SpringUtil.getBean(ScheduleMonitorRunnable.class),new CronTrigger("0/2 * *  * * ?"));
-//                threadPoolTaskScheduler.schedule(SpringUtil.getBean(ScheduleMonitorRunnable.class),new CronTrigger("0 24-27/1 *  * * ?"));
             }
-        }, 5 * 1000);
+        }, 30 * 1000);
 
         timer.schedule(new TimerTask() {
             @Override
@@ -50,11 +48,19 @@ public class Myfilter implements Filter {
                     endtime=split1[0];
                 }
                 String cronstr = "0 0 "+starttime+"-"+endtime+"/"+saveconfig.getDeltatime()+" * * ?";
-               /* cronstr = "0 0/1 11-12 * * ?";*/
+                //cronstr = "0 0/2 11-14 * * ?";
                 ThreadPoolTaskScheduler threadPoolTaskScheduler = SpringUtil.getBean(ThreadPoolTaskScheduler.class);
                 threadPoolTaskScheduler.schedule(SpringUtil.getBean(ScheduleSaveRunnable.class),new CronTrigger(cronstr));
             }
-        }, 5 * 1000);
+        }, 60 * 1000);
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                ThreadPoolTaskScheduler threadPoolTaskScheduler = SpringUtil.getBean(ThreadPoolTaskScheduler.class);
+                threadPoolTaskScheduler.schedule(SpringUtil.getBean(ScheduleMonitorDeviceStatusRunnable.class),new CronTrigger("0/5 * *  * * ?"));
+            }
+        }, 10 * 1000);
 
 
     }

@@ -25,6 +25,18 @@ function inithuanj() {
     })
 }
 
+function devicestatus() {
+    var date = new Date();
+    var url = "/monitor/data/getDeviceStatus?data=" + date;
+    var params = {
+        data: ""
+    }
+
+    $.post(url, params, function (data) {
+        $("#deviceStatus").text(data.deviceStatus);
+    })
+}
+
 function warninfo() {
     var date = new Date();
     var url = "/monitor/bjm/warnlog/getwarninfo?data=" + date;
@@ -34,14 +46,16 @@ function warninfo() {
 
     $.post(url, params, function (data) {
         console.log("告警信息：", data);
-        if (data!="[]") {
-            $("#warninfo").html(data);
-
-        } else {
-
-            $("#warninfo").html("一切正常");
-        }
-
+        html = template('warninfo_template', {
+            list: data
+        });
+        $("#table_contenthuanj").html(html);
+        //上往下滚动
+        $('.huanj_tit').liMarquee({
+            direction: 'up',
+            scrollamount: 20,
+            hoverstop: false
+        });
     })
 }
 
@@ -73,7 +87,7 @@ function chartsTH() {
             {
                 type: 'category',
                 boundaryGap: false,
-                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                data: ['00:00', '00:00', '00:00', '00:00', '00:00', '00:00', '00:00']
             }
         ],
         yAxis: [
@@ -86,13 +100,13 @@ function chartsTH() {
                 name: '温度',
                 type: 'line',
                 stack: '总量',
-                data: [120, 132, 101, 134, 90, 230, 210]
+                data: [37.0, 37.0, 37.0, 37.0, 37.0, 37.0, 37.0]
             },
             {
                 name: '湿度',
                 type: 'line',
                 stack: '总量',
-                data: [220, 182, 191, 234, 290, 330, 310]
+                data: [60, 60, 60, 60, 60, 60, 60]
             }
         ]
     };

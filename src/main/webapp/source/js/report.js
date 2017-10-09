@@ -1,3 +1,5 @@
+//调用日期插件
+$('.warn-time').cxCalendar();
 $(function(){
 	$('.report-state').click(function(){
 		$('.state-list').show();
@@ -29,7 +31,9 @@ function initReport(page) {
     var url = "/monitor/jm/reportstatus/initReport";
     var params = {
         page:page,
-        pageSize:10
+        pageSize:10,
+        starttime:$("#starttime").val(),
+        endtime:$("#endtime").val()
     }
 
     $.post(url, params, function (data) {
@@ -41,6 +45,10 @@ function initReport(page) {
         $("#tablecontent1").html(html);
         pages(data.data.total,page);
     })
+}
+
+function queryReport() {
+    initReport(1);
 }
 
 function pages(total,page){
@@ -68,8 +76,8 @@ function getStatusmy(statusno) {
         html = template('tabletemplate2', {
             list: data.devicestatuslistmap
         });
-
         $("#tablecontent2").html(html);
+        $("#reportTime1").html(data.statusno);
     })
 }
 
@@ -87,6 +95,7 @@ function getException(statusno) {
         });
 
         $("#tablecontent3").html(html);
+        $("#reportTime2").html(data.statusno);
     })
 }
 
@@ -94,7 +103,6 @@ function deletereportbyid() {
 
     $(".chk-body input[type=checkbox]").each(function () {
         if ($(this).is(':checked') == true) {
-            alert("准备删除！");
             var mm = $(this);
             var url = "/monitor/jm/reportstatus/deletereportbyid";
             var params = {
@@ -104,10 +112,10 @@ function deletereportbyid() {
             $.post(url, params, function (data) {
                 console.log("删除",data);
                 if(data==1){
-                    alert("删除成功");
+                    layer.msg("删除成功");
                     initReport();
                 }else{
-                    alert("删除失败");
+                    layer.msg("删除失败");
                 }
             })
 

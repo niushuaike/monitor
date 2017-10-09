@@ -105,6 +105,8 @@ public class Device implements IPO {
 	 */
 	private String machinecode="";
 
+	private String mainControlIp="";
+
 	public String getControlmode() {
 		return controlmode;
 	}
@@ -219,5 +221,13 @@ public class Device implements IPO {
 
 	public void setDeviceAddress(String deviceAddress) {
 		this.deviceAddress = deviceAddress;
+	}
+
+	public String getMainControlIp() {
+		return mainControlIp;
+	}
+
+	public void setMainControlIp(String mainControlIp) {
+		this.mainControlIp = mainControlIp;
 	}
 }

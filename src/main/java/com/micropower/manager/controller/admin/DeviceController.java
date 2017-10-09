@@ -2,6 +2,7 @@ package com.micropower.manager.controller.admin;
 
 import com.github.pagehelper.StringUtil;
 import com.lycheeframework.core.common.util.SpringUtil;
+import com.micropower.manager.controller.BaseController;
 import com.micropower.manager.model.po.Device;
 import com.micropower.manager.model.po.User;
 import com.micropower.manager.model.po.Warnstyle;
@@ -12,11 +13,17 @@ import com.micropower.manager.service.UserService;
 import com.micropower.manager.service.WarnStyleService;
 import com.micropower.manager.service.WarntimeperiodService;
 import com.micropower.manager.utils.OxConvertUtil;
+import com.micropower.manager.utils.OxUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.security.krb5.internal.HostAddress;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Stream;
@@ -26,7 +33,7 @@ import java.util.stream.Stream;
  */
 @Controller
 @RequestMapping("/jm/device")
-public class DeviceController {
+public class DeviceController extends BaseController {
 
     @Autowired
     private DeviceService deviceService;
@@ -36,6 +43,8 @@ public class DeviceController {
     private WarnStyleService warnStyleService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ServletContext servletContext;
 
     @ResponseBody
     @RequestMapping("/list")
@@ -43,8 +52,7 @@ public class DeviceController {
         List<Map<String, Object>> list = deviceService.list();
         Stream<Map<String, Object>> stream = list.stream();
         stream.forEach((Map<String, Object> devicemap) -> {
-            devicemap.put("devicestatus", "链接呵呵");
-            devicemap.put("pingstatus", "ping:o_o");
+            devicemap.put("devicestatus", servletContext.getAttribute("deviceStatus"));
 
             Device devicebase = (Device) devicemap.get("devicebase");
 
@@ -135,16 +143,10 @@ public class DeviceController {
     @RequestMapping("/querySelfDevice")
     public Map<String, String> querySelfDevice(Integer deviceType) {
         Device device = deviceService.querySelfDevice(deviceType);
-        Map<String, String> map = OxConvertUtil.obj2Map(device);
-        String deviceAddress = device.getDeviceAddress();
-        String[] split = deviceAddress.split(" ");
-        if (split.length>3){
-            map.put("provice",split[0]);
-            map.put("city",split[1]);
-            map.put("county",split[2]);
-            map.put("detail",split[3]);
-        }
+        String hostAddress= OxUtil.getLinuxLocalIp();
 
+        Map<String, String> map = OxConvertUtil.obj2Map(device);
+        map.put("deviceIp", hostAddress);
         return map;
     }
 
@@ -192,7 +194,9 @@ public class DeviceController {
         return deviceService.delete(id);
     }@ResponseBody
     @RequestMapping("/updateAddr")
-    public Integer updateAddr(String deviceAddress) {
-        return deviceService.updateAddr(deviceAddress);
+    public Integer updateAddr(HttpServletRequest request) {
+        Map<String, String> paramesMapMy = getParamesMapMy(request);
+        servletContext.setAttribute("main_control_ip",paramesMapMy.get("mainControlIp"));
+        return deviceService.updateAddr(paramesMapMy);
     }
 }

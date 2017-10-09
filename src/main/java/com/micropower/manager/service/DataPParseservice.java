@@ -34,22 +34,28 @@ public class DataPParseservice {
 
     public Map<String,String> getRecentJZData() {
         RawDataP rawDataP = null;
+        RawData rawData = null;
         try {
             rawDataP = PParseDataUtil.parseRecentOneData((String) servletContext.getAttribute("labor_data_path"));
+            rawData = ParseDataUtil.parseRecentOneData((String) servletContext.getAttribute("cabinet_data_path"));
         } catch (IOException e) {
             e.printStackTrace();
         }
         Map<String, String> map = OxConvertUtil.obj2Map(rawDataP);
+        if (rawData!=null){
+            map.put("xnwd",rawData.getTemperature());
+        }
+        rawDataP.getSbktzt().contains("0");
         if (rawDataP!=null){
-            if ("0".equals(rawDataP.getSbktzt())){
-                map.put("sbktztstatus","运转");
-            }else {
+            if (rawDataP.getSbktzt().contains("0")){
                 map.put("sbktztstatus","停止");
-            }
-            if ("0".equals(rawDataP.getGzzt())){
-                map.put("gzztstatus","正常");
             }else {
+                map.put("sbktztstatus","运转");
+            }
+            if (rawDataP.getGzzt().contains("0")){
                 map.put("gzztstatus","异常");
+            }else {
+                map.put("gzztstatus","正常");
             }
         }
         return map;

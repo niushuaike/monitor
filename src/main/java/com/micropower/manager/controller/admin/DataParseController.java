@@ -31,6 +31,14 @@ public class DataParseController {
     }
 
     @ResponseBody
+    @RequestMapping("/getDeviceStatus")
+    public Map<String,String> getDeviceStatus(){
+        return service.getDeviceStatus();
+    }
+
+
+
+    @ResponseBody
     @RequestMapping("/getTHinfo")
     public Map<String,List> getTHinfo(Integer requestFlag){
         Map<String,List> map = new HashMap<>();

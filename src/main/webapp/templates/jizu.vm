@@ -14,10 +14,10 @@
         <ul>
             <li style="background:#1abc9c;">
                 <div class="row-ico">
-                    <i class="fa fa-sun-o fa-4x" aria-hidden="true"></i>
+                    <img src="/monitor/source/images/one.png"/>
                 </div>
                 <div class="row-font">
-                    <p>箱内温度</p>
+                    <p>柜内温度</p>
                     <p><input type="text" name="xnwd" value="0">℃</p>
                     <p>环境温度</p>
                     <p><input type="text" name="hjkz" value="0">℃</p>
@@ -25,7 +25,7 @@
             </li>
             <li style="background: #e74c3c;">
                 <div class="row-ico">
-                    <i class="fa fa-sun-o fa-4x" aria-hidden="true"></i>
+                    <img src="/monitor/source/images/six.png"/>
                 </div>
                 <div class="row-font">
                     <p>压缩机1电流</p>
@@ -36,7 +36,7 @@
             </li>
             <li style="background: #3498db;">
                 <div class="row-ico">
-                    <i class="fa fa-sun-o fa-4x" aria-hidden="true"></i>
+                    <img src="/monitor/source/images/seven.png"/>
                 </div>
                 <div class="row-font">
                     <p>离心风机1电流</p>
@@ -47,7 +47,7 @@
             </li>
             <li style="background: #f39c12;">
                 <div class="row-ico">
-                    <i class="fa fa-sun-o fa-4x" aria-hidden="true"></i>
+                    <img src="/monitor/source/images/eight.png"/>
                 </div>
                 <div class="row-font">
                     <p>散热风机电流</p>
@@ -56,9 +56,9 @@
                     <p><input type="text" name="xhfj" value="0">A</p>
                 </div>
             </li>
-            <li style="background: #34495e;">
+            #*<li style="background: #34495e;">
                 <div class="row-ico">
-                    <i class="fa fa-sun-o fa-4x" aria-hidden="true"></i>
+                    <img src="/monitor/source/images/nine.png"/>
                 </div>
                 <div class="row-font">
                     <p>设备开机状态</p>
@@ -66,29 +66,40 @@
                     <p>故障状态</p>
                     <p><input type="text" name="sbktztstatus" value="暂无"></p>
                 </div>
-            </li>
+            </li>*#
         </ul>
     </div>
     </form>
     <div class="row title red">
-        <div class="col-lg-12 col-xs-12" id="warninfo">
+        <div class="col-lg-12 col-xs-12">
+            <div class="jizu_tit" id="table_content">
+
+            </div>
         </div>
     </div>
     <div class="chart">
-        <p>温度监控曲线</p>
+        <p>柜内温度监控曲线</p>
         <div id="jizuth" style="height:400px;"></div>
     </div>
 </div>
+<link rel="stylesheet" href="/monitor/source/css/liMarquee.css"/>
 <script src="$!env.getStaticURL('js/jquery-1.11.3.js')"></script>
 <script src="/monitor/source/js/my.js"></script>
 <script src="/monitor/source/js/echarts.min.js"></script>
 <script src="/monitor/source/js/nsk.js"></script>
+<script src="/monitor/source/js/jquery.liMarquee.js"></script>
 <script src="/monitor/source/js/jizu.js"></script>
-
+#LoadMUI("artTemplate")
 <script>
     $(function(){
         initJZ();
         window.setInterval(warninfo, 1000*2);
         chartsJZ()
     })
+</script>
+
+<script type="text/html" id="warninfo_template">
+    {{each list as value i}}
+    <p>{{value}}</p>
+    {{/each}}
 </script>

@@ -36,77 +36,7 @@
                 <th></th>
             </tr>
             </thead>
-            <tbody class="chk-body" id="table_content">
-            <tr>
-                <td><input type="checkbox" name="" id=""/></td>
-                <td>01</td>
-                <td>定时保存设置</td>
-                <td>
-                    <select class="time-sel" name="" disabled="disabled">
-                        <option value="01:00">01:00</option>
-                        <option value="01:00">02:00</option>
-                        <option value="01:00">03:00</option>
-                        <option value="01:00">04:00</option>
-                        <option value="01:00">05:00</option>
-                        <option value="01:00">06:00</option>
-                        <option value="01:00">07:00</option>
-                        <option value="01:00">08:00</option>
-                        <option value="01:00">09:00</option>
-                        <option value="01:00">10:00</option>
-                        <option value="01:00">11:00</option>
-                        <option value="01:00">12:00</option>
-                        <option value="01:00">13:00</option>
-                        <option value="01:00">14:00</option>
-                        <option value="01:00">15:00</option>
-                        <option value="01:00">16:00</option>
-                        <option value="01:00">17:00</option>
-                        <option value="01:00">18:00</option>
-                        <option value="01:00">19:00</option>
-                        <option value="01:00">20:00</option>
-                        <option value="01:00">21:00</option>
-                        <option value="01:00">22:00</option>
-                        <option value="01:00">23:00</option>
-                        <option value="01:00">24:00</option>
-                    </select>
-                </td>
-                <td>
-                    <select class="time-sel" name="" disabled="disabled">
-                        <option value="01:00">01:00</option>
-                        <option value="01:00">02:00</option>
-                        <option value="01:00">03:00</option>
-                        <option value="01:00">04:00</option>
-                        <option value="01:00">05:00</option>
-                        <option value="01:00">06:00</option>
-                        <option value="01:00">07:00</option>
-                        <option value="01:00">08:00</option>
-                        <option value="01:00">09:00</option>
-                        <option value="01:00">10:00</option>
-                        <option value="01:00">11:00</option>
-                        <option value="01:00">12:00</option>
-                        <option value="01:00">13:00</option>
-                        <option value="01:00">14:00</option>
-                        <option value="01:00">15:00</option>
-                        <option value="01:00">16:00</option>
-                        <option value="01:00">17:00</option>
-                        <option value="01:00">18:00</option>
-                        <option value="01:00">19:00</option>
-                        <option value="01:00">20:00</option>
-                        <option value="01:00">21:00</option>
-                        <option value="01:00">22:00</option>
-                        <option value="01:00">23:00</option>
-                        <option value="01:00">24:00</option>
-                    </select>
-                </td>
-
-                <td>
-                    <input class="time-ipt" type="" name="" id="" value="2" readonly/>
-                </td>
-                <td class="text-left">
-                    <span style="display: none;" class="time-notSave">取消</span>
-                    <span style="display: none;" class="time-save">保存</span>
-                </td>
-
-            </tr>
+            <tbody class="chk-body" id="table_contentsetTime">
             </tbody>
         </table>
     </div>
@@ -123,7 +53,7 @@
             })
         </script>
 
-        <script type="text/html" id="t:table_tmp">
+        <script type="text/html" id="setTime_tmp">
             {{each list as value i}}
             <tr>
                 <td><input type="checkbox" id="id" value="{{value.id}}"/></td>

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.micropower.manager.common.util.SessionUtil;
 import com.micropower.manager.model.po.User;
+import org.apache.commons.lang.StringUtils;
 
 public class RequestFilter implements Filter {
 
@@ -34,15 +35,27 @@ public class RequestFilter implements Filter {
             String requestUri = httpRequest.getRequestURI();        //�����ȫ·��,����:		 	/park/app/controller/Main.js
             String uri = requestUri.substring(ctxPath.length());//ȫ·����ȥctxPath,���磺	/app/controller/Main.js
             String tarUri = uri.trim();
+            String reference = ((HttpServletRequest) request).getHeader("referer");
+            String s = "";
+            if (reference!=null){
+            String[] split = reference.split("/");
+                s = split[2];
+            }
+            String main_control_ip = (String) request.getServletContext().getAttribute("main_control_ip");
 
             Object userObj = SessionUtil.getAttribute("user");
             boolean loginFlag = false;
-
-            if (null != userObj && userObj instanceof User) {
-                loginFlag = true;
+            if (!StringUtils.isEmpty(s) && main_control_ip.contains(s)) {
                 chain.doFilter(request, response);
+                SessionUtil.setAttribute("user", new User());
             } else {
-                httpResponse.sendRedirect(ctxPath + "/monitorno/logo");
+                if (null != userObj && userObj instanceof User) {
+                    loginFlag = true;
+                    chain.doFilter(request, response);
+                } else {
+                    httpResponse.sendRedirect(ctxPath + "/monitorno/logo");
+                }
+
             }
         } else {
             chain.doFilter(request, response);

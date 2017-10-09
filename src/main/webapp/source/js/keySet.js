@@ -60,7 +60,6 @@ function init() {
                 "<td>" + data[i].devicebase.deviceName + "</td>" +
                 "<td>" + data[i].devicebase.deviceIp + "</td>" +
                 "<td>" + data[i].devicestatus + "</td>" +
-                "<td>" + data[i].pingstatus + "</td>" +
                 "<td>" + data[i].warntimeperiod + "</td>" +
                 "<td>" + data[i].warnstyle + "</td>" +
                 "<td>" + data[i].users + "</td>" +
@@ -171,11 +170,11 @@ function saveadd() {
 
     $.post(url, params, function (data) {
         if (data == 1) {
-            alert("添加成功！");
+            layer.msg("添加成功！");
             $('.modal-01').hide();
             init();
         } else {
-            alert("添加失败");
+            layer.msg("添加失败");
             $('.modal-01').hide();
         }
 
@@ -219,7 +218,6 @@ function toedit() {
             $("#loginNameModal").val(data.device.loginName);
             $("#loginPassedModal").val(data.device.loginPasswd);
             $("#timeperiodModal").val(data.device.timeperiod);
-            alert(data.warnstyleid);
             $("#warnstyle input[value='" + data.device.warnstyleid + "']").attr("checked", true);
 
             if ($("#warnstyle input[value='" + data.device.warnstyleid + "']").val() == 1) {
@@ -263,11 +261,11 @@ function saveedit() {
 
     $.post(url, params, function (data) {
         if (data == 1) {
-            alert("添加成功！");
+            layer.msg("添加成功！");
             $('.modal-01').hide();
             init();
         } else {
-            alert("添加失败");
+            layer.msg("添加失败");
             $('.modal-01').hide();
         }
 
@@ -293,10 +291,10 @@ function deletebyid() {
         $.post(url, params, function (data) {
             console.log("shanchufanhui", data);
             if (data == 1) {
-                alert("删除成功！");
+                layer.msg("删除成功！");
                 init();
             } else {
-                alert("删除失败！");
+                layer.msg("删除失败！");
             }
         })
 
@@ -319,10 +317,10 @@ function savepause() {
 
         $.post(url, params, function (data) {
             if (data == 1) {
-                alert("冻结成功！");
+                layer.msg("冻结成功！");
                 init();
             } else {
-                alert("冻结失败！");
+                layer.msg("冻结失败！");
             }
         })
     })

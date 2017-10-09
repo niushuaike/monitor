@@ -1,6 +1,5 @@
 package com.micropower.manager.service;
 
-import com.micropower.manager.model.po.Alarmthreshold;
 import com.micropower.manager.model.po.Cabinetparamter;
 
 /**
@@ -8,7 +7,7 @@ import com.micropower.manager.model.po.Cabinetparamter;
  */
 public interface CabinetSetService extends BaseService<Cabinetparamter> {
 
-    Cabinetparamter queryOnlyOne();
-
     Integer recoverDeafult();
+
+    Cabinetparamter queryParameterByType(String parametertype);
 }

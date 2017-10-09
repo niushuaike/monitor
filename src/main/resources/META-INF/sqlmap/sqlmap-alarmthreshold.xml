@@ -1,72 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="alarmthreshold">
 
-    <!--
+	<!--
       - ===============================================
       - ���� Alarmthreshold Entity
       - @author niushuaike
-      - @date 2017-09-22
+      - @date 2017-09-27
       - ===============================================
     -->
-    <resultMap type="com.micropower.manager.model.po.Alarmthreshold" id="RM_Alarmthreshold">
-        <id property="id" column="id" jdbcType="BIGINT" javaType="java.lang.Long"/>
-        <result property="jgWdMin" column="jg_wd_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="jgWdMax" column="jg_wd_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="jgSdMin" column="jg_sd_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="jgSdMax" column="jg_sd_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="ysjOneYjMin" column="ysj_one_yj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="ysjOneYjMax" column="ysj_one_yj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="ysjTwoYjMin" column="ysj_two_yj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="ysjTwoYjMax" column="ysj_two_yj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="lxfjOneYjMin" column="lxfj_one_yj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="lxfjOneYjMax" column="lxfj_one_yj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="lxfjTwoYjMin" column="lxfj_two_yj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="lxfjTwoYjMax" column="lxfj_two_yj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="srfjYjMin" column="srfj_yj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="srfjYjMax" column="srfj_yj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="xhfjYjMin" column="xhfj_yj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="xhfjYjMax" column="xhfj_yj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="hjkzYjMin" column="hjkz_yj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="hjkzYjMax" column="hjkz_yj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="ysjOneGjMin" column="ysj_one_gj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="ysjOneGjMax" column="ysj_one_gj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="ysjTwoGjMin" column="ysj_two_gj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="ysjTwoGjMax" column="ysj_two_gj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="lxfjOneGjMin" column="lxfj_one_gj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="lxfjOneGjMax" column="lxfj_one_gj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="lxfjTwoGjMin" column="lxfj_two_gj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="lxfjTwoGjMax" column="lxfj_two_gj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="srfjGjMin" column="srfj_gj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="srfjGjMax" column="srfj_gj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="xhfjGjMin" column="xhfj_gj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="xhfjGjMax" column="xhfj_gj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="hjkzGjMin" column="hjkz_gj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="hjkzGjMax" column="hjkz_gj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="xnwdYjMin" column="xnwd_yj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="xnwdYjMax" column="xnwd_yj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="xnwdGjMin" column="xnwd_gj_min" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="xnwdGjMax" column="xnwd_gj_max" jdbcType="VARCHAR" javaType="java.lang.String"/>
-    </resultMap>
+	<resultMap  type="com.micropower.manager.model.po.Alarmthreshold"	   id="RM_Alarmthreshold">
+		<id     property="id"             column="id"               jdbcType="BIGINT"   javaType="java.lang.Long"    />
+		<result property="gnWdYjMin"      column="gn_wd_yj_min"     jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="gnWdYjMax"      column="gn_wd_yj_max"     jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="gnWdGjMin"      column="gn_wd_gj_min"     jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="gnWdGjMax"      column="gn_wd_gj_max"     jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="gnSdYjMin"      column="gn_sd_yj_min"     jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="gnSdYjMax"      column="gn_sd_yj_max"     jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="gnSdGjMin"      column="gn_sd_gj_min"     jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="gnSdGjMax"      column="gn_sd_gj_max"     jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="ysjOneYjMin"    column="ysj_one_yj_min"   jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="ysjOneYjMax"    column="ysj_one_yj_max"   jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="ysjTwoYjMin"    column="ysj_two_yj_min"   jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="ysjTwoYjMax"    column="ysj_two_yj_max"   jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="lxfjOneYjMin"   column="lxfj_one_yj_min"  jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="lxfjOneYjMax"   column="lxfj_one_yj_max"  jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="lxfjTwoYjMin"   column="lxfj_two_yj_min"  jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="lxfjTwoYjMax"   column="lxfj_two_yj_max"  jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="srfjYjMin"      column="srfj_yj_min"      jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="srfjYjMax"      column="srfj_yj_max"      jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="xhfjYjMin"      column="xhfj_yj_min"      jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="xhfjYjMax"      column="xhfj_yj_max"      jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="hjkzYjMin"      column="hjkz_yj_min"      jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="hjkzYjMax"      column="hjkz_yj_max"      jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="ysjOneGjMin"    column="ysj_one_gj_min"   jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="ysjOneGjMax"    column="ysj_one_gj_max"   jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="ysjTwoGjMin"    column="ysj_two_gj_min"   jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="ysjTwoGjMax"    column="ysj_two_gj_max"   jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="lxfjOneGjMin"   column="lxfj_one_gj_min"  jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="lxfjOneGjMax"   column="lxfj_one_gj_max"  jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="lxfjTwoGjMin"   column="lxfj_two_gj_min"  jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="lxfjTwoGjMax"   column="lxfj_two_gj_max"  jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="srfjGjMin"      column="srfj_gj_min"      jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="srfjGjMax"      column="srfj_gj_max"      jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="xhfjGjMin"      column="xhfj_gj_min"      jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="xhfjGjMax"      column="xhfj_gj_max"      jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="hjkzGjMin"      column="hjkz_gj_min"      jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="hjkzGjMax"      column="hjkz_gj_max"      jdbcType="VARCHAR"  javaType="java.lang.String"  />
+		<result property="thresholdtype"  column="thresholdtype"    jdbcType="VARCHAR"  javaType="java.lang.String"  />
+	</resultMap>
 
-    <!--
+	<!--
       - ===============================================
       - ���� Alarmthreshold
       - @author niushuaike
-      - @date 2017-09-22
+      - @date 2017-09-27
       - ===============================================
     -->
-    <insert id="create" parameterType="com.micropower.manager.model.po.Alarmthreshold" useGeneratedKeys="true"
-            keyProperty="id">
+	<insert id="create" parameterType="com.micropower.manager.model.po.Alarmthreshold" useGeneratedKeys="true" keyProperty="id">
 		insert into alarmthreshold (
 			id, 
-			jg_wd_min, 
-			jg_wd_max, 
-			jg_sd_min, 
-			jg_sd_max, 
+			gn_wd_yj_min, 
+			gn_wd_yj_max, 
+			gn_wd_gj_min, 
+			gn_wd_gj_max, 
+			gn_sd_yj_min, 
+			gn_sd_yj_max, 
+			gn_sd_gj_min, 
+			gn_sd_gj_max, 
 			ysj_one_yj_min, 
 			ysj_one_yj_max, 
 			ysj_two_yj_min, 
@@ -95,16 +99,17 @@
 			xhfj_gj_max, 
 			hjkz_gj_min, 
 			hjkz_gj_max, 
-			xnwd_yj_min, 
-			xnwd_yj_max, 
-			xnwd_gj_min, 
-			xnwd_gj_max
+			thresholdtype
 		) values (
 		    #{id}, 
-		    #{jgWdMin}, 
-		    #{jgWdMax}, 
-		    #{jgSdMin}, 
-		    #{jgSdMax}, 
+		    #{gnWdYjMin}, 
+		    #{gnWdYjMax}, 
+		    #{gnWdGjMin}, 
+		    #{gnWdGjMax}, 
+		    #{gnSdYjMin}, 
+		    #{gnSdYjMax}, 
+		    #{gnSdGjMin}, 
+		    #{gnSdGjMax}, 
 		    #{ysjOneYjMin}, 
 		    #{ysjOneYjMax}, 
 		    #{ysjTwoYjMin}, 
@@ -133,164 +138,165 @@
 		    #{xhfjGjMax}, 
 		    #{hjkzGjMin}, 
 		    #{hjkzGjMax}, 
-		    #{xnwdYjMin}, 
-		    #{xnwdYjMax}, 
-		    #{xnwdGjMin}, 
-		    #{xnwdGjMax}
+		    #{thresholdtype}
 		)
 	</insert>
 
-    <!--
+	<!--
       - ===============================================
       - �޸� Alarmthreshold
       - @author niushuaike
-      - @date 2017-09-22
+      - @date 2017-09-27
       - ===============================================
     -->
-    <update id="update" parameterType="com.micropower.manager.model.po.Alarmthreshold">
-        update alarmthreshold
-        <set>
-            <if test="id != null and id !=''">
-                id = #{id},
-            </if>
-            <if test="jgWdMin != null and jgWdMin !=''">
-                jg_wd_min = #{jgWdMin},
-            </if>
-            <if test="jgWdMax != null and jgWdMax !=''">
-                jg_wd_max = #{jgWdMax},
-            </if>
-            <if test="jgSdMin != null and jgSdMin !=''">
-                jg_sd_min = #{jgSdMin},
-            </if>
-            <if test="jgSdMax != null and jgSdMax !=''">
-                jg_sd_max = #{jgSdMax},
-            </if>
-            <if test="ysjOneYjMin != null and ysjOneYjMin !=''">
-                ysj_one_yj_min = #{ysjOneYjMin},
-            </if>
-            <if test="ysjOneYjMax != null and ysjOneYjMax !=''">
-                ysj_one_yj_max = #{ysjOneYjMax},
-            </if>
-            <if test="ysjTwoYjMin != null and ysjTwoYjMin !=''">
-                ysj_two_yj_min = #{ysjTwoYjMin},
-            </if>
-            <if test="ysjTwoYjMax != null and ysjTwoYjMax !=''">
-                ysj_two_yj_max = #{ysjTwoYjMax},
-            </if>
-            <if test="lxfjOneYjMin != null and lxfjOneYjMin !=''">
-                lxfj_one_yj_min = #{lxfjOneYjMin},
-            </if>
-            <if test="lxfjOneYjMax != null and lxfjOneYjMax !=''">
-                lxfj_one_yj_max = #{lxfjOneYjMax},
-            </if>
-            <if test="lxfjTwoYjMin != null and lxfjTwoYjMin !=''">
-                lxfj_two_yj_min = #{lxfjTwoYjMin},
-            </if>
-            <if test="lxfjTwoYjMax != null and lxfjTwoYjMax !=''">
-                lxfj_two_yj_max = #{lxfjTwoYjMax},
-            </if>
-            <if test="srfjYjMin != null and srfjYjMin !=''">
-                srfj_yj_min = #{srfjYjMin},
-            </if>
-            <if test="srfjYjMax != null and srfjYjMax !=''">
-                srfj_yj_max = #{srfjYjMax},
-            </if>
-            <if test="xhfjYjMin != null and xhfjYjMin !=''">
-                xhfj_yj_min = #{xhfjYjMin},
-            </if>
-            <if test="xhfjYjMax != null and xhfjYjMax !=''">
-                xhfj_yj_max = #{xhfjYjMax},
-            </if>
-            <if test="hjkzYjMin != null and hjkzYjMin !=''">
-                hjkz_yj_min = #{hjkzYjMin},
-            </if>
-            <if test="hjkzYjMax != null and hjkzYjMax !=''">
-                hjkz_yj_max = #{hjkzYjMax},
-            </if>
-            <if test="ysjOneGjMin != null and ysjOneGjMin !=''">
-                ysj_one_gj_min = #{ysjOneGjMin},
-            </if>
-            <if test="ysjOneGjMax != null and ysjOneGjMax !=''">
-                ysj_one_gj_max = #{ysjOneGjMax},
-            </if>
-            <if test="ysjTwoGjMin != null and ysjTwoGjMin !=''">
-                ysj_two_gj_min = #{ysjTwoGjMin},
-            </if>
-            <if test="ysjTwoGjMax != null and ysjTwoGjMax !=''">
-                ysj_two_gj_max = #{ysjTwoGjMax},
-            </if>
-            <if test="lxfjOneGjMin != null and lxfjOneGjMin !=''">
-                lxfj_one_gj_min = #{lxfjOneGjMin},
-            </if>
-            <if test="lxfjOneGjMax != null and lxfjOneGjMax !=''">
-                lxfj_one_gj_max = #{lxfjOneGjMax},
-            </if>
-            <if test="lxfjTwoGjMin != null and lxfjTwoGjMin !=''">
-                lxfj_two_gj_min = #{lxfjTwoGjMin},
-            </if>
-            <if test="lxfjTwoGjMax != null and lxfjTwoGjMax !=''">
-                lxfj_two_gj_max = #{lxfjTwoGjMax},
-            </if>
-            <if test="srfjGjMin != null and srfjGjMin !=''">
-                srfj_gj_min = #{srfjGjMin},
-            </if>
-            <if test="srfjGjMax != null and srfjGjMax !=''">
-                srfj_gj_max = #{srfjGjMax},
-            </if>
-            <if test="xhfjGjMin != null and xhfjGjMin !=''">
-                xhfj_gj_min = #{xhfjGjMin},
-            </if>
-            <if test="xhfjGjMax != null and xhfjGjMax !=''">
-                xhfj_gj_max = #{xhfjGjMax},
-            </if>
-            <if test="hjkzGjMin != null and hjkzGjMin !=''">
-                hjkz_gj_min = #{hjkzGjMin},
-            </if>
-            <if test="hjkzGjMax != null and hjkzGjMax !=''">
-                hjkz_gj_max = #{hjkzGjMax},
-            </if>
-            <if test="xnwdYjMin != null and xnwdYjMin !=''">
-                xnwd_yj_min = #{xnwdYjMin},
-            </if>
-            <if test="xnwdYjMax != null and xnwdYjMax !=''">
-                xnwd_yj_max = #{xnwdYjMax},
-            </if>
-            <if test="xnwdGjMin != null and xnwdGjMin !=''">
-                xnwd_gj_min = #{xnwdGjMin},
-            </if>
-            <if test="xnwdGjMax != null and xnwdGjMax !=''">
-                xnwd_gj_max = #{xnwdGjMax},
-            </if>
-        </set>
-        WHERE id = 1
-    </update>
+	<update id="update" parameterType="com.micropower.manager.model.po.Alarmthreshold">
+	      update alarmthreshold
+	      <set >
+		      			      <if test="gnWdYjMin != null and gnWdYjMin !=''" >
+			        gn_wd_yj_min = #{gnWdYjMin},
+			      </if>
+		      			      <if test="gnWdYjMax != null and gnWdYjMax !=''" >
+			        gn_wd_yj_max = #{gnWdYjMax},
+			      </if>
+		      			      <if test="gnWdGjMin != null and gnWdGjMin !=''" >
+			        gn_wd_gj_min = #{gnWdGjMin},
+			      </if>
+		      			      <if test="gnWdGjMax != null and gnWdGjMax !=''" >
+			        gn_wd_gj_max = #{gnWdGjMax},
+			      </if>
+		      			      <if test="gnSdYjMin != null and gnSdYjMin !=''" >
+			        gn_sd_yj_min = #{gnSdYjMin},
+			      </if>
+		      			      <if test="gnSdYjMax != null and gnSdYjMax !=''" >
+			        gn_sd_yj_max = #{gnSdYjMax},
+			      </if>
+		      			      <if test="gnSdGjMin != null and gnSdGjMin !=''" >
+			        gn_sd_gj_min = #{gnSdGjMin},
+			      </if>
+		      			      <if test="gnSdGjMax != null and gnSdGjMax !=''" >
+			        gn_sd_gj_max = #{gnSdGjMax},
+			      </if>
+		      			      <if test="ysjOneYjMin != null and ysjOneYjMin !=''" >
+			        ysj_one_yj_min = #{ysjOneYjMin},
+			      </if>
+		      			      <if test="ysjOneYjMax != null and ysjOneYjMax !=''" >
+			        ysj_one_yj_max = #{ysjOneYjMax},
+			      </if>
+		      			      <if test="ysjTwoYjMin != null and ysjTwoYjMin !=''" >
+			        ysj_two_yj_min = #{ysjTwoYjMin},
+			      </if>
+		      			      <if test="ysjTwoYjMax != null and ysjTwoYjMax !=''" >
+			        ysj_two_yj_max = #{ysjTwoYjMax},
+			      </if>
+		      			      <if test="lxfjOneYjMin != null and lxfjOneYjMin !=''" >
+			        lxfj_one_yj_min = #{lxfjOneYjMin},
+			      </if>
+		      			      <if test="lxfjOneYjMax != null and lxfjOneYjMax !=''" >
+			        lxfj_one_yj_max = #{lxfjOneYjMax},
+			      </if>
+		      			      <if test="lxfjTwoYjMin != null and lxfjTwoYjMin !=''" >
+			        lxfj_two_yj_min = #{lxfjTwoYjMin},
+			      </if>
+		      			      <if test="lxfjTwoYjMax != null and lxfjTwoYjMax !=''" >
+			        lxfj_two_yj_max = #{lxfjTwoYjMax},
+			      </if>
+		      			      <if test="srfjYjMin != null and srfjYjMin !=''" >
+			        srfj_yj_min = #{srfjYjMin},
+			      </if>
+		      			      <if test="srfjYjMax != null and srfjYjMax !=''" >
+			        srfj_yj_max = #{srfjYjMax},
+			      </if>
+		      			      <if test="xhfjYjMin != null and xhfjYjMin !=''" >
+			        xhfj_yj_min = #{xhfjYjMin},
+			      </if>
+		      			      <if test="xhfjYjMax != null and xhfjYjMax !=''" >
+			        xhfj_yj_max = #{xhfjYjMax},
+			      </if>
+		      			      <if test="hjkzYjMin != null and hjkzYjMin !=''" >
+			        hjkz_yj_min = #{hjkzYjMin},
+			      </if>
+		      			      <if test="hjkzYjMax != null and hjkzYjMax !=''" >
+			        hjkz_yj_max = #{hjkzYjMax},
+			      </if>
+		      			      <if test="ysjOneGjMin != null and ysjOneGjMin !=''" >
+			        ysj_one_gj_min = #{ysjOneGjMin},
+			      </if>
+		      			      <if test="ysjOneGjMax != null and ysjOneGjMax !=''" >
+			        ysj_one_gj_max = #{ysjOneGjMax},
+			      </if>
+		      			      <if test="ysjTwoGjMin != null and ysjTwoGjMin !=''" >
+			        ysj_two_gj_min = #{ysjTwoGjMin},
+			      </if>
+		      			      <if test="ysjTwoGjMax != null and ysjTwoGjMax !=''" >
+			        ysj_two_gj_max = #{ysjTwoGjMax},
+			      </if>
+		      			      <if test="lxfjOneGjMin != null and lxfjOneGjMin !=''" >
+			        lxfj_one_gj_min = #{lxfjOneGjMin},
+			      </if>
+		      			      <if test="lxfjOneGjMax != null and lxfjOneGjMax !=''" >
+			        lxfj_one_gj_max = #{lxfjOneGjMax},
+			      </if>
+		      			      <if test="lxfjTwoGjMin != null and lxfjTwoGjMin !=''" >
+			        lxfj_two_gj_min = #{lxfjTwoGjMin},
+			      </if>
+		      			      <if test="lxfjTwoGjMax != null and lxfjTwoGjMax !=''" >
+			        lxfj_two_gj_max = #{lxfjTwoGjMax},
+			      </if>
+		      			      <if test="srfjGjMin != null and srfjGjMin !=''" >
+			        srfj_gj_min = #{srfjGjMin},
+			      </if>
+		      			      <if test="srfjGjMax != null and srfjGjMax !=''" >
+			        srfj_gj_max = #{srfjGjMax},
+			      </if>
+		      			      <if test="xhfjGjMin != null and xhfjGjMin !=''" >
+			        xhfj_gj_min = #{xhfjGjMin},
+			      </if>
+		      			      <if test="xhfjGjMax != null and xhfjGjMax !=''" >
+			        xhfj_gj_max = #{xhfjGjMax},
+			      </if>
+		      			      <if test="hjkzGjMin != null and hjkzGjMin !=''" >
+			        hjkz_gj_min = #{hjkzGjMin},
+			      </if>
+		      			      <if test="hjkzGjMax != null and hjkzGjMax !=''" >
+			        hjkz_gj_max = #{hjkzGjMax},
+			      </if>
+		      			      <if test="thresholdtype != null and thresholdtype !=''" >
+			        thresholdtype = #{thresholdtype},
+			      </if>
+		      		    </set>
+		WHERE thresholdtype=#{thresholdtype}
+	</update>
 
-    <!--
+	<!--
       - ===============================================
       - ��ѯ Alarmthreshold ����
       - @author niushuaike
-      - @date 2017-09-22
+      - @date 2017-09-27
       - ===============================================
     -->
-    <select id="count" resultType="java.lang.Integer" parameterType="com.micropower.manager.model.po.Alarmthreshold">
+	<select id="count" resultType="java.lang.Integer" parameterType="com.micropower.manager.model.po.Alarmthreshold">
 		select count(*)
 		from alarmthreshold
 	</select>
 
-    <!--
+	<!--
       - ===============================================
       - ��ѯ Alarmthreshold ��Ϣ
       - @author niushuaike
-      - @date 2017-09-22
+      - @date 2017-09-27
       - ===============================================
     -->
-    <select id="query" resultMap="RM_Alarmthreshold" parameterType="com.micropower.manager.model.po.Alarmthreshold">
+	<select id="query" resultMap="RM_Alarmthreshold" parameterType="com.micropower.manager.model.po.Alarmthreshold">
 		select 
 		    id, 
-		    jg_wd_min, 
-		    jg_wd_max, 
-		    jg_sd_min, 
-		    jg_sd_max, 
+		    gn_wd_yj_min, 
+		    gn_wd_yj_max, 
+		    gn_wd_gj_min, 
+		    gn_wd_gj_max, 
+		    gn_sd_yj_min, 
+		    gn_sd_yj_max, 
+		    gn_sd_gj_min, 
+		    gn_sd_gj_max, 
 		    ysj_one_yj_min, 
 		    ysj_one_yj_max, 
 		    ysj_two_yj_min, 
@@ -319,69 +325,21 @@
 		    xhfj_gj_max, 
 		    hjkz_gj_min, 
 		    hjkz_gj_max, 
-		    xnwd_yj_min, 
-		    xnwd_yj_max, 
-		    xnwd_gj_min, 
-		    xnwd_gj_max
+		    thresholdtype
 		from alarmthreshold
 	</select>
 
-    <!--
-      - ===============================================
-      - ��ѯ Alarmthreshold ��ҳ��Ϣ
-      - @author niushuaike
-      - @date 2017-09-22
-      - ===============================================
-    -->
-    <select id="page" resultMap="RM_Alarmthreshold" parameterType="java.util.HashMap">
-		select 
-		    id, 
-		    jg_wd_min, 
-		    jg_wd_max, 
-		    jg_sd_min, 
-		    jg_sd_max, 
-		    ysj_one_yj_min, 
-		    ysj_one_yj_max, 
-		    ysj_two_yj_min, 
-		    ysj_two_yj_max, 
-		    lxfj_one_yj_min, 
-		    lxfj_one_yj_max, 
-		    lxfj_two_yj_min, 
-		    lxfj_two_yj_max, 
-		    srfj_yj_min, 
-		    srfj_yj_max, 
-		    xhfj_yj_min, 
-		    xhfj_yj_max, 
-		    hjkz_yj_min, 
-		    hjkz_yj_max, 
-		    ysj_one_gj_min, 
-		    ysj_one_gj_max, 
-		    ysj_two_gj_min, 
-		    ysj_two_gj_max, 
-		    lxfj_one_gj_min, 
-		    lxfj_one_gj_max, 
-		    lxfj_two_gj_min, 
-		    lxfj_two_gj_max, 
-		    srfj_gj_min, 
-		    srfj_gj_max, 
-		    xhfj_gj_min, 
-		    xhfj_gj_max, 
-		    hjkz_gj_min, 
-		    hjkz_gj_max, 
-		    xnwd_yj_min, 
-		    xnwd_yj_max, 
-		    xnwd_gj_min, 
-		    xnwd_gj_max
-		from alarmthreshold
-	</select>
-
-    <select id="queryOnlyOne123" resultMap="RM_Alarmthreshold">
+	<select id="queryByThresholdtype" resultMap="RM_Alarmthreshold" parameterType="string">
 		select
 		id,
-		jg_wd_min,
-		jg_wd_max,
-		jg_sd_min,
-		jg_sd_max,
+		gn_wd_yj_min,
+		gn_wd_yj_max,
+		gn_wd_gj_min,
+		gn_wd_gj_max,
+		gn_sd_yj_min,
+		gn_sd_yj_max,
+		gn_sd_gj_min,
+		gn_sd_gj_max,
 		ysj_one_yj_min,
 		ysj_one_yj_max,
 		ysj_two_yj_min,
@@ -410,11 +368,58 @@
 		xhfj_gj_max,
 		hjkz_gj_min,
 		hjkz_gj_max,
-		xnwd_yj_min,
-		xnwd_yj_max,
-		xnwd_gj_min,
-		xnwd_gj_max
+		thresholdtype
 		from alarmthreshold
+		WHERE thresholdtype=#{thresholdtype}
 	</select>
 
+	<!--
+      - ===============================================
+      - ��ѯ Alarmthreshold ��ҳ��Ϣ
+      - @author niushuaike
+      - @date 2017-09-27
+      - ===============================================
+    -->
+	<select id="page" resultMap="RM_Alarmthreshold" parameterType="java.util.HashMap">
+		select 
+		    id, 
+		    gn_wd_yj_min, 
+		    gn_wd_yj_max, 
+		    gn_wd_gj_min, 
+		    gn_wd_gj_max, 
+		    gn_sd_yj_min, 
+		    gn_sd_yj_max, 
+		    gn_sd_gj_min, 
+		    gn_sd_gj_max, 
+		    ysj_one_yj_min, 
+		    ysj_one_yj_max, 
+		    ysj_two_yj_min, 
+		    ysj_two_yj_max, 
+		    lxfj_one_yj_min, 
+		    lxfj_one_yj_max, 
+		    lxfj_two_yj_min, 
+		    lxfj_two_yj_max, 
+		    srfj_yj_min, 
+		    srfj_yj_max, 
+		    xhfj_yj_min, 
+		    xhfj_yj_max, 
+		    hjkz_yj_min, 
+		    hjkz_yj_max, 
+		    ysj_one_gj_min, 
+		    ysj_one_gj_max, 
+		    ysj_two_gj_min, 
+		    ysj_two_gj_max, 
+		    lxfj_one_gj_min, 
+		    lxfj_one_gj_max, 
+		    lxfj_two_gj_min, 
+		    lxfj_two_gj_max, 
+		    srfj_gj_min, 
+		    srfj_gj_max, 
+		    xhfj_gj_min, 
+		    xhfj_gj_max, 
+		    hjkz_gj_min, 
+		    hjkz_gj_max, 
+		    thresholdtype
+		from alarmthreshold
+	</select>
 </mapper>

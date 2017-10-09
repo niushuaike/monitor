@@ -1,8 +1,6 @@
 package com.micropower.manager.service.impl;
 
-import com.micropower.manager.model.po.Alarmthreshold;
 import com.micropower.manager.model.po.Cabinetparamter;
-import com.micropower.manager.service.AlarmthresholdService;
 import com.micropower.manager.service.CabinetSetService;
 import com.micropower.manager.utils.OxConvertUtil;
 import org.springframework.stereotype.Service;
@@ -17,14 +15,15 @@ public class CabinetSetServiceImpl extends BaseServiceImpl<Cabinetparamter> impl
 
 
     @Override
-    public Cabinetparamter queryOnlyOne() {
-        List<Cabinetparamter> list = (List<Cabinetparamter>) manager.list(namespace + "queryOnlyOne");
-        return (Cabinetparamter) list.get(0);
+    public Integer recoverDeafult() {
+        Cabinetparamter cabinetparamter1 = queryParameterByType("1");
+        cabinetparamter1.setParametertype("0");
+        return update(cabinetparamter1);
     }
 
     @Override
-    public Integer recoverDeafult() {
-        Cabinetparamter cabinetparamter = OxConvertUtil.properties2bean("/cabinet_set_default.properties", Cabinetparamter.class);
-        return update(cabinetparamter);
+    public Cabinetparamter queryParameterByType(String parametertype) {
+        Cabinetparamter cabinetSet = (Cabinetparamter) manager.query(namespace + "queryParameterByType", parametertype);
+        return cabinetSet;
     }
 }

@@ -164,6 +164,11 @@ public class Cabinetparamter implements IPO {
 	 */
 	private String address;
 
+	/**
+	 * 参数类型：0，设置值；1，恢复默认设置值
+	 */
+	private String parametertype;
+
 
 	public Long getMid() {
 		return mid;
@@ -360,5 +365,13 @@ public class Cabinetparamter implements IPO {
 	
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public String getParametertype() {
+		return parametertype;
+	}
+
+	public void setParametertype(String parametertype) {
+		this.parametertype = parametertype;
 	}
 }

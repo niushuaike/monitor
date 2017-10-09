@@ -146,6 +146,7 @@
 		<script src="$!env.getStaticURL('js/vendors.js')"></script>
 		<script src="$!env.getStaticURL('js/plugins.js')"></script>
 		<script src="$!env.getStaticURL('js/app.js')"></script>
+    	<script src="$!env.getStaticURL('layer/2.4/layer.js')"></script>
 	#elseif("$!{name}" == "jquery")
 		<script type="text/javascript" src="$!env.getStaticURL('mui/widgets/jquery/jquery-1.11.1.js')" charset="UTF-8"></script>
 	#elseif("$!{name}" == "artTemplate")

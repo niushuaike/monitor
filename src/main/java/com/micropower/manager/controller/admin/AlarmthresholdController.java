@@ -22,9 +22,9 @@ public class AlarmthresholdController {
     private AlarmthresholdService alarmthresholdService;
 
     @ResponseBody
-    @RequestMapping("/queryOnlyOne")
-    public Alarmthreshold queryOnlyOne() {
-        return alarmthresholdService.queryOnlyOne();
+    @RequestMapping("/queryByThresholdtype")
+    public Alarmthreshold queryByThresholdtype(String thresholdtype) {
+        return alarmthresholdService.queryByThresholdtype(thresholdtype);
     }
 
 

@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/monitor_war2</output-path>
     <root id="archive" name="monitor_war.war">
       <element id="artifact" artifact-name="monitor:war exploded" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/main/webapp" />
     </root>
   </artifact>
 </component>

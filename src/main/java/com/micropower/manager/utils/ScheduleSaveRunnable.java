@@ -65,8 +65,7 @@ public class ScheduleSaveRunnable implements Runnable {
         for(Device device:keyDevices){
             Map<String,String> keyDeviceStatus = new HashMap<>();
             keyDeviceStatus.put("devicename",device.getDeviceName());
-            keyDeviceStatus.put("pingstatus","无法检测");
-            keyDeviceStatus.put("hardware","无法检测");
+            keyDeviceStatus.put("pingstatus",(String) servletContext.getAttribute("deviceStatus"));
             keyDeviceStatuss.add(keyDeviceStatus);
         }
         return JSON.toJSONString(keyDeviceStatuss);

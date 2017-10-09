@@ -66,11 +66,11 @@ function initdevicewarnset() {
 
     $.post(url, params, function (data) {
         console.log("机柜设置：", data);
-        html = template('t:table_tmp', {
+        html = template('caseSet_tmp', {
             list: data
         });
         console.log("html", html);
-        $("#table_content").html(html);
+        $("#table_contentcaseSet").html(html);
     })
 }
 
@@ -150,10 +150,10 @@ function saveEdit() {
     console.log("请求数据data", data);
     $.post(url, params, function (data) {
         if (data == 1) {
-            alert("修改成功！");
+            layer.msg("修改成功！");
             $('.modal-01').hide();
         } else {
-            alert("修改失败");
+            layer.msg("修改失败");
             $('.modal-01').hide();
         }
         initdevicewarnset()
@@ -171,11 +171,11 @@ function savepause() {
 
         $.post(url, params, function (data) {
             if (data == 1) {
-                alert("冻结成功！");
+                layer.msg("冻结成功！");
                 $('.block').fadeOut(500)
                 initdevicewarnset();
             } else {
-                alert("冻结失败！");
+                layer.msg("冻结失败！");
                 $('.block').fadeOut(500)
             }
         })

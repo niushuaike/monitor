@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public interface AlarmthresholdService extends BaseService<Alarmthreshold> {
 
-    Alarmthreshold queryOnlyOne();
-
     Integer recoverDeafult();
+
+    Alarmthreshold queryByThresholdtype(String thresholdtype);
 }

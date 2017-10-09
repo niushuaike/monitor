@@ -23,5 +23,5 @@ public interface DeviceService extends BaseService<Device> {
 
     List<Device> getKeyDevice();
 
-    Integer updateAddr(String deviceAddress);
+    Integer updateAddr(Map<String, String> parameterMap);
 }

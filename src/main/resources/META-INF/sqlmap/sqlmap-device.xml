@@ -29,6 +29,7 @@
 		<result property="deviceAddress" column="device_address" jdbcType="VARCHAR"    javaType="java.lang.String"   />
 		<result property="controlmode" column="controlmode" jdbcType="VARCHAR"    javaType="java.lang.String"   />
 		<result property="machinecode"   column="machinecode"   jdbcType="VARCHAR"    javaType="java.lang.String"   />
+		<result property="mainControlIp"   column="maincontrolip"   jdbcType="VARCHAR"    javaType="java.lang.String"   />
 	</resultMap>
 
 	<!--
@@ -249,7 +250,8 @@
 		login_passwd,
 		device_address,
 		controlmode,
-		machinecode
+		machinecode,
+		maincontrolip
 		from device
 		WHERE device_type=1
 	</select>
@@ -280,8 +282,8 @@
 		delete from device WHERE id=#{id}
 	</delete>
 
-	<update id="updateAddr">
-		UPDATE device SET device_address=#{deviceAddr} WHERE device_type=1
+	<update id="updateAddr" parameterType="map">
+		UPDATE device SET device_address=#{deviceAddress} , maincontrolip = #{mainControlIp} WHERE device_type=1
 	</update>
 
 </mapper>

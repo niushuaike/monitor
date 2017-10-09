@@ -1,4 +1,4 @@
-﻿// JavaScript Document
+// JavaScript Document
 //copyright c by zhangxinxu 2009-10-17 
 //http://www.zhangxinxu.com
 /*由于大图绑定在href属性中，故一般而言，需使用a标签的href指向大图。仅支持png,gif,jpg,bmp四种格式的图片。用法是：目标.preview();

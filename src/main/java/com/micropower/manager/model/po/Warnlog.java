@@ -60,6 +60,11 @@ public class Warnlog implements IPO {
 	 */
 	private String operationDetail;
 
+	/**
+	 *
+	 */
+	private String completeTime;
+
 	public Integer getId() {
 		return id;
 	}
@@ -108,5 +113,13 @@ public class Warnlog implements IPO {
 	
 	public void setOperationDetail(String operationDetail) {
 		this.operationDetail = operationDetail;
+	}
+
+	public String getCompleteTime() {
+		return completeTime;
+	}
+
+	public void setCompleteTime(String completeTime) {
+		this.completeTime = completeTime;
 	}
 }

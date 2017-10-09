@@ -21,15 +21,15 @@ public class CabinetSetController {
     private CabinetSetService cabinetSetService;
 
     @ResponseBody
-    @RequestMapping("/queryOnlyOne")
-    public Cabinetparamter queryOnlyOne() {
-        return cabinetSetService.queryOnlyOne();
+    @RequestMapping("/queryParameterByType")
+    public Cabinetparamter queryParameterByType(String parametertype) {
+        return cabinetSetService.queryParameterByType(parametertype);
     }
 
 
     @ResponseBody
-    @RequestMapping("/updateCabinet")
-    public Integer updateAlarmThreshold(Cabinetparamter cabinetparamter) {
+    @RequestMapping("/updateCabinetByType")
+    public Integer updateCabinetByType(Cabinetparamter cabinetparamter) {
         return cabinetSetService.update(cabinetparamter);
     }
 

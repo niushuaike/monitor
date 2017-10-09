@@ -14,15 +14,17 @@ import java.util.*;
 public class AlarmthresholdServiceImpl extends BaseServiceImpl<Alarmthreshold> implements AlarmthresholdService {
 
 
-    @Override
-    public Alarmthreshold queryOnlyOne() {
-        List<Alarmthreshold> list = (List<Alarmthreshold>) manager.list(namespace + "queryOnlyOne123");
-        return (Alarmthreshold) list.get(0);
-    }
 
     @Override
     public Integer recoverDeafult() {
-        Alarmthreshold alarmthreshold = OxConvertUtil.properties2bean("/threshold_default.properties", Alarmthreshold.class);
-        return update(alarmthreshold);
+        Alarmthreshold alarmthreshold1 = queryByThresholdtype("1");
+        alarmthreshold1.setThresholdtype("0");
+        return update(alarmthreshold1);
+    }
+
+    @Override
+    public Alarmthreshold queryByThresholdtype(String thresholdtype) {
+        Alarmthreshold alarmthreshold = (Alarmthreshold) manager.query(namespace+"queryByThresholdtype",thresholdtype);
+        return alarmthreshold;
     }
 }

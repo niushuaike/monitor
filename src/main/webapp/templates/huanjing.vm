@@ -18,6 +18,7 @@
 
                 <div class="col-lg-6 col-xs-12">
                     <div class="report-btn">
+                        <button type="button" class="btn btn-default" onclick="yuzhiDefault()">修改默认值</button>
                         <button type="button" class="btn btn-warning" onclick="recoverDefault()">恢复默认</button>
                         <button type="button" class="btn btn-info" onclick="edit()">编辑</button>
                     </div>
@@ -25,32 +26,9 @@
             </div>
         </div>
         <form id="threshold_form">
+            <input type="hidden" name="thresholdtype">
             <div class="gao-con">
-                <div class="gao-tit">机柜环境</div>
-                <table class="table gao-table">
-                    <tr>
-                        <td>
-                            <input type="hidden" name="id" id="" value=""/>
-                            <label for="">温度报警阈值最小值：</label>
-                            <input type="text" name="jgWdMin" id="" value=""/>
-                        </td>
-                        <td>
-                            <label for="">温度报警阈值最大值：</label>
-                            <input type="text" name="jgWdMax" id="" value=""/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="">湿度报警阈值最小值：</label>
-                            <input type="text" name="jgSdMin" id="" value=""/>
-                        </td>
-                        <td>
-                            <label for="">湿度报警阈值最大值：</label>
-                            <input type="text" name="jgSdMax" id="" value=""/>
-                        </td>
-                    </tr>
-                </table>
-                <div class="gao-tit">机组动力</div>
+                <div class="gao-tit">预警设置</div>
                 <table class="table gao-table">
                     <tr>
                         <td>
@@ -112,29 +90,39 @@
                             <input type="text" name="xhfjYjMax" id="" value=""/>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <label for="">环境控制温度预警阈值最小值：</label>
-                            <input type="text" name="hjkzYjMin" id="" value=""/>
-                        </td>
-                        <td>
-                            <label for="">环境控制温度预警阈值最大值：</label>
-                            <input type="text" name="hjkzYjMax" id="" value=""/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="">箱内温度预警阈值最小值：</label>
-                            <input type="text" name="xnwdYjMin" id="" value=""/>
-                        </td>
-                        <td>
-                            <label for="">箱内温度预警阈值最大值：</label>
-                            <input type="text" name="xnwdYjMax" id="" value=""/>
-                        </td>
-                    </tr>
                 </table>
-                <div class="fg"></div>
+                <div class="gao-tit">报警设置</div>
                 <table class="table gao-table">
+                    <tr>
+                        <td>
+                            <label for="">柜内温度报警阈值最小值：</label>
+                            <input type="text" name="gnWdGjMin" id="" value=""/>
+                        </td>
+                        <td>
+                            <label for="">柜内温度报警阈值最大值：</label>
+                            <input type="text" name="gnWdGjMax" id="" value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="">环境温度报警阈值最小值：</label>
+                            <input type="text" name="hjkzGjMin" id="" value=""/>
+                        </td>
+                        <td>
+                            <label for="">环境温度报警阈值最大值：</label>
+                            <input type="text" name="hjkzGjMax" id="" value=""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="">湿度报警阈值最小值：</label>
+                            <input type="text" name="gnSdGjMin" id="" value=""/>
+                        </td>
+                        <td>
+                            <label for="">湿度报警阈值最大值：</label>
+                            <input type="text" name="gnSdGjMax" id="" value=""/>
+                        </td>
+                    </tr>
                     <tr>
                         <td>
                             <label for="">压缩机1电流报警阈值最小值：</label>
@@ -195,35 +183,195 @@
                             <input type="text" name="xhfjGjMax" id="" value=""/>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <label for="">环境控制温度报警阈值最小值：</label>
-                            <input type="text" name="hjkzGjMin" id="" value=""/>
-                        </td>
-                        <td>
-                            <label for="">环境控制温度报警阈值最大值：</label>
-                            <input type="text" name="hjkzGjMax" id="" value=""/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="">箱内温度报警阈值最小值：</label>
-                            <input type="text" name="xnwdGjMin" id="" value=""/>
-                        </td>
-                        <td>
-                            <label for="">箱内温度报警阈值最大值：</label>
-                            <input type="text" name="xnwdGjMax" id="" value=""/>
-                        </td>
-                    </tr>
                 </table>
-                <div class="gao-btn">
-                    <button type="button" class="btn btn-default">取消</button>
+                <div class="gao-btn" style="display: none;">
+                    <button type="button" class="btn btn-default" onclick="gaoQuX($(this))">取消</button>
                     <button type="button" class="btn btn-info" onclick="save()">保存</button>
                 </div>
             </div>
         </form>
     </div>
     <div>
+        <!--设定默认值弹窗-->
+        <div class="yuzhi_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" onclick="yuzhiNotSave($(this))">&times;</button>
+                        <h4 class="modal-title">修改默认值设定</h4>
+                    </div>
+                    <form id="threshold_default_form">
+                        <input type="hidden" name="thresholdtype">
+                        <div class="modal-body">
+                            <div class="default-con">
+                                <div class="gao-tit">预警设置</div>
+                                <table class="table yuzhi_table">
+                                    <tr>
+                                        <td>
+                                            <label for="">压缩机1电流预警阈值最小值：</label>
+                                            <input type="text" name="ysjOneYjMin" id="" value=""/>
+                                        </td>
+                                        <td>
+                                            <label for="">压缩机1电流预警阈值最大值：</label>
+                                            <input type="text" name="ysjOneYjMax" id="" value=""/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="">压缩机2电流预警阈值最小值：</label>
+                                            <input type="text" name="ysjTwoYjMin" id="" value=""/>
+                                        </td>
+                                        <td>
+                                            <label for="">压缩机2电流预警阈值最大值：</label>
+                                            <input type="text" name="ysjTwoYjMax" id="" value=""/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="">离心风机1电流预警阈值最小值：</label>
+                                            <input type="text" name="lxfjOneYjMin" id="" value=""/>
+                                        </td>
+                                        <td>
+                                            <label for="">离心风机1电流预警阈值最大值：</label>
+                                            <input type="text" name="lxfjOneYjMax" id="" value=""/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="">离心风机2电流预警阈值最小值：</label>
+                                            <input type="text" name="lxfjTwoYjMin" id="" value=""/>
+                                        </td>
+                                        <td>
+                                            <label for="">离心风机2电流预警阈值最大值：</label>
+                                            <input type="text" name="lxfjTwoYjMax" id="" value=""/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="">散热风机电流预警阈值最小值：</label>
+                                            <input type="text" name="srfjYjMin" id="" value=""/>
+                                        </td>
+                                        <td>
+                                            <label for="">散热风机电流预警阈值最大值：</label>
+                                            <input type="text" name="srfjYjMax" id="" value=""/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="">循环风机电流预警阈值最小值：</label>
+                                            <input type="text" name="xhfjYjMin" id="" value=""/>
+                                        </td>
+                                        <td>
+                                            <label for="">循环风机电流预警阈值最大值：</label>
+                                            <input type="text" name="xhfjYjMax" id="" value=""/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="gao-tit">报警设置</div>
+                                <table class="table yuzhi_table">
+                                    <tr>
+                                        <td>
+                                            <label for="">柜内温度报警阈值最小值：</label>
+                                            <input type="text" name="gnWdGjMin" id="" value=""/>
+                                        </td>
+                                        <td>
+                                            <label for="">柜内温度报警阈值最大值：</label>
+                                            <input type="text" name="gnWdGjMax" id="" value=""/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="">环境温度报警阈值最小值：</label>
+                                            <input type="text" name="hjkzGjMin" id="" value=""/>
+                                        </td>
+                                        <td>
+                                            <label for="">环境温度报警阈值最大值：</label>
+                                            <input type="text" name="hjkzGjMax" id="" value=""/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="">湿度报警阈值最小值：</label>
+                                            <input type="text" name="gnSdGjMin" id="" value=""/>
+                                        </td>
+                                        <td>
+                                            <label for="">湿度报警阈值最大值：</label>
+                                            <input type="text" name="gnSdGjMax" id="" value=""/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="">压缩机1电流报警阈值最小值：</label>
+                                            <input type="text" name="ysjOneGjMin" id="" value=""/>
+                                        </td>
+                                        <td>
+                                            <label for="">压缩机1电流报警阈值最大值：</label>
+                                            <input type="text" name="ysjOneGjMax" id="" value=""/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="">压缩机2电流报警阈值最小值：</label>
+                                            <input type="text" name="ysjTwoGjMin" id="" value=""/>
+                                        </td>
+                                        <td>
+                                            <label for="">压缩机2电流报警阈值最大值：</label>
+                                            <input type="text" name="ysjTwoGjMax" id="" value=""/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="">离心风机1电流报警阈值最小值：</label>
+                                            <input type="text" name="lxfjOneGjMin" id="" value=""/>
+                                        </td>
+                                        <td>
+                                            <label for="">离心风机1电流报警阈值最大值：</label>
+                                            <input type="text" name="lxfjOneGjMax" id="" value=""/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="">离心风机2电流报警阈值最小值：</label>
+                                            <input type="text" name="lxfjTwoGjMin" id="" value=""/>
+                                        </td>
+                                        <td>
+                                            <label for="">离心风机2电流报警阈值最大值：</label>
+                                            <input type="text" name="lxfjTwoGjMax" id="" value=""/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="">散热风机电流报警阈值最小值：</label>
+                                            <input type="text" name="srfjGjMin" id="" value=""/>
+                                        </td>
+                                        <td>
+                                            <label for="">散热风机电流报警阈值最大值：</label>
+                                            <input type="text" name="srfjGjMax" id="" value=""/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="">循环风机电流报警阈值最小值：</label>
+                                            <input type="text" name="xhfjGjMin" id="" value=""/>
+                                        </td>
+                                        <td>
+                                            <label for="">循环风机电流报警阈值最大值：</label>
+                                            <input type="text" name="xhfjGjMax" id="" value=""/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="gao-btn">
+                                    <button type="button" id="setNot" class="btn btn-default" onclick="yuzhiNotSave($(this))">取消
+                                    </button>
+                                    <button type="button" class="btn btn-info" onclick="updatedefaultthreshold()">保存
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <script src="$!env.getStaticURL('js/jquery-1.11.3.js')"></script>
         <script src="/monitor/source/js/my.js"></script>
         <script src="/monitor/source/js/huanjing.js"></script>

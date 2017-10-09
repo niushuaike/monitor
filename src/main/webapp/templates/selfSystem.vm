@@ -26,22 +26,18 @@
 	</div>
 	<div class="self_con">
 		<table class="table">
+
+            <tr>
+                <td class="text-right">局端IP：</td>
+                <td colspan="3">
+                    <input class="weizhi" type="text" id="mainControlIp" readonly>
+                </td>
+            </tr>
+
 			<tr>
-				<td class="text-right">本机地理位置：</td>
-				<td>
-					<select id="s_province" name="s_province" disabled="disabled"></select>  	
-				</td>
-				<td>
-					<select id="s_city" name="s_city" disabled="disabled"></select>
-				</td>
-				<td>
-					<select id="s_county" name="s_county" disabled="disabled"></select>
-				</td>
-			</tr>
-			<tr>
-				<td></td>
+				<td class="text-right">设备编号：</td>
 				<td colspan="3">
-					<textarea class="form-control" rows="3" id="s_detail" readonly></textarea>
+                    <input class="weizhi" type="text" id="deviceAddress" readonly>
 				</td>
 			</tr>
 			<tr>
@@ -50,7 +46,7 @@
 			</tr>
 			<tr>
 				<td class="text-right">机器码：</td>
-				<td colspan="3"><input type="text" name="" id="deviceAddress" value="" readonly/></td>
+				<td colspan="3"><input type="text" name="" id="machinecode" value="" readonly/></td>
 			</tr>
 		</table>
 		<div class="system_btn" style="display: none;">
@@ -58,7 +54,7 @@
 		</div>
 	</div>
 <div>
-<script src="/monitor/source/js/select.js" ></script>
+	<script src="/monitor/source/js/my.js"></script>
 <script src="/monitor/source/js/selfSystem.js"></script>
 
 	<script>

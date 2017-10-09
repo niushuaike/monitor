@@ -41,24 +41,13 @@
 					<th>告警类型</th>
 					<th>告警信息</th>
 					<th>图片</th>
-					<th>链接状态</th>
 					<th>告警时间</th>
-					<th>状态说明</th>
+					<th>处理状态</th>
 					<th>操作描述</th>
 				</tr>
 			</thead>
-			<tbody class="chk-body" id="table_content">
-				<tr>
-					<td><input type="checkbox" name="" id="" value="" /></td>
-					<td>01</td>
-					<td>类型1</td>
-					<td>温度太高</td>
-					<td>无</td>
-					<td>ping:offfline</td>
-					<td>2017</td>
-					<td>略</td>
-					<td>略</td>
-				</tr>
+			<tbody class="chk-body" id="table_contenteventr">
+
 			</tbody>
 		</table>
         <div id="Pagination" class="pagination"></div>
@@ -74,12 +63,12 @@
 
 <script>
     $(function () {
-        initwarnlog(1);
-        querywarnlog();
+        initwarnlogR(1);
+        querywarnlogR();
     })
 </script>
 
-<script type="text/html" id="t:table_tmp">
+<script type="text/html" id="t:table_tmpevenR">
     {{each list as value i}}
     <tr>
         <td><input type="checkbox" name="" id="" value="" /></td>
@@ -93,7 +82,6 @@
             <a href="../{{value.warnlog.pictureUrl}}" target="_blank">点击查看</a>
             {{/if}}
 		</td>
-        <td>ping:offfline</td>
         <td>{{value.warnlog.warnTime}}</td>
         <td>
             {{if value.warnlog.warnState=='0'}}

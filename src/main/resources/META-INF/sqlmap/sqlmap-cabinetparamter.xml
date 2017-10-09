@@ -41,6 +41,7 @@
 		<result property="loopCurrentTop"          column="loop_current_top"          jdbcType="VARCHAR"  javaType="java.lang.String"   />
 		<result property="loopCurrentDown"         column="loop_current_down"         jdbcType="VARCHAR"  javaType="java.lang.String"   />
 		<result property="address"                 column="address"                   jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="parametertype"                 column="parametertype"                   jdbcType="VARCHAR"  javaType="java.lang.String"   />
 	</resultMap>
 
 	<!--
@@ -79,7 +80,8 @@
 			dissipate_current_down, 
 			loop_current_top, 
 			loop_current_down, 
-			address
+			address,
+			parametertype
 		) values (
 		    #{mid}, 
 		    #{tempSetting}, 
@@ -108,7 +110,8 @@
 		    #{dissipateCurrentDown}, 
 		    #{loopCurrentTop}, 
 		    #{loopCurrentDown}, 
-		    #{address}
+		    #{address},
+		    #{parametertype}
 		)
 	</insert>
 
@@ -122,9 +125,6 @@
 	<update id="update" parameterType="com.micropower.manager.model.po.Cabinetparamter">
 	      update cabinetparamter
 		<set >
-			<if test="mid != null and mid !=''" >
-				mid = #{mid},
-			</if>
 			<if test="tempSetting != null and tempSetting !=''" >
 				temp_setting = #{tempSetting},
 			</if>
@@ -206,8 +206,11 @@
 			<if test="address != null and address !=''" >
 				address = #{address},
 			</if>
+			<if test="parametertype != null and parametertype !=''" >
+				parametertype = #{parametertype},
+			</if>
 		</set>
-		WHERE mid=1
+		WHERE parametertype=#{parametertype}
 	</update>
 
 	<!--
@@ -229,7 +232,7 @@
       - @date 2017-09-18
       - ===============================================
     -->
-	<select id="queryOnlyOne" resultMap="RM_Cabinetparamter" parameterType="com.micropower.manager.model.po.Cabinetparamter">
+	<select id="queryParameterByType" resultMap="RM_Cabinetparamter" parameterType="string">
 		select 
 		    mid, 
 		    temp_setting, 
@@ -258,9 +261,10 @@
 		    dissipate_current_down, 
 		    loop_current_top, 
 		    loop_current_down, 
-		    address
+		    address,
+		    parametertype
 		from cabinetparamter
-		WHERE mid=1
+		WHERE parametertype=#{parametertype}
 	</select>
 
 	<!--
@@ -299,7 +303,8 @@
 		    dissipate_current_down, 
 		    loop_current_top, 
 		    loop_current_down, 
-		    address
+		    address,
+		    parametertype
 		from cabinetparamter
 	</select>
 </mapper>

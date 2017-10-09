@@ -24,10 +24,10 @@ function saveDel() {
 
     $.post(url, params, function (data) {
         if (data == 1) {
-            alert("处理成功！");
+            layer.msg("处理成功！");
             initwarnlog(1);
         } else {
-            alert("处理失败！");
+            layer.msg("处理失败！");
         }
     })
 }
@@ -47,15 +47,15 @@ function deletewarnlog() {
         $.post(url, params, function (data) {
             console.log("shanchufanhui", data);
             if (data == 1) {
-                alert("删除成功！");
+                layer.msg("删除成功！");
                 initwarnlog(1);
             } else {
-                alert("删除失败！");
+                layer.msg("删除失败！");
             }
         })
 }
 
-function initwarnlog(page) {
+function initwarnlogC(page) {
     var url = "/monitor/bjm/warnlog/list";
     var params = {
         page:page,
@@ -67,22 +67,56 @@ function initwarnlog(page) {
 
     $.post(url, params, function (data) {
         console.log("告警日志：",data);
-        html = template('t:table_tmp', {
+        html = template('t:table_tmpevenC', {
             list: data.data.rows
         });
 
-        $("#table_content").html(html);
-        pages(data.data.total,page);
+        $("#table_contenteventC").html(html);
+        pagesC(data.data.total,page);
         initwarntype();
     })
 }
 
-function pages(total,page){
+function pagesC(total,page){
+    $("#PaginationC").pagination(total, {
+        num_edge_entries: 2,
+        num_display_entries: 4,
+        callback: function(pageIndex){
+            initwarnlogC(pageIndex+1);
+        },
+        items_per_page:10,
+        current_page:page-1
+    });
+}
+
+function initwarnlogR(page) {
+    var url = "/monitor/bjm/warnlog/list";
+    var params = {
+        page:page,
+        pageSize:10,
+        warntypeid:$("#warntypeid").val(),
+        starttime:$("#starttime").val(),
+        endtime:$("#endtime").val()
+    }
+
+    $.post(url, params, function (data) {
+        console.log("告警日志：",data);
+        html = template('t:table_tmpevenR', {
+            list: data.data.rows
+        });
+
+        $("#table_contenteventr").html(html);
+        pagesR(data.data.total,page);
+        initwarntype();
+    })
+}
+
+function pagesR(total,page){
     $("#Pagination").pagination(total, {
         num_edge_entries: 2,
         num_display_entries: 4,
         callback: function(pageIndex){
-            initwarnlog(pageIndex+1);
+            initwarnlogC(pageIndex+1);
         },
         items_per_page:10,
         current_page:page-1
@@ -103,9 +137,14 @@ function initwarntype(){
     })
 }
 
-function querywarnlog() {
+function querywarnlogR() {
     $("#querywarnlogid").click(function () {
-       initwarnlog(1);
+       initwarnlogR(1);
     })
+}
 
+function querywarnlogC() {
+    $("#querywarnlogid").click(function () {
+        initwarnlogC(1);
+    })
 }

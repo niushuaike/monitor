@@ -99,7 +99,8 @@
 		id,
 		warnstylename
 		from warnstyle
-		where id !=2 and id != 3 and id != 4
+		where id =5
+
 	</select>
 
 </mapper>

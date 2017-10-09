@@ -14,7 +14,7 @@ import java.util.Map;
 public interface ReportstatusService extends BaseService<Reportstatus> {
     Integer addStatus(Map<String, String> deviceStatus);
 
-    Pages<List<Reportstatus>> list(EasyPage page);
+    Pages<List<Reportstatus>> list(Map<String, String> paramesMapMy, EasyPage page);
 
     Reportstatus queryByStatusno(String statusno);
     ReportstatusPojo queryPojoByStatusno(String statusno);

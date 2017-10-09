@@ -81,6 +81,7 @@
 	color: #fff;
 	line-height: 80px;
 }
+.row-ico img{width: 100%}
 .row-ico i{
 	line-height: 80px;
 }
@@ -518,6 +519,13 @@ html,body{
 	border:none;
 	background: none;	
 }
+.yonghu-table input[type=password]{
+	text-align: center;
+	width: 115px;
+	border-radius: 4px;
+	border:none;
+	background: none;
+}
 .yonghu-table select{
 	border-radius: 4px;
 	padding:2px;
@@ -537,7 +545,7 @@ html,body{
 .power-table input{
 	width: 100px;
 	border-radius: 4px;
-	border:none;
+	border:solid #e2e1e1 1px;
 	background: none;
 	float: right;
 	
@@ -590,6 +598,31 @@ html,body{
 .self_con{width: 100%;padding: 50px 20%;background: #fff;}
 .self_con table td{padding:15px 2px !important;border:none !important}
 .self_con table select{border-radius: 4px;width: 120px;padding:4px;}
-.self_con table td input{width: 90%;border: none;}
+.self_con table td input{width: 90%;border: none;float: left}
 .self_con table td textarea{margin-right: 15px;float: right;width: 430px;resize: none;}
 .system_btn{ width: 100%;text-align: center;}
+.self_con .weizhi{border:solid #E0E0E0 1px;width: 80%;float: left;border-radius: 4px;}
+
+/*告警阈值新增弹窗*/
+.yuzhi_modal{position:fixed;top:10%;left: 18%;z-index: 9999;display:none}
+.yuzhi_modal .modal-body{padding: 20px;height: 600px;overflow-y: scroll;}
+.yuzhi_modal .modal-dialog{width: 880px;}
+.yuzhi_table{margin-bottom: 0}
+.yuzhi_table tr td{padding: 8px !important;border:none !important;text-align: right;}
+.yuzhi_table tr td input{border:solid #ccc 1px;border-radius: 4px;width: 120px;color: #333;}
+.default-con{width: 100%;padding: 3%;}
+.fg2{width: 100%;border-top: dashed #ccc 1px;}
+/*机柜参数设置弹窗*/
+.power-table td{border:none !important;}
+.jigui_modal{position:fixed;top:12%;left: 18%;z-index: 9999;display:none}
+.jigui_modal .modal-dialog{width: 900px;}
+.jigui_modal .modal-body{padding: 20px;}
+.jigui_modal .power-table2 input{border:solid #ccc 1px}
+.jigui_modal .power-table2 td{padding:12px 10px}
+/*报表中心新增查询*/
+.baobiao input{width: 90px;border:solid #ccc 1px;border-radius:4px;padding:2px}
+.baobiao button{border-radius:4px}
+/*机组动力状态新增滚动*/
+.jizu_tit{width: 200px;height: 35px;overflow: hidden;position: relative}
+.jizu_tit p{width: 100%;height:35px;line-height:35px;font-size: 14px;}
+.huanj_tit{width: 200px;height: 35px;overflow: hidden;position: relative}

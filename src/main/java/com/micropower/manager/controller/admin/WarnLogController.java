@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +47,18 @@ public class WarnLogController extends BaseController {
     @RequestMapping("/list")
     public GsonData list(HttpServletRequest request, EasyPage page) {
         Map<String, String> paramesMapMy = getParamesMapMy(request);
+        String endtime = paramesMapMy.get("endtime");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date parse = null;
+        try {
+            parse = simpleDateFormat.parse(endtime);
+            long l = parse.getTime() + 24 * 60 * 60 * 1000;
+            Date date = new Date(l);
+            String format = simpleDateFormat.format(date);
+            paramesMapMy.put("endtime", format);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return GsonResponse.toData(service.list(paramesMapMy, page));
     }
 
@@ -60,7 +75,7 @@ public class WarnLogController extends BaseController {
 
     @ResponseBody
     @RequestMapping("/getwarninfo")
-    public String getwarninfo(HttpServletRequest request) {
+    public List<String> getwarninfo(HttpServletRequest request) {
         ServletContext servletContext = request.getServletContext();
         List<String> warninfo = new ArrayList<>();
         String warnFrontGate = (String) servletContext.getAttribute("warnFrontGate");
@@ -83,70 +98,49 @@ public class WarnLogController extends BaseController {
         if (!StringUtils.isEmpty(warnFlood)) {
             warninfo.add(warnFlood);
         }
-        String warnTemperature = (String) servletContext.getAttribute("warnTemperature");
+        String warnTemperature = (String) servletContext.getAttribute("xnwdStatus");
         if (!StringUtils.isEmpty(warnTemperature)) {
             warninfo.add(warnTemperature);
         }
-        String warnHumidity = (String) servletContext.getAttribute("warnHumidity");
+        String warnHumidity = (String) servletContext.getAttribute("warnHumiditystatus");
         if (!StringUtils.isEmpty(warnHumidity)) {
             warninfo.add(warnHumidity);
         }
-        String ysjOneYj = (String) servletContext.getAttribute("ysjOneYj");
+        String ysjOneYj = (String) servletContext.getAttribute("ysjOneStatus");
         if (!StringUtils.isEmpty(ysjOneYj)) {
             warninfo.add(ysjOneYj);
         }
-        String ysjTwoYj = (String) servletContext.getAttribute("ysjTwoYj");
+        String ysjTwoYj = (String) servletContext.getAttribute("ysjTwoStatus");
         if (!StringUtils.isEmpty(ysjTwoYj)) {
             warninfo.add(ysjTwoYj);
         }
-        String ysjOneGj = (String) servletContext.getAttribute("ysjOneGj");
-        if (!StringUtils.isEmpty(ysjOneGj)) {
-            warninfo.add(ysjOneGj);
-        }
 
-        String ysjTwoGj = (String) servletContext.getAttribute("ysjTwoGj");
-        if (!StringUtils.isEmpty(ysjTwoGj)) {
-            warninfo.add(ysjTwoGj);
-        }
-
-        String xnwdYj = (String) servletContext.getAttribute("xnwdYj");
+        String xnwdYj = (String) servletContext.getAttribute("srfjStatus");
         if (!StringUtils.isEmpty(xnwdYj)) {
             warninfo.add(xnwdYj);
         }
-        String xnwdGj = (String) servletContext.getAttribute("xnwdGj");
+        String xnwdGj = (String) servletContext.getAttribute("lxfjOneStatus");
         if (!StringUtils.isEmpty(xnwdGj)) {
             warninfo.add(xnwdGj);
         }
-        String hjkzYj = (String) servletContext.getAttribute("hjkzYj");
+        String hjkzYj = (String) servletContext.getAttribute("lxfjTwoStatus");
         if (!StringUtils.isEmpty(hjkzYj)) {
             warninfo.add(hjkzYj);
         }
 
-        String hjkzGj = (String) servletContext.getAttribute("hjkzGj");
+        String hjkzGj = (String) servletContext.getAttribute("xhfjStatus");
         if (!StringUtils.isEmpty(hjkzGj)) {
             warninfo.add(hjkzGj);
         }
 
-        String srfjYj = (String) servletContext.getAttribute("srfjYj");
+        String srfjYj = (String) servletContext.getAttribute("hjkzStatus");
         if (!StringUtils.isEmpty(srfjYj)) {
             warninfo.add(srfjYj);
         }
-        String srfjGj = (String) servletContext.getAttribute("srfjGj");
-        if (!StringUtils.isEmpty(srfjGj)) {
-            warninfo.add(srfjGj);
+        if (warninfo.size()==0){
+            warninfo.add("一切正常");
         }
-        String xhfjYj = (String) servletContext.getAttribute("xhfjYj");
-        if (!StringUtils.isEmpty(xhfjYj)) {
-            warninfo.add(xhfjYj);
-        }
-
-        String xhfjGj = (String) servletContext.getAttribute("xhfjGj");
-        if (!StringUtils.isEmpty(xhfjGj)) {
-            warninfo.add(xhfjGj);
-        }
-
-        String s = warninfo.toString();
-        return s;
+        return warninfo;
     }
 
     @ResponseBody
@@ -187,6 +181,10 @@ public class WarnLogController extends BaseController {
     @RequestMapping("/updateWarnLogStatus")
     public Integer updateWarnLogStatus(HttpServletRequest request) {
         Map<String, String> paramesMapMy = getParamesMapMy(request);
+        if ("4".equals(paramesMapMy.get("warnstate"))){
+            SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:SS");
+            paramesMapMy.put("completeTime",dateFormat1.format(new Date()));
+        }
         return service.updateWarnLogStatus(paramesMapMy);
     }
 

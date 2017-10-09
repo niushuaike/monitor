@@ -55,16 +55,8 @@
 					<th>告警状态</th>
 				</tr>
 			</thead>
-			<tbody class="chk-body" id="table_content">
-				<tr>
-					<td><input type="checkbox" name="" id="" value="" /></td>
-					<td>0102</td>
-					<td>全时段</td>
-					<td>全时段</td>
-					<td>禁止通知</td>
-					<td>略</td>
-					<td>无</td>
-				</tr>
+			<tbody class="chk-body" id="table_contentcaseSet">
+
 			</tbody>
 		</table>
 	</div>
@@ -184,6 +176,7 @@
     <div>
     <script src="$!env.getStaticURL('js/jquery-1.11.3.js')"></script>
     <script src="/monitor/source/js/caseSet.js"></script>
+    <script src="$!env.getStaticURL('layer/2.4/layer.js')"></script>
 	#LoadMUI("artTemplate")
 	#LoadMUI("pagination")
 
@@ -194,7 +187,7 @@
         })
     </script>
 
-    <script type="text/html" id="t:table_tmp">
+    <script type="text/html" id="caseSet_tmp">
         {{each list as value i}}
         <tr>
             <td><input type="checkbox" name="id" value="{{value.device.id}}" /></td>
