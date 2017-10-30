@@ -17,7 +17,8 @@ public class CabinetSetServiceImpl extends BaseServiceImpl<Cabinetparamter> impl
     @Override
     public Integer recoverDeafult() {
         Cabinetparamter cabinetparamter1 = queryParameterByType("1");
-        cabinetparamter1.setParametertype("0");
+        cabinetparamter1.setParametertype("2");
+        cabinetparamter1.setIsupdate("1");
         return update(cabinetparamter1);
     }
 

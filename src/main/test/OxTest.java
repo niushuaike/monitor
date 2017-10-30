@@ -107,9 +107,12 @@ public class OxTest {
     }
 
     public static void main(String[] args) throws Exception {
-        String linuxLocalIp = getLinuxLocalIp();
-        System.out.println(linuxLocalIp);
-        int i=1;
+       double i=0.1;
+       if (i!=0&&i>3||i<1){
+           System.out.println(i);
+       }else {
+           System.out.println("不在范围！");
+       }
     }
 
     private static String getLinuxLocalIp() throws SocketException {

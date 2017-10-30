@@ -92,9 +92,9 @@
 #LoadMUI("artTemplate")
 <script>
     $(function(){
-        initJZ();
+        window.setInterval(initJZ, 1000*2);
         window.setInterval(warninfo, 1000*2);
-        chartsJZ()
+        chartsJZ();
     })
 </script>
 

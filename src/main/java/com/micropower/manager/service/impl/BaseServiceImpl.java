@@ -38,8 +38,10 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
         if (t instanceof IPO){
             ipo = (IPO) t;
             return manager.insert(namespace + "create", ipo);
+        }else {
+            return -1;
+
         }
-        return -1;
     }
 
     @Override

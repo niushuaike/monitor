@@ -116,7 +116,7 @@ function pagesR(total,page){
         num_edge_entries: 2,
         num_display_entries: 4,
         callback: function(pageIndex){
-            initwarnlogC(pageIndex+1);
+            initwarnlogR(pageIndex+1);
         },
         items_per_page:10,
         current_page:page-1

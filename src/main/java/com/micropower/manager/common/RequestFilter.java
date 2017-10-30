@@ -42,7 +42,7 @@ public class RequestFilter implements Filter {
                 s = split[2];
             }
             String main_control_ip = (String) request.getServletContext().getAttribute("main_control_ip");
-
+            System.out.println("获取的大后台IP："+s+" 配置的大后台IP："+main_control_ip);
             Object userObj = SessionUtil.getAttribute("user");
             boolean loginFlag = false;
             if (!StringUtils.isEmpty(s) && main_control_ip.contains(s)) {

@@ -23,13 +23,15 @@ public class CabinetSetController {
     @ResponseBody
     @RequestMapping("/queryParameterByType")
     public Cabinetparamter queryParameterByType(String parametertype) {
-        return cabinetSetService.queryParameterByType(parametertype);
+        Cabinetparamter cabinetSet = cabinetSetService.queryParameterByType(parametertype);
+		return cabinetSet;
     }
 
 
     @ResponseBody
     @RequestMapping("/updateCabinetByType")
     public Integer updateCabinetByType(Cabinetparamter cabinetparamter) {
+    	cabinetparamter.setIsupdate("1");
         return cabinetSetService.update(cabinetparamter);
     }
 
@@ -37,6 +39,8 @@ public class CabinetSetController {
     @RequestMapping("/updateCabinet1")
     public Integer updateAlarmThreshold1(String data) {
         Cabinetparamter cabinetparamter = (Cabinetparamter) JsonUtils.jsonToObject(Cabinetparamter.class, data);
+        cabinetparamter.setParametertype("2");
+        cabinetparamter.setIsupdate("1");
         return cabinetSetService.update(cabinetparamter);
     }
 

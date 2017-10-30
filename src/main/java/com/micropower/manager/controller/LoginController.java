@@ -38,4 +38,11 @@ public class LoginController {
 
     }
 
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        request.getSession().removeAttribute("user");
+        return "redirect:../monitorno/logo";
+
+    }
+
 }

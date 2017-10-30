@@ -52,23 +52,6 @@
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="SvnBranchConfigurationManager">
-    <option name="myConfigurationMap">
-      <map>
-        <entry key="$PROJECT_DIR$">
-          <value>
-            <SvnBranchConfiguration>
-              <option name="branchUrls">
-                <list>
-                  <option value="https://118.178.58.196:8443/svn/monitor/branches" />
-                  <option value="https://118.178.58.196:8443/svn/monitor/tags" />
-                </list>
-              </option>
-              <option name="trunkUrl" value="https://118.178.58.196:8443/svn/monitor/trunk" />
-            </SvnBranchConfiguration>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="mySupportsUserInfoFilter" value="true" />
   </component>
 </project>

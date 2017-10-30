@@ -18,6 +18,7 @@ $('.fadin').click(function () {
 
 /*添加*/
 $('.key-btn').click(function () {
+    $('.modal-01 input').val("");
     toadd();
     $('.modal-01').show()
 })
@@ -29,6 +30,7 @@ $('.modal-sel').click(function () {
 })
 /*编辑*/
 $('.key-edit').click(function () {
+    $('.modal-01 input').val("");
     toedit();
     $('.modal-01').show()
 })
@@ -97,6 +99,8 @@ function toadd() {
         console.log("str2", str2);
         $("#warnstyle").html(str2);
 
+        $("#warnstyle input[type='radio']").attr("checked", true)
+
         $('.modal-01 input[type=radio]').change(function () {
 
             if ($("#sex-1").is(':checked')) {
@@ -106,7 +110,7 @@ function toadd() {
                 $('.mail').hide();
             }
         });
-
+        $('#btn-sava').unbind("click");
         $('#btn-sava').click(function () {
             saveadd();
         })
@@ -244,6 +248,7 @@ function toedit() {
             });
         });
 
+        $('#btn-sava').unbind("click");
         $('#btn-sava').click(function () {
             saveedit();
         })
@@ -261,11 +266,11 @@ function saveedit() {
 
     $.post(url, params, function (data) {
         if (data == 1) {
-            layer.msg("添加成功！");
+            layer.msg("变动成功！");
             $('.modal-01').hide();
             init();
         } else {
-            layer.msg("添加失败");
+            layer.msg("变动失败");
             $('.modal-01').hide();
         }
 

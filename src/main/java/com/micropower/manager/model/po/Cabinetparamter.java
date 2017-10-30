@@ -169,6 +169,9 @@ public class Cabinetparamter implements IPO {
 	 */
 	private String parametertype;
 
+	private String isupdate;
+	
+	
 
 	public Long getMid() {
 		return mid;
@@ -373,5 +376,13 @@ public class Cabinetparamter implements IPO {
 
 	public void setParametertype(String parametertype) {
 		this.parametertype = parametertype;
+	}
+
+	public String getIsupdate() {
+		return isupdate;
+	}
+
+	public void setIsupdate(String isupdate) {
+		this.isupdate = isupdate;
 	}
 }

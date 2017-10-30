@@ -42,6 +42,7 @@
 		<result property="loopCurrentDown"         column="loop_current_down"         jdbcType="VARCHAR"  javaType="java.lang.String"   />
 		<result property="address"                 column="address"                   jdbcType="VARCHAR"  javaType="java.lang.String"   />
 		<result property="parametertype"                 column="parametertype"                   jdbcType="VARCHAR"  javaType="java.lang.String"   />
+		<result property="isupdate"                 column="isupdate"                   jdbcType="VARCHAR"  javaType="java.lang.String"   />
 	</resultMap>
 
 	<!--
@@ -208,6 +209,9 @@
 			</if>
 			<if test="parametertype != null and parametertype !=''" >
 				parametertype = #{parametertype},
+			</if>
+			<if test="isupdate != null and isupdate !=''" >
+				isupdate = #{isupdate},
 			</if>
 		</set>
 		WHERE parametertype=#{parametertype}
